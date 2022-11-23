@@ -1,0 +1,25 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  position: relative;
+}
+.LeftSidePanel {
+  width: 100px;
+  position: fixed;
+  top: 0;
+  min-height: 100vh;
+  background-color: #fff;
+}
+::-webkit-input-placeholder {
+  color: #000;
+}
+
+:-moz-placeholder {
+  color: #000;
+}
+.MuiButtonBase-root-MuiButton-root {
+  text-transform: none !important;
+}
+.MuiButtonBase-root {
+  text-transform: none !important;
+}
