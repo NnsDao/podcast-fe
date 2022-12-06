@@ -1,0 +1,48 @@
+.Membership {
+  font-size: 80px;
+  font-family: Trebuchet-BoldItalic, Trebuchet;
+  font-weight: normal;
+  color: #ffffff;
+  line-height: 93px;
+  padding: 56px 0 60px 0;
+  margin: 0 auto;
+}
+.benefits {
+  font-size: 24px;
+  font-family: Arial-Black, Arial;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 33px;
+}
+.MembershipWrapper {
+  padding: 105px 161px 110px 161px;
+  width: 100%;
+  display: flex;
+  direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.MembershipItem {
+  max-width: 464px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.MembershipItem img {
+  width: 120px;
+  height: 120px;
+}
+.MembershipItemText {
+  font-size: 24px;
+  font-family: Arial-Black, Arial;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 33px;
+  padding: 44px 0 26px 0;
+}
+.MembershipItem {
+  font-size: 18px;
+  font-family: ArialMT;
+  color: #ffffff;
+  line-height: 26px;
+}
