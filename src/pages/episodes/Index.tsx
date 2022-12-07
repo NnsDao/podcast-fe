@@ -1,4 +1,5 @@
 import { Stack } from '@mui/system';
+import Article from './article/Index';
 import Artist from './artist/Index';
 import Introduce from './introduce/Index';
 import Listeners from './listeners/Index';
@@ -17,6 +18,7 @@ export default function Episodes() {
       <Membership></Membership>
       <Recent></Recent>
       <Sponsor></Sponsor>
+      <Article></Article>
     </Stack>
   );
 }

@@ -1,3 +1,4 @@
+import bgSponsor from '@/public/episodes/bgSponsor.png';
 import { Button } from '@mui/material';
 import { Box, Stack } from '@mui/system';
 import Style from './index.module.css';
@@ -11,7 +12,7 @@ export default function Sponsor() {
       bgcolor="#10062F"
       position="relative"
       paddingTop={'146px'}
-      paddingBottom={'181px'}
+      paddingBottom={'281px'}
       className={Style.sponsorWrapper}>
       <Stack className={Style.title}>Become our sponsor</Stack>
       <Stack className={Style.info} paddingY="60px">
@@ -58,7 +59,7 @@ export default function Sponsor() {
               <Stack>/month</Stack>
             </Stack>
           </Stack>
-        </Stack>{' '}
+        </Stack>
         <Stack padding={'71px 73px 70px 64px'} bgcolor="#F6F4F0" borderRadius="8px">
           <Stack className={Style.Member}>Member</Stack>
           <Stack className={Style.info}>
@@ -99,7 +100,7 @@ export default function Sponsor() {
               <Stack>/month</Stack>
             </Stack>
           </Stack>
-        </Stack>{' '}
+        </Stack>
         <Stack padding={'71px 73px 70px 64px'} bgcolor="#F6F4F0" borderRadius="8px">
           <Stack className={Style.Member}>Member</Stack>
           <Stack className={Style.info}>
@@ -143,7 +144,37 @@ export default function Sponsor() {
         </Stack>
       </Stack>
 
-      <Stack></Stack>
+      <Stack direction={'row'} spacing={3} paddingTop="20px">
+        <Stack padding={'88px 142px 70px 98px'} bgcolor="#F6F4F0" borderRadius="8px">
+          <Stack className={Style.included}>What’s included:</Stack>
+          <Stack className={Style.Content}>• Exclusive Content</Stack>
+          <Stack className={Style.Merch}>• 5% Discount on Merch </Stack>
+          <Stack className={Style.Community}>• Join the Community</Stack>
+          <Stack className={Style.Access}>• Livestreaming Access</Stack>
+        </Stack>
+        <Stack padding={'88px 142px 70px 98px'} bgcolor="#F6F4F0" borderRadius="8px">
+          <Stack className={Style.included}>What’s included:</Stack>
+          <Stack className={Style.Content}>• Exclusive Content</Stack>
+          <Stack className={Style.Merch}>• 5% Discount on Merch </Stack>
+          <Stack className={Style.Community}>• Join the Community</Stack>
+          <Stack className={Style.Access}>• Livestreaming Access</Stack>
+        </Stack>
+        <Stack padding={'88px 142px 70px 98px'} bgcolor="#F6F4F0" borderRadius="8px">
+          <Stack className={Style.included}>What’s included:</Stack>
+          <Stack className={Style.Content}>• Exclusive Content</Stack>
+          <Stack className={Style.Merch}>• 5% Discount on Merch </Stack>
+          <Stack className={Style.Community}>• Join the Community</Stack>
+          <Stack className={Style.Access}>• Livestreaming Access</Stack>
+        </Stack>
+      </Stack>
+      <Stack
+        sx={{
+          position: 'absolute',
+          left: '113px',
+          bottom: '100px',
+        }}>
+        <img src={bgSponsor} alt="" width={'715px'} height={'519px'} />
+      </Stack>
     </Stack>
   );
 }

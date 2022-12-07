@@ -32,3 +32,28 @@
   padding-top: 43px;
   padding-bottom: 94px;
 }
+.included {
+  font-size: 22px;
+  font-family: Arial-Black, Arial;
+  font-weight: 900;
+  color: #7ebad3;
+  line-height: 31px;
+  padding-bottom: 36px;
+}
+.Content {
+  font-size: 22px;
+  font-family: Arial-BoldMT, Arial;
+  font-weight: normal;
+  color: #10062f;
+  line-height: 26px;
+  padding-bottom: 29px;
+}
+.Merch,
+.Community,
+.Access {
+  font-size: 22px;
+  font-family: ArialMT;
+  color: #10062f;
+  line-height: 26px;
+  padding-bottom: 29px;
+}
