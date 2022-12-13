@@ -1,5 +1,12 @@
-import Grid from '@mui/material/Unstable_Grid2';
+import { Stack } from '@mui/system';
+import Article from './article/Index';
+import LatestEpisode from './latestEpisode/Index';
 
-export default function Blog() {
-  return <Grid>Blog</Grid>;
+export default function Episodes() {
+  return (
+    <Stack>
+      <Article></Article>
+      <LatestEpisode></LatestEpisode>
+    </Stack>
+  );
 }

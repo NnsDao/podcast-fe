@@ -1,0 +1,64 @@
+.articleItemWrapper,
+.articleItemWrapper2 {
+  padding: 23px;
+  padding-bottom: 13px;
+  background: #facd55;
+  border-radius: 11px;
+}
+.articleItemWrapper2 {
+  background: #aeb5f5;
+}
+.articleItemTitle,
+.articleItemTitle2 {
+  font-size: 16px;
+  font-family: Arial-Black, Arial;
+  font-weight: 900;
+  color: #4a4a4a;
+  padding-top: 23px;
+}
+
+.articleItemsubhead,
+.articleItemsubhead2 {
+  font-size: 36px;
+  font-family: Trebuchet-BoldItalic, Trebuchet;
+  font-weight: normal;
+  color: #e53228;
+  padding-top: 9px;
+  padding-bottom: 23px;
+}
+.articleItemsubhead2 {
+  color: #10062f;
+}
+.articleIteminfo {
+  font-size: 17px;
+  font-family: ArialMT;
+  color: #10062f;
+  line-height: 23px;
+  white-space: wrap;
+  padding-bottom: 13px;
+}
+.articleItemline {
+  padding: 0px 0 0 23px;
+  height: 1px;
+  background: ddecff;
+  border-top: 1px solid #ddecff;
+}
+.recentWrapper1Tag,
+.recentWrapper2Tag,
+.recentWrapper3Tag {
+  font-size: 16px;
+  font-family: ArialMT;
+  color: #10062f;
+  line-height: 18px;
+  padding: 7px 17px;
+  border-radius: 8px;
+  border: 2px solid #10062f;
+  margin-right: 14px;
+}
+.data {
+  font-size: 17px;
+  font-family: DINAlternate-Bold, DINAlternate;
+  font-weight: bold;
+  color: #10062f;
+  line-height: 20px;
+}
