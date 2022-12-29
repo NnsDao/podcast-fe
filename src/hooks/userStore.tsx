@@ -35,7 +35,6 @@ export function UserStoreProvider({ children }) {
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    console.log('login_userInfo', userInfo);
     // auto login
     if (userInfo.loginType && !userInfo?.isLogin) {
       autoLogin(userInfo.loginType);

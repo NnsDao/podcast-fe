@@ -2,11 +2,14 @@ import logo from '@/public/topBar/logo.png';
 import logoText from '@/public/topBar/logoText.png';
 import underline from '@/public/topBar/underline.png';
 import { Avatar, Box, ButtonBase, Stack } from '@mui/material';
+import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import LoginWrapper from './Login/Login';
 export default function TopBar() {
   const nav = ['Episodes', 'About', 'Blog', 'More'];
   let { pathname } = useLocation();
   const navigate = useNavigate();
+  const [isShowDialog, setIsShowDialog] = useState(false);
 
   const formatPathName = () => {
     if (pathname === '/' || pathname === '') {
@@ -16,6 +19,9 @@ export default function TopBar() {
   };
   const toNagation = router => {
     navigate(`${router}`);
+  };
+  const changeDialogShow = (bool: boolean | ((prevState: boolean) => boolean)) => {
+    setIsShowDialog(bool);
   };
   return (
     <Stack width={'80%'} direction={'row'} justifyContent="space-between" alignItems={'center'}>
@@ -56,6 +62,7 @@ export default function TopBar() {
       </Stack>
       <ButtonBase>
         <Box
+          onClick={() => changeDialogShow(true)}
           sx={{
             bgcolor: '#D74EE9',
             borderRadius: '27px',
@@ -82,6 +89,7 @@ export default function TopBar() {
             zIndex: '1',
           }}></Box>
       </ButtonBase>
+      <LoginWrapper isShow={isShowDialog} closeDialog={() => setIsShowDialog(false)} />
     </Stack>
   );
 }

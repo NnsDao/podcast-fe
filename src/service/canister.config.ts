@@ -1,20 +1,16 @@
-import { idlFactory as dao_manager_IDL } from '@nnsdao/nnsdao-kit/dao_manager/index';
 import { idlFactory as ndp_IDL } from '@nnsdao/nnsdao-kit/dip20/index';
 import { idlFactory as nid_IDL } from '@nnsdao/nnsdao-kit/nid/index';
-import { idlFactory as nnsdao_IDL } from '@nnsdao/nnsdao-kit/nnsdao/index';
+import { idlFactory as podcast_manage_IDL } from '@nnsdao/nnsdao-kit/podcast-manager/index';
 
 export const isTestCanister = import.meta.env.__APP__canister_type === 'test';
-export { nnsdao_IDL };
+export { podcast_manage_IDL };
 
 export const canister = {
-  nnsdao: {
-    cid: isTestCanister ? '67bzx-5iaaa-aaaam-aah5a-cai' : '67bzx-5iaaa-aaaam-aah5a-cai',
-    idl: nnsdao_IDL,
+  podcastManage: {
+    cid: isTestCanister ? 'bmay3-iaaaa-aaaah-abv6q-cai' : 'bmay3-iaaaa-aaaah-abv6q-cai',
+    idl: podcast_manage_IDL,
   },
-  dao_manager: {
-    cid: isTestCanister ? 'w3p32-waaaa-aaaah-aboyq-cai' : 'w3p32-waaaa-aaaah-aboyq-cai',
-    idl: dao_manager_IDL,
-  },
+
   nid: {
     cid: 'vgqnj-miaaa-aaaal-qaapa-cai',
     idl: nid_IDL,

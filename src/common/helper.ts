@@ -16,14 +16,12 @@ export function composeQueryKeys(baseQuery: QueryType, params?: QueryItemType): 
 
 export async function login(loginType: string) {
   let loginRes = null as any;
-
   if (loginType == 'plug') {
     loginRes = await plugLogin(collectUsedCanisterId());
   } else if (loginType == 'stoic') {
     loginRes = await stoicLogin();
   }
   if (!loginRes) return;
-  console.log(`login res`, loginRes);
   const loginInfo = {
     loginType: loginType ?? '',
     principalId: loginRes.principalId,
