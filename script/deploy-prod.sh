@@ -9,4 +9,4 @@ echo "Deploy ${canisterType} canister"
 # build prod
 npm run build-prod
 # install code
-dfx canister install --all
+dfx canister --networkc ic install --all
