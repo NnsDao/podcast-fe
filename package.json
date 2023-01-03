@@ -3,7 +3,7 @@
   "private": false,
   "version": "0.0.1",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build --mode prod",
     "build-test": "tsc && vite build --mode test",
     "build-prod": "tsc && vite build --mode prod",
@@ -16,7 +16,6 @@
     "@dfinity/principal": "^0.14.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@fleekhq/fleek-storage-js": "^1.0.22",
     "@mui/icons-material": "^5.10.9",
     "@mui/lab": "^5.0.0-alpha.106",
     "@mui/material": "^5.10.13",
