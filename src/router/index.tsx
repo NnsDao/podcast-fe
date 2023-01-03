@@ -3,15 +3,20 @@ import Blog from '@/pages/blog/Index';
 import Episodes from '@/pages/episodes/Index';
 import Billing from '@/pages/manage/billing/Index';
 import Home from '@/pages/manage/home/Index';
-import { default as Account, default as Manage } from '@/pages/manage/Index';
+import { default as Manage } from '@/pages/manage/Index';
 import Invoices from '@/pages/manage/invoices/Index';
 import Profile from '@/pages/manage/profile/Index';
 import Site from '@/pages/manage/site/Index';
 import More from '@/pages/more/Index';
+import Account from '@/pages/padcast/account/Index';
+import Create from '@/pages/padcast/create/Index';
+import Podcast from '@/pages/padcast/Index';
+import Link from '@/pages/padcast/link/Index';
+import Opus from '@/pages/padcast/opus/Index';
+import Status from '@/pages/padcast/status/Index';
 import PodcastDetail from '@/pages/podcastDetail/Index';
 import { Password, Token } from '@mui/icons-material';
 import React from 'react';
-
 import { RouteObject, useRoutes } from 'react-router-dom';
 const routes: RouteObject[] = [
   {
@@ -40,10 +45,7 @@ const routes: RouteObject[] = [
     path: 'More',
     element: <More />,
   },
-  {
-    path: 'account',
-    element: <Account />,
-  },
+
   {
     path: 'manage',
     element: <Manage />,
@@ -56,6 +58,18 @@ const routes: RouteObject[] = [
       { path: 'Invoices', element: <Invoices /> },
       { path: 'Password', element: <Password /> },
       { path: 'Tokens', element: <Token /> },
+    ],
+  },
+  {
+    path: 'podcast/:principal',
+    element: <Podcast />,
+    children: [
+      { index: true, element: <Opus /> },
+      { path: 'opus', element: <Opus /> },
+      { path: 'account', element: <Account /> },
+      { path: 'link', element: <Link /> },
+      { path: 'status', element: <Status /> },
+      { path: 'create', element: <Create /> },
     ],
   },
 ];

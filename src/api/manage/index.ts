@@ -1,5 +1,6 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { getPodcastManagerActor } from '../../service';
+import { podcastManage } from './queries';
 // create_podcast_canister: () => Promise<Result>;
 // deposit: (arg_0: Principal, arg_1: bigint) => Promise<Result>;
 // get_address: () => Promise<string>;
@@ -47,12 +48,11 @@ export const get_canister_status = async arg1 => {
 };
 export const get_podcast_canister = async () => {
   const actor = await getPodcastManagerActor(true);
-  const res = await actor.create_podcast_canister();
-  console.log('create_podcast_canisterl', res);
-  if ('Ok' in res) {
-    return res.Ok;
+  const res = await actor.get_podcast_canister();
+  if (res) {
+    return res;
   }
-  return Promise.reject(null);
+  return [];
 };
 export const get_need_upgrade = async arg0 => {
   const actor = await getPodcastManagerActor(true);
@@ -92,7 +92,6 @@ export const useCreate_podcast_canister = () => {
 
   return useMutation({
     mutationFn: () => {
-      console.log('start');
       return get_create_podcast_canister();
     },
     // onSuccess(data, variables, context) {
@@ -109,12 +108,6 @@ export const useDeposit = (arg_0, arg_1) => {
     mutationFn: () => {
       return get_deposit(arg_0, arg_1);
     },
-    // onSuccess(data, variables, context) {
-    //   const queryKey = podcastManage.create_podcast_canister();
-    //   const res = queryClient.getQueryData(queryKey);
-    //   // @ts-ignore
-    //   queryClient.setQueryData(queryKey, res);
-    // },
   });
 };
 export const useAddress = () => {
@@ -123,41 +116,49 @@ export const useAddress = () => {
     mutationFn: () => {
       return get_address();
     },
-    // onSuccess(data, variables, context) {
-    //   const queryKey = podcastManage.create_podcast_canister();
-    //   const res = queryClient.getQueryData(queryKey);
-    //   // @ts-ignore
-    //   queryClient.setQueryData(queryKey, res);
-    // },
   });
 };
 export const useCanister_status = arg1 => {
   const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: () => {
-      return get_canister_status(arg1);
+  return useQuery(
+    podcastManage.get_canister_status(arg1),
+    async ({ queryKey }) => {
+      const { module, scope, cid } = queryKey[0];
+      const actor = await getPodcastManagerActor(true);
+      const res = await actor.get_canister_status(arg1);
+      console.log(res, 'get_canister_status');
+      if ('Ok' in res) {
+        return res.Ok;
+      }
+      return Promise.reject(null);
     },
-    // onSuccess(data, variables, context) {
-    //   const queryKey = podcastManage.create_podcast_canister();
-    //   const res = queryClient.getQueryData(queryKey);
-    //   // @ts-ignore
-    //   queryClient.setQueryData(queryKey, res);
-    // },
-  });
+    {
+      onSuccess(data) {
+        queryClient.setQueryData(podcastManage.get_canister_status(arg1), data);
+      },
+    }
+  );
 };
 export const usePodcast_canister = () => {
   const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: () => {
-      return get_podcast_canister();
+  return useQuery(
+    podcastManage.get_podcast_canister(),
+    async ({ queryKey }) => {
+      const { module, scope, cid } = queryKey[0];
+      const actor = await getPodcastManagerActor(true);
+      const res = await actor.get_podcast_canister();
+      console.log(res, 'res');
+      if (res.length >= 0) {
+        return res;
+      }
+      return [];
     },
-    // onSuccess(data, variables, context) {
-    //   const queryKey = podcastManage.create_podcast_canister();
-    //   const res = queryClient.getQueryData(queryKey);
-    //   // @ts-ignore
-    //   queryClient.setQueryData(queryKey, res);
-    // },
-  });
+    {
+      onSuccess(data) {
+        queryClient.setQueryData(podcastManage.get_podcast_canister(), data);
+      },
+    }
+  );
 };
 export const useNeed_upgrade = arg0 => {
   const queryClient = useQueryClient();
