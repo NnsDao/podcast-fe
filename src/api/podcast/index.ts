@@ -41,10 +41,13 @@ export const change_admin = async (arg_0: Principal) => {
 };
 export const create_base_info = async (arg_0: SetBaseInfoRes) => {
   const actor = await getPodcastActor(true);
+  console.log(actor, 'actor');
+
   const res = await actor.create_base_info(arg_0);
+
   console.log('create_base_info', res);
-  if (res) {
-    return res;
+  if (res === undefined) {
+    return true;
   }
   return Promise.reject(null);
 };
@@ -151,8 +154,8 @@ export const update_base_info = async (arg_0: SetBaseInfoRes) => {
   const actor = await getPodcastActor(true);
   const res = await actor.update_base_info(arg_0);
   console.log('update_base_info', res);
-  if (res) {
-    return res;
+  if (res === undefined) {
+    return true;
   }
   return Promise.reject(null);
 };
@@ -170,10 +173,10 @@ export const update_podcast = async (arg_0: bigint, arg_1: PodcastIterm) => {
  *  Hooks
  */
 
-export const useAdd_owner = (arg_0: Principal) => {
+export const useAdd_owner = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: () => {
+    mutationFn: (arg_0: Principal) => {
       return add_owner(arg_0);
     },
     onSuccess(data, variables, context) {
@@ -183,10 +186,11 @@ export const useAdd_owner = (arg_0: Principal) => {
     },
   });
 };
-export const useChange_admin = (arg_0: Principal) => {
+//1
+export const useChange_admin = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: () => {
+    mutationFn: (arg_0: Principal) => {
       return change_admin(arg_0);
     },
     onSuccess(data, variables, context) {
@@ -196,16 +200,17 @@ export const useChange_admin = (arg_0: Principal) => {
     },
   });
 };
-export const useCreate_base_info = (arg_0: SetBaseInfoRes) => {
+//1
+export const useCreate_base_info = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: () => {
+    mutationFn: (arg_0: SetBaseInfoRes) => {
       return create_base_info(arg_0);
     },
     onSuccess(data, variables, context) {
       //todo
-      const queryKey = podcast.create_base_info(arg_0);
-      queryClient.setQueryData(queryKey, data);
+      // const queryKey = podcast.update_base_info(arg_0);
+      // queryClient.setQueryData(queryKey, data);
     },
   });
 };
@@ -222,10 +227,11 @@ export const useCreate_podcast = (arg_0: PodcastIterm) => {
     },
   });
 };
-export const useDelete_owner = (arg_0: Principal) => {
+//1
+export const useDelete_owner = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: () => {
+    mutationFn: (arg_0: Principal) => {
       return delete_owner(arg_0);
     },
     onSuccess(data, variables, context) {
@@ -235,6 +241,7 @@ export const useDelete_owner = (arg_0: Principal) => {
     },
   });
 };
+//1
 export const useGet_admin = () => {
   const queryClient = useQueryClient();
   return useQuery(
@@ -256,14 +263,14 @@ export const useGet_admin = () => {
     }
   );
 };
-export const useGet_canister_status = (arg_0: Principal) => {
+export const useGet_canister_status = (arg: Principal) => {
   const queryClient = useQueryClient();
   return useQuery(
-    podcast.get_canister_status(arg_0),
+    podcast.get_canister_status(arg),
     async ({ queryKey }) => {
       const { module, scope, cid } = queryKey[0];
       const actor = await getPodcastActor(true);
-      const res = await actor.get_canister_status(arg_0);
+      const res = await actor.get_canister_status(arg);
       console.log(res, 'res');
       if ('Ok' in res) {
         return res.Ok;
@@ -272,11 +279,12 @@ export const useGet_canister_status = (arg_0: Principal) => {
     },
     {
       onSuccess(data) {
-        queryClient.setQueryData(podcast.get_canister_status(arg_0), data);
+        queryClient.setQueryData(podcast.get_canister_status(arg), data);
       },
     }
   );
 };
+//1
 export const useGet_owner = () => {
   const queryClient = useQueryClient();
   return useQuery(
@@ -340,6 +348,7 @@ export const useGet_podcast_base_info = () => {
     }
   );
 };
+//1
 export const useGet_podcast_list = () => {
   const queryClient = useQueryClient();
   return useQuery(
@@ -361,6 +370,7 @@ export const useGet_podcast_list = () => {
     }
   );
 };
+//1
 export const useGet_social_link = () => {
   const queryClient = useQueryClient();
   return useQuery(
@@ -376,9 +386,9 @@ export const useGet_social_link = () => {
       return Promise.reject(null);
     },
     {
-      onSuccess(data) {
-        queryClient.setQueryData(podcast.get_social_link(), data);
-      },
+      // onSuccess(data) {
+      //   queryClient.setQueryData(podcast.get_social_link(), data);
+      // },
     }
   );
 };
@@ -403,26 +413,19 @@ export const useSet_social_link = (arg_0: SocialLink) => {
     }
   );
 };
-export const useUpdate_base_info = (arg_0: SetBaseInfoRes) => {
+//1
+export const useUpdate_base_info = () => {
   const queryClient = useQueryClient();
-  return useQuery(
-    podcast.update_base_info(arg_0),
-    async ({ queryKey }) => {
-      const { module, scope, cid } = queryKey[0];
-      const actor = await getPodcastActor(true);
-      const res = await actor.update_base_info(arg_0);
-      console.log(res, 'update_base_info');
-      if (res) {
-        return res;
-      }
-      return Promise.reject(null);
+  return useMutation({
+    mutationFn: (arg_0: SetBaseInfoRes) => {
+      return update_base_info(arg_0);
     },
-    {
-      onSuccess(data) {
-        queryClient.setQueryData(podcast.update_base_info(arg_0), data);
-      },
-    }
-  );
+    onSuccess(data, variables, context) {
+      //todo
+      // const queryKey = podcast.update_base_info(arg_0);
+      // queryClient.setQueryData(queryKey, data);
+    },
+  });
 };
 export const useUpdate_podcast = (arg_0: bigint, arg_1: PodcastIterm) => {
   const queryClient = useQueryClient();

@@ -2,7 +2,6 @@ import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import HomeIcon from '@mui/icons-material/Home';
 import LanguageIcon from '@mui/icons-material/Language';
 import PasswordIcon from '@mui/icons-material/Password';
-import ProfileIcon from '@mui/icons-material/RecordVoiceOver';
 import TokenIcon from '@mui/icons-material/Token';
 export const config = [
   {
@@ -14,15 +13,7 @@ export const config = [
     bgColor: '#e6f4ea',
     nodeId: '1',
   },
-  {
-    labelType: 'text',
-    labelText: 'Profile',
-    labelIcon: ProfileIcon,
-    labelInfo: '',
-    color: '#1a73e8',
-    bgColor: '#F3F6F9',
-    nodeId: '2',
-  },
+
   {
     labelType: 'text',
     labelText: 'My Sites',

@@ -5,14 +5,15 @@ import Billing from '@/pages/manage/billing/Index';
 import Home from '@/pages/manage/home/Index';
 import { default as Manage } from '@/pages/manage/Index';
 import Invoices from '@/pages/manage/invoices/Index';
-import Profile from '@/pages/manage/profile/Index';
 import Site from '@/pages/manage/site/Index';
 import More from '@/pages/more/Index';
 import Account from '@/pages/padcast/account/Index';
 import Create from '@/pages/padcast/create/Index';
 import Podcast from '@/pages/padcast/Index';
+import Information from '@/pages/padcast/information/Index';
 import Link from '@/pages/padcast/link/Index';
 import Opus from '@/pages/padcast/opus/Index';
+import Profile from '@/pages/padcast/profile/Index';
 import Status from '@/pages/padcast/status/Index';
 import PodcastDetail from '@/pages/podcastDetail/Index';
 import { Password, Token } from '@mui/icons-material';
@@ -52,7 +53,7 @@ const routes: RouteObject[] = [
     children: [
       { index: true, element: <Home /> },
       { path: 'Home', element: <Home /> },
-      { path: 'Profile', element: <Profile /> },
+      // { path: 'Profile', element: <Profile /> },
       { path: 'My Sites', element: <Site /> },
       { path: 'Billing', element: <Billing /> },
       { path: 'Invoices', element: <Invoices /> },
@@ -64,7 +65,9 @@ const routes: RouteObject[] = [
     path: 'podcast/:principal',
     element: <Podcast />,
     children: [
-      { index: true, element: <Opus /> },
+      { index: true, element: <Information /> },
+      { path: 'information', element: <Information /> },
+      { path: 'profile', element: <Profile /> },
       { path: 'opus', element: <Opus /> },
       { path: 'account', element: <Account /> },
       { path: 'link', element: <Link /> },
