@@ -54,6 +54,7 @@ export default defineConfig(({ command, mode }) => {
     },
 
     server: {
+      port: 3000,
       fs: {
         strict: false,
       },

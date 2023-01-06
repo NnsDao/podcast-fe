@@ -1,5 +1,5 @@
 import { CloudUploadOutlined } from '@mui/icons-material';
-import { Avatar, CircularProgress, Typography } from '@mui/material';
+import { Avatar, CircularProgress, Typography } from '@mui/material/esm';
 import IconButton from '@mui/material/IconButton';
 import { Box } from '@mui/system';
 import React from 'react';

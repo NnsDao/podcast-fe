@@ -1,7 +1,7 @@
 import { useAdd_owner, useChange_admin, useDelete_owner, useGet_admin, useGet_owner } from '@/api/podcast';
 import { Principal } from '@dfinity/principal';
 import { Avatar, Button, Card, TextField, Typography } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
+import Grid from '@mui/material/esm/Unstable_Grid2';
 import { Stack } from '@mui/system';
 import React, { useReducer } from 'react';
 import toast from 'react-hot-toast';

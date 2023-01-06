@@ -1,7 +1,7 @@
 import { useGet_canister_status } from '@/api/podcast';
 import { Principal } from '@dfinity/principal';
 import { Avatar, Typography } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
+import Grid from '@mui/material/esm/Unstable_Grid2';
 import { Stack } from '@mui/system';
 import { CanisterStatusResponse } from '@nnsdao/nnsdao-kit/src/podcast/types';
 import React from 'react';

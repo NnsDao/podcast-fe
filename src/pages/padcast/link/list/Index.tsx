@@ -1,6 +1,6 @@
 import { useGet_social_link } from '@/api/podcast';
 import { Avatar, Stack, Typography } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
+import Grid from '@mui/material/esm/Unstable_Grid2';
 import { SocialLink } from '@nnsdao/nnsdao-kit/src/podcast/types';
 import React from 'react';
 import { useParams } from 'react-router-dom';

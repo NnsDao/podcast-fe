@@ -1,6 +1,6 @@
 import { useGet_podcast_list } from '@/api/podcast';
 import { Avatar, Card, Typography } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
+import Grid from '@mui/material/esm/Unstable_Grid2';
 import { Stack } from '@mui/system';
 import { PodcastIterm } from '@nnsdao/nnsdao-kit/src/podcast/types';
 import React from 'react';
