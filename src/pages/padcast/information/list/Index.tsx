@@ -81,15 +81,7 @@ export default function Fragment() {
             value={form.describe}
             onChange={e => changeForm('describe', e)}
           />
-
-          <Stack direction="row" spacing={1} justifyContent="flex-start" flexWrap="wrap">
-            {/* {form.tag.map((tag, index) => {
-              return (
-                <Chip color="secondary" label={tag} key={`${index}-${tag}`} onDelete={() => deleteLabel(tag)}></Chip>
-              );
-            })} */}
-          </Stack>
-
+          <Stack direction="row" spacing={1} justifyContent="flex-start" flexWrap="wrap"></Stack>
           <Divider sx={{ my: 4, border: 'none' }}></Divider>
           <Button sx={{ margin: '16px 0' }} size="large" fullWidth variant="contained" type="submit" onClick={confirm}>
             Confirm

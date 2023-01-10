@@ -1,9 +1,8 @@
 import { useGet_canister_status } from '@/api/podcast';
 import { Principal } from '@dfinity/principal';
-import { Avatar, Typography } from '@mui/material';
+import { Avatar } from '@mui/material';
 import Grid from '@mui/material/esm/Unstable_Grid2';
 import { Stack } from '@mui/system';
-import { CanisterStatusResponse } from '@nnsdao/nnsdao-kit/src/podcast/types';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import LoadingWrapper from '../../../../components/LoadingWrapper';
@@ -12,7 +11,8 @@ export default function List() {
   const { principal } = useParams();
   const [showType, setShowType] = React.useState('table');
   //@ts-ignore
-  const List = LoadingWrapper(Card, async () => useGet_canister_status(Principal.fromText(principal)));
+  const List = LoadingWrapper(Card, () => useGet_canister_status(Principal.fromText(principal)));
+
   return (
     <React.Fragment>
       <List></List>
@@ -20,8 +20,8 @@ export default function List() {
   );
 
   function Card(props) {
-    console.log(props.text);
-    const data: CanisterStatusResponse = props.data;
+    const data = props.data;
+    console.log(data, 'data');
 
     return (
       <Grid
@@ -34,27 +34,27 @@ export default function List() {
           <Card elevation={1} sx={{ height: '100%' }}>
             <Stack p={{ sm: 1, lg: 2 }} spacing={{ sm: 1 }} justifyContent="center" alignItems={'center'}>
               <Avatar sizes="medium"></Avatar>
-              <Typography variant="h5" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                status:{Object.keys(data?.status)}
+              {/* <Typography variant="h5" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                status:{Object.keys(data[0]?.status)}
+              </Typography> */}
+              {/* <Typography variant="h5" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                memory_size:{Number(props.data[0]?.memory_size)}
               </Typography>
               <Typography variant="h5" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                memory_size:{Number(data?.memory_size)}
+                cycles:{Number(props.data[0]?.cycles)}
               </Typography>
               <Typography variant="h5" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                cycles:{Number(data?.cycles)}
+                freezing_threshold:{Number(props.data[0]?.settings.freezing_threshold)}
+                controllers:{props.data[0].settings.controllers[0].toText()}
+                memory_allocation :{Number(props.data[0]?.settings.memory_allocation)}
+                compute_allocation:{Number(props.data[0]?.settings.compute_allocation)}
               </Typography>
               <Typography variant="h5" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                freezing_threshold:{Number(data?.settings.freezing_threshold)}
-                controllers:{data.settings.controllers[0].toText()}
-                memory_allocation :{Number(data?.settings.memory_allocation)}
-                compute_allocation:{Number(data?.settings.compute_allocation)}
+                idle_cycles_burned_per_day:{Number(props.data[0]?.idle_cycles_burned_per_day)}
               </Typography>
               <Typography variant="h5" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                idle_cycles_burned_per_day:{Number(data?.idle_cycles_burned_per_day)}
-              </Typography>
-              <Typography variant="h5" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                module_hash:{data?.module_hash}
-              </Typography>
+                module_hash:{props.data[0]?.module_hash}
+              </Typography> */}
             </Stack>
           </Card>
         </Grid>

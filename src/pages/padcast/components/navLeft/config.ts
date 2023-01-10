@@ -61,13 +61,4 @@ export const config = [
     bgColor: '#F3F6F9',
     nodeId: '4',
   },
-  {
-    labelType: 'text',
-    labelText: 'Create',
-    labelIcon: AccountBalanceWalletIcon,
-    labelInfo: '',
-    color: '#1a73e8',
-    bgColor: '#F3F6F9',
-    nodeId: '8',
-  },
 ];

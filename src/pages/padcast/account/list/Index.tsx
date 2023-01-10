@@ -27,6 +27,8 @@ export default function List() {
   function UserCard(props) {
     console.log(props.text);
     const data: Array<Principal> = props.data;
+    console.log(data, '9009090909090');
+
     const changeAdminAction = item => {
       const toastId = toast.loading('updating...');
       deleteAction.mutate(item, {
@@ -58,7 +60,7 @@ export default function List() {
         alignItems="stretch">
         {data.map(item => {
           return (
-            <Grid xs={11} sm={5} md={5}>
+            <Grid xs={11} sm={5} md={5} key={item.toText()}>
               <Card elevation={1} sx={{ height: '100%' }}>
                 <Stack p={{ sm: 1, lg: 2 }} spacing={{ sm: 1 }} justifyContent="center" alignItems={'center'}>
                   <Avatar sizes="medium"></Avatar>

@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import { PulseLoader } from 'react-spinners';
 
 let toastID;
-export default (WrappedComponent, queryFn: (...arg: any[]) => UseQueryResult, toText?) => {
+export default (WrappedComponent, queryFn: (...arg: any[]) => UseQueryResult) => {
   const hocComponent = ({ ...props }) => {
     const data = queryFn();
     useEffect(() => {

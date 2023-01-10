@@ -47,43 +47,62 @@ export default function Program() {
         alignItems="stretch">
         {data.map(item => {
           return (
-            <Grid xs={11} sm={2} md={3} key={Number(item[0])}>
+            <Grid xs={12} sm={12} md={12} key={Number(item[0])}>
               <Card elevation={1} sx={{ height: '100%' }}>
-                <Stack p={{ sm: 1, lg: 2 }} spacing={{ sm: 1 }} justifyContent="center" alignItems={'center'}>
-                  <Avatar sizes="medium" src={item[1].cover_image}></Avatar>
-                  <Typography variant="h5" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                    tag:{item[1].tag}
-                  </Typography>
-                  <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                    describe:{item[1].categories.Default}
-                  </Typography>
-                  <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                    title:{item[1].title}
-                  </Typography>
-                  <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                    status:{item[1].status}
-                  </Typography>
-                  <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                    hosts:{item[1].hosts[0]?.toText() || ''}
-                  </Typography>
-                  <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                    link:{item[1].link}
-                  </Typography>
-                  <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                    create_at:{Number(item[1].create_at)}
-                  </Typography>
-                  <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                    {/* language:{item[1].language ||'language'} */}
-                  </Typography>
-                  <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                    show_note:{Number(item[1].show_note)}
-                  </Typography>
-                  <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                    {/* guests:{item[1].guests.toText() || 'guests'} */}
-                  </Typography>
-                  <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                    sub_title:{item[1].sub_title}
-                  </Typography>
+                <Stack py="10px" direction="row" justifyContent="center" alignItems={'center'}>
+                  <Stack>
+                    <Avatar sx={{ width: 80, height: 80 }} src={item[1].cover_image}></Avatar>
+                  </Stack>
+                  <Stack>
+                    <Stack>
+                      <Stack direction="row" spacing={4}>
+                        <Stack>
+                          <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                            title:{item[1].title}
+                          </Typography>
+                          <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                            sub_title:{item[1].sub_title}
+                          </Typography>
+                        </Stack>
+                        <Stack>
+                          <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                            tag:{item[1].tag}
+                          </Typography>
+                          <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                            describe:{item[1].categories.Default}
+                          </Typography>
+                        </Stack>
+
+                        <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                          status:{item[1].status}
+                        </Typography>
+                        <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                          hosts:{item[1].hosts[0]?.toText() || ''}
+                        </Typography>
+                      </Stack>
+
+                      <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                        link:{item[1].link}
+                      </Typography>
+                      <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                        create_at:{Number(item[1].create_at)}
+                      </Typography>
+                      <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                        {/* language:{item[1].language ||'language'} */}
+                      </Typography>
+                      <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                        show_note:{Number(item[1].show_note)}
+                      </Typography>
+                      <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                        {/* guests:{item[1].guests.toText() || 'guests'} */}
+                      </Typography>
+                    </Stack>
+                    <Stack>
+                      <audio controls>
+                        <source src="http://music.163.com/song/media/outer/url?id=1446521008.mp3" type="audio/ogg" />
+                      </audio>
+                    </Stack>
+                  </Stack>
                 </Stack>
               </Card>
             </Grid>

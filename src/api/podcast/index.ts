@@ -94,7 +94,7 @@ export const get_canister_status = async arg1 => {
   if ('Ok' in res) {
     return res.Ok;
   }
-  return Promise.reject(null);
+  return Promise.reject([]);
 };
 export const get_owner = async () => {
   const actor = await getPodcastActor(true);
@@ -214,17 +214,18 @@ export const useCreate_base_info = () => {
     },
   });
 };
-export const useCreate_podcast = (arg_0: PodcastIterm) => {
+//1
+export const useCreate_podcast = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: () => {
+    mutationFn: (arg_0: PodcastIterm) => {
       return create_podcast(arg_0);
     },
-    onSuccess(data, variables, context) {
-      //todo
-      const queryKey = podcast.create_podcast(arg_0);
-      queryClient.setQueryData(queryKey, data);
-    },
+    // onSuccess(data, variables, context) {
+    //   //todo
+    //   const queryKey = podcast.create_podcast(arg_0);
+    //   queryClient.setQueryData(queryKey, data);
+    // },
   });
 };
 //1
@@ -265,21 +266,24 @@ export const useGet_admin = () => {
 };
 export const useGet_canister_status = (arg: Principal) => {
   const queryClient = useQueryClient();
+  // return get_canister_status(arg);
   return useQuery(
     podcast.get_canister_status(arg),
     async ({ queryKey }) => {
       const { module, scope, cid } = queryKey[0];
       const actor = await getPodcastActor(true);
       const res = await actor.get_canister_status(arg);
-      console.log(res, 'res');
       if ('Ok' in res) {
+        console.log(res.Ok, 'res');
         return res.Ok;
       }
-      return [];
+      return Promise.reject(null);
     },
     {
       onSuccess(data) {
-        queryClient.setQueryData(podcast.get_canister_status(arg), data);
+        console.log(1);
+
+        // queryClient.setQueryData(podcast.get_canister_status(arg), data);
       },
     }
   );
@@ -306,6 +310,7 @@ export const useGet_owner = () => {
     }
   );
 };
+//1
 export const useGet_podcast = (arg_0: bigint) => {
   const queryClient = useQueryClient();
   return useQuery(
@@ -327,6 +332,7 @@ export const useGet_podcast = (arg_0: bigint) => {
     }
   );
 };
+//1
 export const useGet_podcast_base_info = () => {
   const queryClient = useQueryClient();
   return useQuery(

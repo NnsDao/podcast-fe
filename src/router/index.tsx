@@ -8,7 +8,6 @@ import Invoices from '@/pages/manage/invoices/Index';
 import Site from '@/pages/manage/site/Index';
 import More from '@/pages/more/Index';
 import Account from '@/pages/padcast/account/Index';
-import Create from '@/pages/padcast/create/Index';
 import Podcast from '@/pages/padcast/Index';
 import Information from '@/pages/padcast/information/Index';
 import Link from '@/pages/padcast/link/Index';
@@ -72,7 +71,6 @@ const routes: RouteObject[] = [
       { path: 'account', element: <Account /> },
       { path: 'link', element: <Link /> },
       { path: 'status', element: <Status /> },
-      { path: 'create', element: <Create /> },
     ],
   },
 ];

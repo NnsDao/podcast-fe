@@ -58,7 +58,7 @@ function Upload(props) {
         ref={uploaderRef}
         id="uploader"
         hidden
-        accept="image/*"
+        accept=""
         onChange={uploadFile}
       />
     </IconButton>
