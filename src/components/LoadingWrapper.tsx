@@ -11,6 +11,7 @@ let toastID;
 export default (WrappedComponent, queryFn: (...arg: any[]) => UseQueryResult) => {
   const hocComponent = ({ ...props }) => {
     const data = queryFn();
+
     useEffect(() => {
       if (data.isFetching && data.data) {
         if (toastID) {

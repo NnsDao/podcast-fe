@@ -135,7 +135,7 @@ export const get_podcast_list = async () => {
 export const get_social_link = async () => {
   const actor = await getPodcastActor(true);
   const res = await actor.get_social_link();
-  console.log('get_social_link', res);
+  console.log('get_social_link_xx', res);
   if (res) {
     return res;
   }
