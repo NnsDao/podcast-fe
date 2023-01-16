@@ -55,8 +55,8 @@ export const create_podcast = async (arg_0: PodcastIterm) => {
   const actor = await getPodcastActor(true);
   const res = await actor.create_podcast(arg_0);
   console.log('create_podcast', res);
-  if (res) {
-    return res;
+  if (res === undefined) {
+    return 'ok';
   }
   return Promise.reject(null);
 };
@@ -145,8 +145,8 @@ export const set_social_link = async (arg_0: SocialLink) => {
   const actor = await getPodcastActor(true);
   const res = await actor.set_social_link(arg_0);
   console.log('set_social_link', res);
-  if (res) {
-    return res;
+  if (res === undefined) {
+    return 'Success';
   }
   return Promise.reject(null);
 };
@@ -273,11 +273,13 @@ export const useGet_canister_status = (arg: Principal) => {
       const { module, scope, cid } = queryKey[0];
       const actor = await getPodcastActor(true);
       const res = await actor.get_canister_status(arg);
+      console.log(res, 'res');
+
       if ('Ok' in res) {
         console.log(res.Ok, 'res');
         return res.Ok;
       }
-      return Promise.reject(null);
+      return Promise.reject(res);
     },
     {
       onSuccess(data) {
@@ -398,26 +400,19 @@ export const useGet_social_link = () => {
     }
   );
 };
-export const useSet_social_link = (arg_0: SocialLink) => {
+//1
+export const useSet_social_link = () => {
   const queryClient = useQueryClient();
-  return useQuery(
-    podcast.set_social_link(arg_0),
-    async ({ queryKey }) => {
-      const { module, scope, cid } = queryKey[0];
-      const actor = await getPodcastActor(true);
-      const res = await actor.set_social_link(arg_0);
-      console.log(res, 'set_social_link');
-      if (res) {
-        return res;
-      }
-      return Promise.reject(null);
+  return useMutation({
+    mutationFn: (arg_0: SocialLink) => {
+      return set_social_link(arg_0);
     },
-    {
-      onSuccess(data) {
-        queryClient.setQueryData(podcast.set_social_link(arg_0), data);
-      },
-    }
-  );
+    onSuccess(data, variables, context) {
+      //todo
+      const queryKey = podcast.get_owner();
+      queryClient.setQueryData(podcast.get_social_link(), data);
+    },
+  });
 };
 //1
 export const useUpdate_base_info = () => {
@@ -433,24 +428,12 @@ export const useUpdate_base_info = () => {
     },
   });
 };
-export const useUpdate_podcast = (arg_0: bigint, arg_1: PodcastIterm) => {
+
+export const useUpdate_podcast = () => {
   const queryClient = useQueryClient();
-  return useQuery(
-    podcast.update_podcast(arg_0, arg_1),
-    async ({ queryKey }) => {
-      const { module, scope, cid } = queryKey[0];
-      const actor = await getPodcastActor(true);
-      const res = await actor.update_podcast(arg_0, arg_1);
-      console.log(res, 'update_podcast');
-      if (res) {
-        return res;
-      }
-      return Promise.reject(null);
-    },
-    {
-      onSuccess(data) {
-        queryClient.setQueryData(podcast.update_podcast(arg_0, arg_1), data);
-      },
-    }
-  );
+  // return useMutation({
+  //   mutationFn: (arg_0: bigint, arg_1: PodcastIterm) => {
+  //     return update_podcast(arg_0, arg_1);
+  //   },
+  // });
 };

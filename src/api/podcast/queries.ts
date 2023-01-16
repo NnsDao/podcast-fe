@@ -35,5 +35,6 @@ export const podcast = {
   get_social_link: () => composeQueryKeys(podcast.all, { scope: 'get_social_link' }),
   set_social_link: (arg_0: SocialLink) => composeQueryKeys(podcast.all, { scope: 'set_social_link', arg_0 }),
   update_base_info: (arg_0: SetBaseInfoRes) => composeQueryKeys(podcast.all, { scope: 'update_base_info', arg_0 }),
-  update_podcast: (arg_0: bigint, arg_1: PodcastIterm) => composeQueryKeys(podcast.all, { scope: 'update_podcast' }),
+  update_podcast: (arg_0: bigint, arg_1: PodcastIterm) =>
+    composeQueryKeys(podcast.all, { scope: 'update_podcast', arg_0, arg_1 }),
 };

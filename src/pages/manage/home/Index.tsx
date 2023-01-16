@@ -1,10 +1,21 @@
 import { get_address, useCreate_podcast_canister, usePodcast_canister } from '@/api/manage';
+import LoadingWrapper from '@/components/LoadingWrapper';
 import LoginWrapper from '@/components/Login/Login';
 import { useUserStore } from '@/hooks/userStore';
 import { Principal } from '@dfinity/principal';
-import { Avatar, Button, Divider, Stack } from '@mui/material';
+import {
+  Avatar,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Divider,
+  Stack,
+} from '@mui/material';
 import { payWithICP } from '@nnsdao/nnsdao-kit/helper/pay';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 export default function Home() {
@@ -12,11 +23,18 @@ export default function Home() {
   const [userStore, dispatch] = useUserStore();
   const isLogin = userStore.isLogin;
   const [isShowDialog, setIsShowDialog] = useState(false);
-  const PodcastCanister = usePodcast_canister();
-  const list = PodcastCanister?.data;
-  console.log(list, 'list');
-  list ? toast.success('Getting Podcast Canister!') : null;
+  const [open, setOpen] = useState(false);
+  const List = LoadingWrapper(Wrapper, () => usePodcast_canister());
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   async function newSite() {
+    handleClose();
     if (!isLogin) {
       toast.error('Login first please!');
       setIsShowDialog(true);
@@ -53,53 +71,74 @@ export default function Home() {
       toast.dismiss(toastID);
     }
   }
-  const navigate = useNavigate();
-  const toPodcast = (item: Principal) => {
-    navigate(`/Podcast/${item.toText()}`, { replace: true });
-  };
-  useEffect(() => {
-    // getPodcastCanister();
-  }, []);
+
   return (
     <Stack className="full" sx={{ width: '100%' }}>
       <Stack direction={'row'} justifyContent="space-between" alignItems={'center'} className="py-8  items-center">
         <Stack sx={{ fontWeight: '900', fontSize: '22px' }}>Home</Stack>
-        <Button variant="outlined" color="secondary" onClick={() => newSite()}>
+        <Button variant="outlined" color="secondary" onClick={() => handleClickOpen()}>
           + New site
         </Button>
       </Stack>
       <Divider variant="middle" sx={{ marginY: '30px' }} />
-      <Stack direction={'row'} justifyContent="start" sx={{ padding: '10px' }}>
-        {list && list.length >= 0
-          ? list.map(item => (
-              <Stack
-                key={item}
-                direction="column"
-                justifyContent={'center'}
-                alignContent={'center'}
-                onClick={() => toPodcast(item)}
-                sx={{
-                  border: '1px dashed grey',
-                  width: '200px',
-                  height: '130px',
-                  marginRight: '10px',
-                  cursor: 'pointer',
-                  textAlign: 'center',
-                  ':hover': {
-                    borderColor: '#1976d2',
-                    color: '#1976d2',
-                    cursor: 'pointer',
-                  },
-                }}>
-                <Stack direction="row" justifyContent={'center'} alignContent={'center'}>
-                  <Avatar sx={{ width: 50, height: 50 }}></Avatar>
-                </Stack>
-                <Stack className="pt-10 hover:text-sky-500">{item.toText()}</Stack>
-              </Stack>
-            ))
-          : null}
-      </Stack>
+      <List></List>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description">
+        <DialogTitle id="alert-dialog-title">{'Instructions for creating a personal blog'}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Creating a personal blog requires a fee of 0.5 ICP for creating a new canister.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Disagree</Button>
+          <Button onClick={newSite} autoFocus>
+            Agree Pay
+          </Button>
+        </DialogActions>
+      </Dialog>
       <LoginWrapper isShow={isShowDialog} closeDialog={() => setIsShowDialog(false)} />
+    </Stack>
+  );
+}
+function Wrapper(props) {
+  const data = props.data;
+  const navigate = useNavigate();
+
+  const toPodcast = (item: Principal) => {
+    navigate(`/Podcast/${item.toText()}`, { replace: true });
+  };
+  return (
+    <Stack direction={'row'} justifyContent="start" sx={{ padding: '10px' }}>
+      {data.map(item => (
+        <Stack
+          key={item}
+          direction="column"
+          justifyContent={'center'}
+          alignContent={'center'}
+          onClick={() => toPodcast(item)}
+          sx={{
+            border: '1px dashed grey',
+            width: '200px',
+            height: '130px',
+            marginRight: '10px',
+            cursor: 'pointer',
+            textAlign: 'center',
+            ':hover': {
+              borderColor: '#1976d2',
+              color: '#1976d2',
+              cursor: 'pointer',
+            },
+          }}>
+          <Stack direction="row" justifyContent={'center'} alignContent={'center'}>
+            <Avatar sx={{ width: 50, height: 50 }}></Avatar>
+          </Stack>
+          <Stack className="pt-10 hover:text-sky-500">{item.toText()}</Stack>
+        </Stack>
+      ))}
     </Stack>
   );
 }

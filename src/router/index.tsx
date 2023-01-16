@@ -38,7 +38,7 @@ const routes: RouteObject[] = [
     element: <Blog />,
   },
   {
-    path: 'PodcastDetail',
+    path: 'PodcastDetail/:principal:index',
     element: <PodcastDetail />,
   },
   {

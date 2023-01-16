@@ -1,14 +1,14 @@
 import { useGet_podcast_list } from '@/api/podcast';
-import { Avatar, Card, Typography } from '@mui/material';
+import { Avatar, Button, Card, Chip, Typography } from '@mui/material';
 import Grid from '@mui/material/esm/Unstable_Grid2';
-import { Stack } from '@mui/system';
+import { Box, Stack } from '@mui/system';
 import { PodcastIterm } from '@nnsdao/nnsdao-kit/src/podcast/types';
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import LoadingWrapper from '../../../../components/LoadingWrapper';
+import UpdataButton from './UpdataButton';
 
 export default function Program() {
-  const { cid } = useParams();
   const [showType, setShowType] = React.useState('table');
   const List = LoadingWrapper(UserCard, () => useGet_podcast_list());
   return (
@@ -18,26 +18,13 @@ export default function Program() {
   );
 
   function UserCard(props) {
+    const navigator = useNavigate();
+    const { principal } = useParams();
     const data: Array<[bigint, PodcastIterm]> = props.data;
-    console.log(data, '111111111');
 
-    const soure = {
-      tag: ['web3', 'c1'],
-      categories: '',
-      status: true,
-      describe: 'describe',
-      title: 'title',
-      hosts: [],
-      cover_image: 'string',
-      link: 'string',
-      create_at: 'bigint',
-      language: 'Language',
-      update_at: 'bigint',
-      show_note: 'string',
-      guests: [],
-      sub_title: 'string',
+    const toPodcastDetail = index => {
+      navigator(`/podcastDetail/${principal}${index} `);
     };
-
     return (
       <Grid
         container
@@ -49,59 +36,146 @@ export default function Program() {
           return (
             <Grid xs={12} sm={12} md={12} key={Number(item[0])}>
               <Card elevation={1} sx={{ height: '100%' }}>
-                <Stack py="10px" direction="row" justifyContent="center" alignItems={'center'}>
+                <Stack
+                  spacing={2}
+                  py="10px"
+                  direction="row"
+                  paddingX="50px"
+                  justifyContent="space-between"
+                  alignItems={'center'}>
                   <Stack>
                     <Avatar sx={{ width: 80, height: 80 }} src={item[1].cover_image}></Avatar>
                   </Stack>
                   <Stack>
-                    <Stack>
-                      <Stack direction="row" spacing={4}>
-                        <Stack>
-                          <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                            title:{item[1].title}
-                          </Typography>
-                          <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                            sub_title:{item[1].sub_title}
-                          </Typography>
-                        </Stack>
-                        <Stack>
-                          <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                            tag:{item[1].tag}
-                          </Typography>
-                          <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                            describe:{item[1].categories.Default}
-                          </Typography>
-                        </Stack>
-
-                        <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                          status:{item[1].status}
-                        </Typography>
-                        <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                          hosts:{item[1].hosts[0]?.toText() || ''}
+                    <Stack width={'200px'} paddingBottom="10px">
+                      <Stack>
+                        <Typography
+                          overflow="hidden"
+                          variant="caption"
+                          sx={{
+                            fontFamily: 'Roboto',
+                            fontWeight: 700,
+                            fontSize: '22px',
+                            lineHeight: '30px',
+                            color: '#181C32',
+                          }}>
+                          {item[1].title}
                         </Typography>
                       </Stack>
+                      <Stack>
+                        <Typography
+                          variant="caption"
+                          overflow="hidden"
+                          sx={{
+                            fontFamily: 'Roboto',
+                            fontWeight: 700,
+                            fontSize: '18px',
+                            lineHeight: '30px',
+                            color: '#181C32',
+                          }}>
+                          {item[1].sub_title}
+                        </Typography>
+                      </Stack>
+                    </Stack>
+                    <audio controls>
+                      <source src="http://music.163.com/song/media/outer/url?id=1446521008.mp3" type="audio/ogg" />
+                    </audio>
+                  </Stack>
 
+                  <Stack padding={'5px'}>
+                    <Stack>
+                      <Stack direction="column" spacing={0.5}>
+                        <Stack direction={'row'} spacing={0.5}>
+                          {item[1].tag.map(tag => {
+                            return <Chip key={tag} variant="outlined" label={tag} clickable></Chip>;
+                          })}
+                        </Stack>
+                        <Stack direction={'row'} spacing={0.5}>
+                          <Chip
+                            color={item[1].status.toString() === 'false' ? 'warning' : 'success'}
+                            variant="outlined"
+                            label={item[1].status.toString() === 'false' ? 'Save only' : 'Publish'}></Chip>
+                          <Chip
+                            variant="outlined"
+                            label={Object.keys(item[1].language)[0] || 'language'}
+                            clickable></Chip>
+                        </Stack>
+                        <Stack direction={'row'} justifyContent="space-between" alignItems="center" paddingY={'5px'}>
+                          <Box
+                            sx={{
+                              fontFamily: 'Roboto',
+                              fontWeight: 700,
+                              fontSize: '14px',
+                              color: '#5E6278',
+                              paddingRight: '10px',
+                            }}>
+                            {new Date(Number(item[1].create_at || 0)).toLocaleString()}
+                          </Box>
+                          <Box
+                            sx={{
+                              fontFamily: 'Roboto',
+                              fontWeight: 500,
+                              fontSize: '13px',
+                              lineHeight: '15px',
+                              color: '#B5B5C3',
+                            }}>
+                            Created At
+                          </Box>
+                        </Stack>
+                        <Stack direction={'row'} justifyContent="space-between" alignItems="center" paddingY={'5px'}>
+                          <Box
+                            sx={{
+                              fontFamily: 'Roboto',
+                              fontWeight: 700,
+                              fontSize: '14px',
+                              color: '#5E6278',
+                              paddingRight: '10px',
+                            }}>
+                            {new Date(Number(item[1].update_at || 0)).toLocaleString()}
+                          </Box>
+                          <Box
+                            sx={{
+                              fontFamily: 'Roboto',
+                              fontWeight: 500,
+                              fontSize: '13px',
+                              lineHeight: '15px',
+                              color: '#B5B5C3',
+                            }}>
+                            Update_at
+                          </Box>
+                        </Stack>
+                      </Stack>
+                    </Stack>
+
+                    <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                      Hosts: &nbsp; {item[1].hosts[0]?.toText() || ''}
+                    </Typography>
+                    {/* <Stack direction="column">
                       <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
                         link:{item[1].link}
                       </Typography>
-                      <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                        create_at:{Number(item[1].create_at)}
-                      </Typography>
-                      <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                        {/* language:{item[1].language ||'language'} */}
-                      </Typography>
-                      <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                        show_note:{Number(item[1].show_note)}
-                      </Typography>
-                      <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                        {/* guests:{item[1].guests.toText() || 'guests'} */}
-                      </Typography>
-                    </Stack>
-                    <Stack>
-                      <audio controls>
-                        <source src="http://music.163.com/song/media/outer/url?id=1446521008.mp3" type="audio/ogg" />
-                      </audio>
-                    </Stack>
+                    </Stack> */}
+                    {/* <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                      guests:{item[1].guests || 'guests'}
+                    </Typography> */}
+                    {/* <Typography
+                      variant="caption"
+                      sx={{
+                        fontFamily: 'Roboto',
+                        fontWeight: 700,
+                        fontSize: '18px',
+                        lineHeight: '30px',
+                        color: '#181C32',
+                      }}>
+                      describe:{item[1].describe}
+                    </Typography> */}
+                  </Stack>
+                  <Stack direction="column">
+                    <UpdataButton form={item}></UpdataButton>
+                    <Button></Button>
+                    <Button variant="outlined" onClick={() => toPodcastDetail(Number(item[0]))}>
+                      View
+                    </Button>
                   </Stack>
                 </Stack>
               </Card>

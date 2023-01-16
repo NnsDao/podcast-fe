@@ -1,98 +1,29 @@
-import { useCreate_podcast } from '@/api/podcast';
+import { useUpdate_podcast } from '@/api/podcast';
 import Upload from '@/components/Upload';
 import { useUserStore } from '@/hooks/userStore';
-import { Principal } from '@dfinity/principal';
-import { Chip, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import Slide from '@mui/material/Slide';
-import { TransitionProps } from '@mui/material/transitions';
+import { Button, Chip, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import { Stack } from '@mui/system';
-import * as React from 'react';
+import React from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement<any, any>;
-  },
-  ref: React.Ref<unknown>
-) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
-
-export default function NewPodcast() {
-  const [open, setOpen] = React.useState(false);
-  const createAction = useCreate_podcast();
-  const [userStore, dispatch] = useUserStore();
-  const principalId = userStore.principalId;
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const [form, setFormField] = React.useReducer(
-    (state, { key, value }) => {
-      return {
-        ...state,
-        [key]: value,
-      };
-    },
-    {
-      tag: [],
-      categories: { Default: null },
-      status: false,
-      describe: '',
-      title: '',
-      //@ts-ignore
-      hosts: principalId ? [].push(Principal.fromText(principalId)) : [],
-      cover_image:
-        'https://storageapi.fleek.co/6c0adc4a-04ee-4662-907b-7ecff2fcc16c-bucket/147fc0647218540000000000?hash=bafybeigfo56yj67weic5gorkfzwcve3ykh37bimeq2zg7pzowmp6ocmltq',
-      link: '',
-      create_at: BigInt(new Date().getTime()),
-      language: { English: null },
-      update_at: BigInt(new Date().getTime()),
-      show_note:
-        'https://storageapi.fleek.co/6c0adc4a-04ee-4662-907b-7ecff2fcc16c-bucket/147fc0647218540000000000?hash=bafybeigfo56yj67weic5gorkfzwcve3ykh37bimeq2zg7pzowmp6ocmltq',
-      guests: [],
-      sub_title: '',
-    } as const
-  );
-  return (
-    <div>
-      <Button variant="outlined" color="secondary" onClick={handleClickOpen}>
-        + New Podcast
-      </Button>
-
-      <Dialog open={open} maxWidth={'xl'} TransitionComponent={Transition} onClose={handleClose}>
-        <Fragment close={handleClose} from={form}></Fragment>
-        {/* <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={newPodcast}>NewPodcast</Button>
-        </DialogActions> */}
-      </Dialog>
-    </div>
-  );
-}
-
-function Fragment(props) {
+export default function Fragment(props) {
   const { cid } = useParams();
   return (
     <Stack width={'500px'} paddingX="30px">
       <Stack sx={{ paddingY: '20px', fontSize: '20px', fontWeight: 900 }}>
         {'Fill out the form to create a podcast'}
       </Stack>
-      <ActiveContent close={props.close}></ActiveContent>
+      <ActiveContent close={props.close} form={props.form}></ActiveContent>
     </Stack>
   );
 }
 function ActiveContent(props) {
-  const createAction = useCreate_podcast();
+  const updateAction = useUpdate_podcast();
   const navigator = useNavigate();
   const [userStore, dispatch] = useUserStore();
   const principalId = userStore.principalId;
+  console.log(props, 'props');
 
   const [form, setFormField] = React.useReducer(
     (state, { key, value }) => {
@@ -102,42 +33,21 @@ function ActiveContent(props) {
       };
     },
     {
-      tag: [],
-      categories: { Default: null },
-      status: false,
-      describe: '',
-      title: '',
-      //@ts-ignore
-      hosts: principalId ? [].push(Principal.fromText(principalId)) : [],
-      cover_image:
-        'https://storageapi.fleek.co/6c0adc4a-04ee-4662-907b-7ecff2fcc16c-bucket/147fc0647218540000000000?hash=bafybeigfo56yj67weic5gorkfzwcve3ykh37bimeq2zg7pzowmp6ocmltq',
-      link: '',
-      create_at: BigInt(new Date().getTime()),
-      language: { English: null },
-      update_at: BigInt(new Date().getTime()),
-      show_note:
-        'https://storageapi.fleek.co/6c0adc4a-04ee-4662-907b-7ecff2fcc16c-bucket/147fc0647218540000000000?hash=bafybeigfo56yj67weic5gorkfzwcve3ykh37bimeq2zg7pzowmp6ocmltq',
-      guests: [],
-      sub_title: '',
-    } as const
+      ...props.form[1],
+    }
   );
 
   return (
     <React.Fragment>
       <Stack spacing={2} justifyContent={'center'} alignItems={'center'}>
-        <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'}>
-          <Stack paddingRight={'30px'}>
-            <Upload src={form['cover_image']} setSrc={val => setFormField({ key: 'cover_image', value: val })}></Upload>
-            <Typography variant="h6">Cover_image</Typography>
-          </Stack>
-          <Stack>
-            <Upload src={form['show_note']} setSrc={val => setFormField({ key: 'show_note', value: val })}></Upload>
-            <Typography variant="h6">Podcast</Typography>
-          </Stack>
+        <Stack alignItems={'center'}>
+          <Upload src={form['cover_image']} setSrc={val => setFormField({ key: 'cover_image', value: val })}></Upload>
+          <Typography variant="h6">Cover_image</Typography>
         </Stack>
-      </Stack>
-      <Stack alignItems={'center'}>
-        <Stack padding="10px"></Stack>
+        <Stack alignItems={'center'}>
+          <Upload src={form['show_note']} setSrc={val => setFormField({ key: 'show_note', value: val })}></Upload>
+          <Typography variant="h6">Podcast</Typography>
+        </Stack>
         <TextField
           variant="standard"
           required
@@ -149,8 +59,6 @@ function ActiveContent(props) {
           value={form.title}
           onChange={e => changeForm('title', e)}
         />
-        <Stack padding="10px"></Stack>
-
         <TextField
           variant="standard"
           required
@@ -162,8 +70,6 @@ function ActiveContent(props) {
           value={form.sub_title}
           onChange={e => changeForm('sub_title', e)}
         />
-        <Stack padding="10px"></Stack>
-
         <TextField
           required
           variant="standard"
@@ -173,23 +79,19 @@ function ActiveContent(props) {
           placeholder="Please create a tag."
           onKeyDown={e => onEnterTag(e)}
         />
-        <Stack padding="10px"></Stack>
-
         <Stack direction="row" spacing={1} justifyContent="flex-start" flexWrap="wrap">
-          {form.tag.map((tag, index) => {
+          {form?.tag?.map((tag, index) => {
             return (
               <Chip color="secondary" label={tag} key={`${index}-${tag}`} onDelete={() => deleteLabel(tag)}></Chip>
             );
           })}
         </Stack>
-        <Stack padding="10px"></Stack>
-
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Language</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={Object.keys(form.language)[0]}
+            value={Object?.keys(form?.language)[0]}
             label="Age"
             onChange={e => changeForm('language', e)}>
             <MenuItem value={'Korean'}>Korean</MenuItem>
@@ -199,8 +101,6 @@ function ActiveContent(props) {
             <MenuItem value={'English'}>English</MenuItem>
           </Select>
         </FormControl>
-        <Stack padding="10px"></Stack>
-
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Save only</InputLabel>
           <Select
@@ -213,8 +113,6 @@ function ActiveContent(props) {
             <MenuItem value={'true'}>Save and publish</MenuItem>
           </Select>
         </FormControl>
-        <Stack padding="10px"></Stack>
-
         <TextField
           variant="standard"
           required
@@ -226,8 +124,6 @@ function ActiveContent(props) {
           value={form.describe}
           onChange={e => changeForm('describe', e)}
         />
-        <Stack padding="10px"></Stack>
-
         <Button sx={{ margin: '16px 0' }} size="large" fullWidth variant="contained" type="submit" onClick={confirm}>
           Confirm
         </Button>
@@ -284,15 +180,15 @@ function ActiveContent(props) {
     // }
     const toastID = toast.loading('Getting Create Podcast...');
     try {
-      const data = await createAction.mutateAsync({
-        ...params,
-      });
-      console.log(data);
+      // const data = await updateAction.mutateAsync({props.form[0],
+      //   ...params,
+      // });
+      // console.log(data);
       props.close();
-      toast.success('Create onSuccess');
+      toast.success('update onSuccess');
     } catch (error) {
       console.error('err', error);
-      toast.error('Failed create', { id: toastID });
+      toast.error('Failed update', { id: toastID });
     } finally {
       toast.dismiss(toastID);
     }
