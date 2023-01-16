@@ -1,11 +1,13 @@
-import { useGet_podcast_list } from '@/api/podcast';
+import { useGet_podcast_list, useUpdate_podcast } from '@/api/podcast';
 import { Avatar, Button, Card, Chip, Typography } from '@mui/material';
 import Grid from '@mui/material/esm/Unstable_Grid2';
 import { Box, Stack } from '@mui/system';
 import { PodcastIterm } from '@nnsdao/nnsdao-kit/src/podcast/types';
-import React from 'react';
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import LoadingWrapper from '../../../../components/LoadingWrapper';
+import ShowNodeButton from './ShowNodeButton';
 import UpdataButton from './UpdataButton';
 
 export default function Program() {
@@ -21,9 +23,53 @@ export default function Program() {
     const navigator = useNavigate();
     const { principal } = useParams();
     const data: Array<[bigint, PodcastIterm]> = props.data;
+    const [form, setFormField] = useState([]);
+    const updateAction = useUpdate_podcast();
+
+    async function changeForm(item, e) {
+      if (item[1].status.toString() === e.target.value) {
+        return;
+      }
+      const arg1 = {};
+      const arg2 = {};
+      const params = {
+        ...form,
+        showNode: e.target.value,
+      };
+      console.log(params, 'params');
+
+      // for (const key of Object.keys(params)) {
+      //   if (!checkField(key, params[key])) {
+      //     return;
+      //   }
+      // }
+      const toastID = toast.loading('Getting Update Podcast...');
+      try {
+        // const data = await updateAction.mutateAsync({
+        //   ...params,
+        // });
+        console.log(data);
+        toast.success('update onSuccess');
+      } catch (error) {
+        console.error('err', error);
+        toast.error('Failed update', { id: toastID });
+      } finally {
+        toast.dismiss(toastID);
+      }
+    }
 
     const toPodcastDetail = index => {
       navigator(`/podcastDetail/${principal}${index} `);
+    };
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+    const open = Boolean(anchorEl);
+
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+      setAnchorEl(event.currentTarget);
     };
     return (
       <Grid
@@ -91,10 +137,6 @@ export default function Program() {
                           })}
                         </Stack>
                         <Stack direction={'row'} spacing={0.5}>
-                          <Chip
-                            color={item[1].status.toString() === 'false' ? 'warning' : 'success'}
-                            variant="outlined"
-                            label={item[1].status.toString() === 'false' ? 'Save only' : 'Publish'}></Chip>
                           <Chip
                             variant="outlined"
                             label={Object.keys(item[1].language)[0] || 'language'}
@@ -170,9 +212,9 @@ export default function Program() {
                       describe:{item[1].describe}
                     </Typography> */}
                   </Stack>
-                  <Stack direction="column">
+                  <Stack direction="column" spacing={2} width="100px">
+                    <ShowNodeButton form={item}></ShowNodeButton>
                     <UpdataButton form={item}></UpdataButton>
-                    <Button></Button>
                     <Button variant="outlined" onClick={() => toPodcastDetail(Number(item[0]))}>
                       View
                     </Button>

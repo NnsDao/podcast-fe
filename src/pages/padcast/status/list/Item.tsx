@@ -14,7 +14,7 @@ export default function Podcast(props) {
           <Typography variant="h5" textOverflow="ellipsis" maxWidth={'100%'}>
             {props.text}:
           </Typography>
-          {props.text !== 'controllers' ? (
+          {props.text !== 'Controllers' ? (
             <Chip variant="outlined" label={props.value} />
           ) : (
             props.value.map(item => <Chip variant="outlined" label={item.toText()} />)

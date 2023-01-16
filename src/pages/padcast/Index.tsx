@@ -8,7 +8,7 @@ export default function Podcast() {
       <Grid md={1} sm={1.8} justifySelf="flex-start" sx={{ position: 'relative' }} minWidth={160}>
         <NavLeft />
       </Grid>
-      <Grid md={12} sm={9} flexShrink={1} ml={{ sm: 1, md: 8 }} alignItems="stretch">
+      <Grid md={12} sm={9} sx={{ minHeight: '900px' }} flexShrink={1} ml={{ sm: 1, md: 8 }} alignItems="stretch">
         <Outlet></Outlet>
       </Grid>
     </Grid>

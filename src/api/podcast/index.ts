@@ -431,9 +431,10 @@ export const useUpdate_base_info = () => {
 
 export const useUpdate_podcast = () => {
   const queryClient = useQueryClient();
-  // return useMutation({
-  //   mutationFn: (arg_0: bigint, arg_1: PodcastIterm) => {
-  //     return update_podcast(arg_0, arg_1);
-  //   },
-  // });
+  return useMutation({
+    //@ts-ignore
+    mutationFn: (arg_0: bigint, arg_1: PodcastIterm) => {
+      return update_podcast(arg_0, arg_1);
+    },
+  });
 };
