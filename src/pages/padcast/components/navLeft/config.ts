@@ -1,19 +1,18 @@
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import HomeIcon from '@mui/icons-material/Home';
 import LanguageIcon from '@mui/icons-material/Language';
-import PasswordIcon from '@mui/icons-material/Password';
 import ProfileIcon from '@mui/icons-material/RecordVoiceOver';
 
 export const config = [
-  {
-    labelType: 'text',
-    labelText: 'Information',
-    labelIcon: PasswordIcon,
-    labelInfo: '',
-    color: '#3c8039',
-    bgColor: '#e6f4ea',
-    nodeId: '10',
-  },
+  // {
+  //   labelType: 'text',
+  //   labelText: 'Information',
+  //   labelIcon: PasswordIcon,
+  //   labelInfo: '',
+  //   color: '#3c8039',
+  //   bgColor: '#e6f4ea',
+  //   nodeId: '10',
+  // },
 
   {
     labelType: 'text',

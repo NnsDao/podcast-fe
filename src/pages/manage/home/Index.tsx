@@ -4,7 +4,6 @@ import LoginWrapper from '@/components/Login/Login';
 import { useUserStore } from '@/hooks/userStore';
 import { Principal } from '@dfinity/principal';
 import {
-  Avatar,
   Button,
   Dialog,
   DialogActions,
@@ -18,6 +17,7 @@ import { payWithICP } from '@nnsdao/nnsdao-kit/helper/pay';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import Profile from './profile/Index';
 export default function Home() {
   const createAction = useCreate_podcast_canister();
   const [userStore, dispatch] = useUserStore();
@@ -112,32 +112,9 @@ function Wrapper(props) {
     navigate(`/Podcast/${item.toText()}`, { replace: true });
   };
   return (
-    <Stack direction={'row'} justifyContent="start" sx={{ padding: '10px' }}>
+    <Stack direction={'row'} justifyContent="start" sx={{ padding: '10px' }} spacing={2}>
       {data.map(item => (
-        <Stack
-          key={item}
-          direction="column"
-          justifyContent={'center'}
-          alignContent={'center'}
-          onClick={() => toPodcast(item)}
-          sx={{
-            border: '1px dashed grey',
-            width: '200px',
-            height: '130px',
-            marginRight: '10px',
-            cursor: 'pointer',
-            textAlign: 'center',
-            ':hover': {
-              borderColor: '#1976d2',
-              color: '#1976d2',
-              cursor: 'pointer',
-            },
-          }}>
-          <Stack direction="row" justifyContent={'center'} alignContent={'center'}>
-            <Avatar sx={{ width: 50, height: 50 }}></Avatar>
-          </Stack>
-          <Stack className="pt-10 hover:text-sky-500">{item.toText()}</Stack>
-        </Stack>
+        <Profile key={item} principal={item}></Profile>
       ))}
     </Stack>
   );
