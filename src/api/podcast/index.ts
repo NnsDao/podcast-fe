@@ -159,14 +159,19 @@ export const update_base_info = async (arg_0: SetBaseInfoRes) => {
   }
   return Promise.reject(null);
 };
-export const update_podcast = async (arg_0: bigint, arg_1: PodcastIterm) => {
+export const update_podcast = async (arg_0: number, arg_1: PodcastIterm) => {
   const actor = await getPodcastActor(true);
-  const res = await actor.update_podcast(arg_0, arg_1);
+  console.log('=================================');
+
+  console.log(arg_0, arg_1);
+
+  const res = await actor.update_podcast(BigInt(arg_0), arg_1);
   console.log('update_podcast', res);
-  if (res) {
+  if ('Ok' in res) {
     return res;
+  } else {
+    return Promise.reject(res.Err);
   }
-  return Promise.reject(null);
 };
 /**
  *
@@ -432,8 +437,14 @@ export const useUpdate_base_info = () => {
 export const useUpdate_podcast = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    //@ts-ignore
-    mutationFn: (arg_0: bigint, arg_1: PodcastIterm) => {
+    mutationFn: params => {
+      const { arg_0, arg_1 } = params as any;
+      console.log(params, 'params');
+      console.log('pppppppppppppppppppppppp');
+
+      console.log(arg_0, 'arg_0');
+      console.log(arg_1, 'arg_1');
+
       return update_podcast(arg_0, arg_1);
     },
   });

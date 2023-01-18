@@ -35,8 +35,8 @@ export default function UpdataButton(props) {
       <Stack onClick={handleClickOpen}>
         <Chip variant="outlined" label={'update'} clickable></Chip>
       </Stack>
-      <Dialog open={open} maxWidth={'xl'} TransitionComponent={Transition} onClose={handleClose}>
-        <Fragment close={handleClose} form={props.form}></Fragment>
+      <Dialog open={open} maxWidth={'xl'} TransitionComponent={Transition} onClose={() => handleClose()}>
+        <Fragment close={() => handleClose()} form={props.form}></Fragment>
       </Dialog>
     </div>
   );

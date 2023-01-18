@@ -1,3 +1,4 @@
+import { useUpdate_podcast } from '@/api/podcast';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Button, Fade, Menu, MenuItem } from '@mui/material';
 import React from 'react';
@@ -7,7 +8,7 @@ export default function SelectButton(props) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const open = Boolean(anchorEl);
-
+  const updateAction = useUpdate_podcast();
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -19,38 +20,40 @@ export default function SelectButton(props) {
     if (props.form[1].status == bool) {
       handleClose();
       console.log('no change');
-
       return;
     } else {
       props.form[1].status = bool;
+      props.form[1].update_at = BigInt(new Date().getTime());
       console.log('change');
-      confirm();
       handleClose();
+      confirm();
     }
   }
   async function confirm() {
-    const params = {
-      ...props.form,
-    };
-
     // for (const key of Object.keys(params)) {
     //   if (!checkField(key, params[key])) {
     //     return;
     //   }
     // }
-    const toastID = toast.loading('Getting Create Podcast...');
+    const toastID = toast.loading('Getting update podcast...');
     try {
-      // const data = await updateAction.mutateAsync({props.form[0],
-      //   ...params,
-      // });
-      // console.log(data);
+      console.log(props.form[0], '111111111111111111111111');
+      console.log('--------------------------------');
+      debugger;
+      //@ts-ignore
+      const data = await updateAction.mutateAsync({ arg_0: Number(props.form[0]), arg_1: { ...props.form[1] } });
+      console.log(data);
+      handleClose();
       toast.success('update onSuccess');
     } catch (error) {
       console.error('err', error);
-      toast.error('Failed update', { id: toastID });
+      handleClose();
+      toast.error('Failed update' + `${error}`);
     } finally {
+      handleClose();
       toast.dismiss(toastID);
     }
+    return;
   }
   return (
     <React.Fragment>

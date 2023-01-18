@@ -152,6 +152,7 @@ function ActiveContent(props) {
     } else {
       setFormField({ key, value: e.target.value });
     }
+    setFormField({ key: 'update_at', value: BigInt(new Date().getTime()) });
   }
   function onEnterTag(e) {
     if (e.code === 'Enter') {
@@ -172,24 +173,29 @@ function ActiveContent(props) {
     const params = {
       ...form,
     };
+    debugger;
+    props.close();
 
     // for (const key of Object.keys(params)) {
     //   if (!checkField(key, params[key])) {
     //     return;
     //   }
     // }
-    const toastID = toast.loading('Getting Create Podcast...');
+    const toastID = toast.loading('Getting update podcast...');
     try {
-      // const data = await updateAction.mutateAsync({props.form[0],
-      //   ...params,
-      // });
-      // console.log(data);
-      props.close();
+      const arg_0 = props.form[0];
+      const arg_1 = { ...params };
+      console.log(arg_0, arg_1);
+      console.log('==============================');
+      //@ts-ignore
+      const data = await updateAction.mutateAsync({ arg_0: props.form[0], arg_1: { ...params } });
+      console.log(data);
       toast.success('update onSuccess');
     } catch (error) {
       console.error('err', error);
       toast.error('Failed update', { id: toastID });
     } finally {
+      props.close();
       toast.dismiss(toastID);
     }
   }
