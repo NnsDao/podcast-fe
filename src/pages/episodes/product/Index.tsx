@@ -43,15 +43,15 @@ export default function Product() {
         <Stack direction={'column'} justifyContent="center" alignItems={'center'}>
           <img src={bg8} alt="" />
           <Stack paddingTop={'60px'}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            <br /> Curabitur ac ultrices odio.
+            Each month, a different winner is selected to
+            <br /> gain Token rewards.
           </Stack>
         </Stack>
         <Stack direction={'column'} justifyContent="center" alignItems={'center'}>
           <img src={bg9} alt="" />
           <Stack paddingTop={'60px'}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            <br /> Curabitur ac ultrices odio.{' '}
+            Connect your ideas and export your stories,
+            <br /> In a naked state, given to the audience.{' '}
           </Stack>
         </Stack>
       </Stack>

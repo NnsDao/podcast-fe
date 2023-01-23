@@ -24,13 +24,13 @@ export default function Background() {
           textAlign: 'center',
           padding: '100px',
         }}>
-        Doodle for our podcast background room
+        Looncast for our podcast background room
       </Stack>
       <Stack direction={'row'} justifyContent="space-around" spacing={12} fontSize={'20px'}>
         <Stack width={'603px'}>
           <Stack>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam pellentesque at bibendum euismod tellus duis
-            cursus dignissim odio. Sit vulputate et integer in.
+            Connect your ideas and export your stories, consectetur adipiscing elit. Quam pellentesque at bibendum
+            euismod tellus duis cursus dignissim odio. Sit vulputate et integer in.
             <br />
             <br />
             Sit vel, senectus iaculis morbi. Amet interdum imperdiet laoreet morbi tincidunt fermentum, libero. Ante

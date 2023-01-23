@@ -22,7 +22,7 @@ export default function Info() {
             fontWeight: '900',
             color: '#E02020',
           }}>
-          <Stack>76</Stack> <Stack color={'#10062F'}>K</Stack>
+          <Stack>6</Stack> <Stack color={'#10062F'}>K</Stack>
         </Stack>
         <Stack paddingTop={'48px'} color={'#6E6E6E'}>
           Community Members
@@ -37,7 +37,7 @@ export default function Info() {
             fontWeight: '900',
             color: '#E02020',
           }}>
-          <Stack>76</Stack> <Stack color={'#10062F'}>K</Stack>
+          <Stack>26</Stack> <Stack color={'#10062F'}>K</Stack>
         </Stack>
         <Stack paddingTop={'48px'} color={'#6E6E6E'}>
           Podcast Subscribers
@@ -52,7 +52,7 @@ export default function Info() {
             fontWeight: '900',
             color: '#E02020',
           }}>
-          <Stack>76</Stack> <Stack color={'#10062F'}>K</Stack>
+          <Stack>0.5</Stack> <Stack color={'#10062F'}>K</Stack>
         </Stack>
         <Stack paddingTop={'48px'} color={'#6E6E6E'}>
           Daily Listeners

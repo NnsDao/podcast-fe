@@ -38,9 +38,9 @@ export default function History() {
         </Stack>
         <Stack width={'643px'}>
           <Stack>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam pellentesque at bibendum euismod tellus duis
-            cursus dignissim odio. Sit vulputate et integer in. Sit vel, senectus iaculis morbi. Amet interdum imperdiet
-            laoreet morbi tincidunt fermentum, libero.
+            Connect your ideas and export your stories, consectetur adipiscing elit. Quam pellentesque at bibendum
+            euismod tellus duis cursus dignissim odio. Sit vulputate et integer in. Sit vel, senectus iaculis morbi.
+            Amet interdum imperdiet laoreet morbi tincidunt fermentum, libero.
             <br /> <br /> Ante enim eget. Viverra at porttitor accumsan. Orci non here
           </Stack>
         </Stack>

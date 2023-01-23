@@ -96,7 +96,7 @@ export default function Sponsor() {
                 }}></Box>
             </Button>
             <Stack>
-              <Stack>$9.99</Stack>
+              <Stack>$19.99</Stack>
               <Stack>/month</Stack>
             </Stack>
           </Stack>
@@ -137,7 +137,7 @@ export default function Sponsor() {
                 }}></Box>
             </Button>
             <Stack>
-              <Stack>$9.99</Stack>
+              <Stack>$29.99</Stack>
               <Stack>/month</Stack>
             </Stack>
           </Stack>
@@ -155,14 +155,14 @@ export default function Sponsor() {
         <Stack padding={'50px 176px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
           <Stack className={Style.included}>What’s included:</Stack>
           <Stack className={Style.Content}>• Exclusive Content</Stack>
-          <Stack className={Style.Merch}>• 5% Discount on Merch </Stack>
+          <Stack className={Style.Merch}>• 15% Discount on Merch </Stack>
           <Stack className={Style.Community}>• Join the Community</Stack>
           <Stack className={Style.Access}>• Livestreaming Access</Stack>
         </Stack>
         <Stack padding={'50px 176px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
           <Stack className={Style.included}>What’s included:</Stack>
           <Stack className={Style.Content}>• Exclusive Content</Stack>
-          <Stack className={Style.Merch}>• 5% Discount on Merch </Stack>
+          <Stack className={Style.Merch}>• 25% Discount on Merch </Stack>
           <Stack className={Style.Community}>• Join the Community</Stack>
           <Stack className={Style.Access}>• Livestreaming Access</Stack>
         </Stack>

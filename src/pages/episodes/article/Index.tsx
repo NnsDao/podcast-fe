@@ -1,3 +1,4 @@
+import backRun from '@/public/episodes/back-run.jpg';
 import { Stack } from '@mui/system';
 import Style from './index.module.css';
 
@@ -55,12 +56,12 @@ export default function Article() {
         }}>
         <Stack className={Style.articleItemWrapper}>
           <Stack className={Style.img}>
-            <img src="" alt="" height="392px" />
+            <img src={backRun} alt="" height="392px" />
           </Stack>
           <Stack className={Style.articleItemTitle}>PODCAST</Stack>
           <Stack className={Style.articleItemsubhead}>Setup your own podcast</Stack>
           <Stack className={Style.articleIteminfo}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            Connect your ideas and export your stories, consectetur adipiscing elit, sed do eiusmod tempor incididunt
             <br /> ut labore et dolore magna aliqua. Ut enim ad minimvel iam, quis nostrud exercitation ullamco
             laboris...
           </Stack>
@@ -75,12 +76,13 @@ export default function Article() {
         </Stack>
         <Stack className={Style.articleItemWrapper2}>
           <Stack className={Style.img}>
-            <img src="" alt="" height="392px" />
+            <img src={backRun} alt="" height="392px" />
           </Stack>
           <Stack className={Style.articleItemTitle2}>TIPS & TRICK</Stack>
-          <Stack className={Style.articleItemsubhead2}>Doodle artwork </Stack>
+          <Stack className={Style.articleItemsubhead2}>Looncast artwork </Stack>
           <Stack className={Style.articleIteminfo}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt <br />
+            Connect your ideas and export your stories, consectetur adipiscing elit, sed do eiusmod tempor incididunt{' '}
+            <br />
             ut labore et dolore magna aliqua. Ut enim ad minimvel iam, quis nostrud exercitation ullamco laboris...
           </Stack>
           <Stack className={Style.articleItemline}></Stack>

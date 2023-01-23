@@ -236,7 +236,7 @@ export default function Touch() {
               bgcolor: '#10062F',
             },
           }}>
-          SUBSCRIBE
+          SUBMITING
         </Button>
       </Stack>
     </Stack>

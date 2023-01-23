@@ -2,6 +2,7 @@ import listeners from '@/public/episodes/listeners.png';
 import { Stack } from '@mui/system';
 
 import bg15 from '@/public/episodes/bg15.png';
+import record from '@/public/episodes/record.png';
 
 export default function OurListeners() {
   const data = [];
@@ -54,7 +55,7 @@ export default function OurListeners() {
           Their experience throughout every platform
         </Stack>
         <Stack direction={'row'} justifyContent="center" alignItems={'center'}>
-          <img src="" alt="" width="1496px" height="699px" />
+          <img src={record} alt="" width="1200px" height="600px" />
         </Stack>
       </Stack>
     </Stack>

@@ -22,8 +22,8 @@ export default function Example() {
           Bullet list example:
         </Stack>
         <Stack paddingTop={'91px'} paddingBottom={'80px'}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam pellentesque at bibendum euismod tellus duis
-          curs us dignissim odio. Sit vulputate et integer in.
+          Connect your ideas and export your stories, consectetur adipiscing elit. Quam pellentesque at bibendum euismod
+          tellus duis curs us dignissim odio. Sit vulputate et integer in.
           <br />
           <br />
           Sit vel, senectus iaculis morbi. Amet interdum imperdiet laoreet morbi tincidunt fermentum, libero. Ante enim
@@ -49,8 +49,8 @@ export default function Example() {
           Bullet list example:
         </Stack>
         <Stack paddingTop={'91px'} paddingBottom={'80px'}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam pellentesque at bibendum euismod tellus duis
-          curs us dignissim odio. Sit vulputate et integer in.
+          Connect your ideas and export your stories, consectetur adipiscing elit. Quam pellentesque at bibendum euismod
+          tellus duis curs us dignissim odio. Sit vulputate et integer in.
           <br />
           <br />
           Sit vel, senectus iaculis morbi. Amet interdum imperdiet laoreet morbi tincidunt fermentum, libero. Ante enim

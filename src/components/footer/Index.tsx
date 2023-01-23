@@ -17,8 +17,8 @@ export default function Footer() {
       <Stack>
         <img src={footer1} alt="" width={'204px'} height={'135px'} />
         <Stack paddingTop={'33px'}>
-          Lorem ipsum dolor sit amet,
-          <br /> consectetur adipiscing elit.
+          The Decentralization Podcasts Protocol
+          <br /> & Ep NFT for Creators.
         </Stack>
       </Stack>
       <Stack direction={'row'} spacing={15}>
@@ -34,7 +34,7 @@ export default function Footer() {
         </Stack>
       </Stack>
       <Stack>
-        <Stack paddingBottom={'90px'}>Listen to episodes on your fav platform:</Stack>
+        <Stack paddingBottom={'90px'}>Listen to episodes on your favorite platform:</Stack>
         <img src={footer2} alt="" width={'558px'} height={'50px'} />
       </Stack>
     </Stack>

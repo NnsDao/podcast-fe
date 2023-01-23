@@ -56,8 +56,8 @@ export default function Article() {
             color: '#FFFFFF',
             textAlign: 'center',
           }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna
-          aliqua. Ut enim ad minim veniam–quis.
+          Connect your ideas and export your stories, consectetur adipiscing elit, eiusmod tempor incididunt ut labore
+          et dolore magna aliqua. Ut enim ad minim veniam–quis.
         </Stack>
 
         <Stack direction="row" spacing={{ xl: 2, sm: 1 }} position="relative">

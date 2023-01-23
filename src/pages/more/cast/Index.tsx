@@ -33,7 +33,7 @@ export default function Cast() {
             color: '#FFFFFF',
             textAlign: 'center',
           }}>
-          Doodle Artwork
+          Looncast Artwork
         </Stack>
       </Stack>
       <Stack position="relative">

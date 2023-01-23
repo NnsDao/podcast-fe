@@ -47,7 +47,7 @@ export default function Cast() {
             color: '#FFFFFF',
             textAlign: 'center',
           }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt
+          Connect your ideas and export your stories, consectetur adipiscing elit, eiusmod tempor incididunt
           <br /> ut labore et dolore magna aliqua. Ut enim ad minim veniam–quis.
         </Stack>
 
