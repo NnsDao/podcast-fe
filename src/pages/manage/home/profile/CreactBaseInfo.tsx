@@ -123,6 +123,8 @@ export default function CreactBaseInfo(props) {
         const data = await createAction.mutateAsync({
           ...params,
         });
+        console.log(data, 9090909);
+
         toast.success('Create successfully');
         console.log('CreateAction onSuccess', data);
         setTimeout(() => {

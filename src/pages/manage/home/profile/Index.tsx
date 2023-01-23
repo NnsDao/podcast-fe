@@ -28,7 +28,7 @@ export function CardWrapper(props) {
   };
   const toPodcast = () => {
     if (data.name) {
-      navigate(`/Podcast/${props.principal.toText()}/Opus`, { replace: true });
+      navigate(`/Podcast/${props.principal.toText()}/episodes`, { replace: true });
     } else {
       handleClickOpen();
     }

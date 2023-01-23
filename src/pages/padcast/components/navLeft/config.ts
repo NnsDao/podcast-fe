@@ -25,7 +25,7 @@ export const config = [
   },
   {
     labelType: 'text',
-    labelText: 'Opus',
+    labelText: 'Episodes',
     labelIcon: HomeIcon,
     labelInfo: '',
     color: '#1a73e8',

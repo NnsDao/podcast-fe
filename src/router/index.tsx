@@ -67,7 +67,7 @@ const routes: RouteObject[] = [
       { index: true, element: <Information /> },
       { path: 'information', element: <Information /> },
       { path: 'profile', element: <Profile /> },
-      { path: 'opus', element: <Opus /> },
+      { path: 'episodes', element: <Opus /> },
       { path: 'account', element: <Account /> },
       { path: 'link', element: <Link /> },
       { path: 'status', element: <Status /> },

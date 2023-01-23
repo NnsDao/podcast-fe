@@ -12,7 +12,7 @@ export default function Opus() {
   return (
     <Stack className="full" sx={{ width: '100%' }}>
       <Stack direction={'row'} justifyContent="space-between" alignItems={'center'} className="py-8  items-center">
-        <Stack sx={{ fontWeight: '900', fontSize: '22px' }}>Opus</Stack>
+        <Stack sx={{ fontWeight: '900', fontSize: '22px' }}>Episodes</Stack>
         <NewPodcast></NewPodcast>
       </Stack>
       <Divider variant="middle" sx={{ marginY: '30px' }} />
