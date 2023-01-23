@@ -11,6 +11,7 @@ export default function Fragment() {
   const { cid } = useParams();
   const [showType, setShowType] = React.useState('table');
   //@ts-ignore
+  const { principal } = useParams();
 
   return (
     <React.Fragment>
@@ -19,11 +20,11 @@ export default function Fragment() {
   );
 
   function ActiveContent() {
-    const createAction = useCreate_base_info();
     const navigator = useNavigate();
     const [userStore] = useUserStore();
     const { principal } = useParams();
-    const getData = useGet_podcast_base_info();
+    const createAction = useCreate_base_info(principal as string);
+    const getData = useGet_podcast_base_info(principal as string);
 
     const [form, setFormField] = useReducer(
       (state, { key, value }) => {

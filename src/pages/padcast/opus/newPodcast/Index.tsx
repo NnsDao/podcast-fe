@@ -23,7 +23,9 @@ const Transition = React.forwardRef(function Transition(
 
 export default function NewPodcast() {
   const [open, setOpen] = React.useState(false);
-  const createAction = useCreate_podcast();
+  const { principal } = useParams();
+
+  const createAction = useCreate_podcast(principal as string);
   const [userStore, dispatch] = useUserStore();
   const principalId = userStore.principalId;
   const handleClickOpen = () => {
@@ -78,7 +80,8 @@ export default function NewPodcast() {
 }
 
 function Fragment(props) {
-  const { cid } = useParams();
+  const { principal } = useParams();
+
   return (
     <Stack width={'500px'} paddingX="30px">
       <Stack sx={{ paddingY: '20px', fontSize: '20px', fontWeight: 900 }}>
@@ -89,7 +92,9 @@ function Fragment(props) {
   );
 }
 function ActiveContent(props) {
-  const createAction = useCreate_podcast();
+  const { principal } = useParams();
+
+  const createAction = useCreate_podcast(principal as string);
   const navigator = useNavigate();
   const [userStore, dispatch] = useUserStore();
   const principalId = userStore.principalId;

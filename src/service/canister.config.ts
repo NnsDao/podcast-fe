@@ -5,7 +5,7 @@ import { idlFactory as podcast_IDL } from '@nnsdao/nnsdao-kit/podcast/index';
 
 export const isTestCanister = import.meta.env.__APP__canister_type === 'test';
 export { podcast_manage_IDL };
-
+export { podcast_IDL };
 export const canister = {
   podcastManage: {
     cid: isTestCanister ? 'bmay3-iaaaa-aaaah-abv6q-cai' : 'bmay3-iaaaa-aaaah-abv6q-cai',

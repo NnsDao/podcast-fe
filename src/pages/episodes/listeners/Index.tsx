@@ -54,7 +54,7 @@ export default function Listeners() {
           sx={{
             paddingLeft: '212px',
           }}>
-          {Array.from([1, 2, 3, 5, 8, 8]).map(item => (
+          {Array.from([1, 2, 3, 5, 8, 10]).map(item => (
             <Stack
               key={item + 1}
               sx={{

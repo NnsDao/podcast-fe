@@ -10,12 +10,14 @@ import LoadingWrapper from '../../../../components/LoadingWrapper';
 
 export default function List() {
   const { cid } = useParams();
+  const { principal } = useParams();
+
   const [showType, setShowType] = React.useState('table');
-  const AdminList = LoadingWrapper(UserCard, () => useGet_admin());
-  const OwnerList = LoadingWrapper(UserCard, () => useGet_owner());
-  const deleteAction = useDelete_owner();
-  const changeAdminAction = useChange_admin();
-  const addOwnerAction = useAdd_owner();
+  const AdminList = LoadingWrapper(UserCard, () => useGet_admin(principal as string));
+  const OwnerList = LoadingWrapper(UserCard, () => useGet_owner(principal as string));
+  const deleteAction = useDelete_owner(principal as string);
+  const changeAdminAction = useChange_admin(principal as string);
+  const addOwnerAction = useAdd_owner(principal as string);
   return (
     <React.Fragment>
       <AddOwner></AddOwner>

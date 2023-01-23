@@ -10,13 +10,17 @@ import LoadingWrapper from '../../../../components/LoadingWrapper';
 export default function List() {
   const { cid } = useParams();
   const [showType, setShowType] = React.useState('table');
-  const SubList = LoadingWrapper(CardBox, () => useGet_social_link());
+  const { principal } = useParams();
+
+  const SubList = LoadingWrapper(CardBox, () => useGet_social_link(principal as string));
 
   return <SubList></SubList>;
 }
 function CardBox(props) {
   const data: SocialLink = props.data;
-  const updateAction = useSet_social_link();
+  const { principal } = useParams();
+
+  const updateAction = useSet_social_link(principal as string);
   const { twitter, instagram, blog, email, distrikt, dmail, dscvr, telegram, github, openchat } = data;
   const [form, setFormField] = React.useReducer(
     (state, { key, value }) => {

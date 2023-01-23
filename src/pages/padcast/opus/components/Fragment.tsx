@@ -8,7 +8,6 @@ import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export default function Fragment(props) {
-  const { cid } = useParams();
   return (
     <Stack width={'500px'} paddingX="30px">
       <Stack sx={{ paddingY: '20px', fontSize: '20px', fontWeight: 900 }}>
@@ -19,7 +18,9 @@ export default function Fragment(props) {
   );
 }
 function ActiveContent(props) {
-  const updateAction = useUpdate_podcast();
+  const { principal } = useParams();
+
+  const updateAction = useUpdate_podcast(principal as string);
   const navigator = useNavigate();
   const [userStore, dispatch] = useUserStore();
   const principalId = userStore.principalId;

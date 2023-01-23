@@ -7,8 +7,8 @@ import React, { useEffect, useReducer } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 
-export default function CreactBaseInfo() {
-  const { cid } = useParams();
+export default function CreactBaseInfo(props) {
+  const cid = props.principal.toText();
   const [showType, setShowType] = React.useState('table');
   //@ts-ignore
 
@@ -19,11 +19,11 @@ export default function CreactBaseInfo() {
   );
 
   function ActiveContent() {
-    const createAction = useCreate_base_info();
+    const createAction = useCreate_base_info(cid);
     const navigator = useNavigate();
     const [userStore] = useUserStore();
     const { principal } = useParams();
-    const getData = useGet_podcast_base_info();
+    const getData = useGet_podcast_base_info(cid);
 
     const [form, setFormField] = useReducer(
       (state, { key, value }) => {

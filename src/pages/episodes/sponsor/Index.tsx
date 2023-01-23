@@ -144,22 +144,22 @@ export default function Sponsor() {
         </Stack>
       </Stack>
 
-      <Stack direction={'row'} width="100%" paddingX="100px" justifyContent="space-between" paddingTop="40px">
-        <Stack padding={'50px 95px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
+      <Stack direction={'row'} paddingX="100px" spacing={5} paddingTop="40px">
+        <Stack padding={'50px 176px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
           <Stack className={Style.included}>What’s included:</Stack>
           <Stack className={Style.Content}>• Exclusive Content</Stack>
           <Stack className={Style.Merch}>• 5% Discount on Merch </Stack>
           <Stack className={Style.Community}>• Join the Community</Stack>
           <Stack className={Style.Access}>• Livestreaming Access</Stack>
         </Stack>
-        <Stack padding={'50px 95px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
+        <Stack padding={'50px 176px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
           <Stack className={Style.included}>What’s included:</Stack>
           <Stack className={Style.Content}>• Exclusive Content</Stack>
           <Stack className={Style.Merch}>• 5% Discount on Merch </Stack>
           <Stack className={Style.Community}>• Join the Community</Stack>
           <Stack className={Style.Access}>• Livestreaming Access</Stack>
         </Stack>
-        <Stack padding={'50px 95px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
+        <Stack padding={'50px 176px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
           <Stack className={Style.included}>What’s included:</Stack>
           <Stack className={Style.Content}>• Exclusive Content</Stack>
           <Stack className={Style.Merch}>• 5% Discount on Merch </Stack>

@@ -58,7 +58,7 @@ export default function Membership() {
       <Stack className={Style.benefits}>Become our sponsor and get all benefits</Stack>
       <Stack className={Style.MembershipWrapper} direction="row">
         {data1.map(item => (
-          <Stack className={Style.MembershipItem}>
+          <Stack className={Style.MembershipItem} key={item.text}>
             <img src={item.img} alt="" />
             <Stack className={Style.MembershipItemText}>{item.text}</Stack>
             <Stack>{item.others}</Stack>
@@ -67,7 +67,7 @@ export default function Membership() {
       </Stack>
       <Stack className={Style.MembershipWrapper} direction="row">
         {data2.map(item => (
-          <Stack className={Style.MembershipItem}>
+          <Stack className={Style.MembershipItem} key={item.text}>
             <img src={item.img} alt="" />
             <Stack className={Style.MembershipItemText}>{item.text}</Stack>
             <Stack>{item.others}</Stack>

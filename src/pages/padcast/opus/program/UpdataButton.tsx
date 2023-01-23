@@ -6,6 +6,7 @@ import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import { Stack } from '@mui/system';
 import * as React from 'react';
+import { useParams } from 'react-router-dom';
 import Fragment from '../components/Fragment';
 
 const Transition = React.forwardRef(function Transition(
@@ -19,7 +20,9 @@ const Transition = React.forwardRef(function Transition(
 
 export default function UpdataButton(props) {
   const [open, setOpen] = React.useState(false);
-  const createAction = useCreate_podcast();
+  const { principal } = useParams();
+  const createAction = useCreate_podcast(principal as string);
+
   const [userStore, dispatch] = useUserStore();
   const principalId = userStore.principalId;
   const handleClickOpen = () => {

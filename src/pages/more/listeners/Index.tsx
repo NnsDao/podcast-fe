@@ -16,7 +16,7 @@ export default function Listeners() {
         }}>
         <img src={bg15} alt="" width={'195px'} height={'186px'} />
       </Stack>
-      <img src={listeners} alt="" width={'100%'} height={'986px'} />
+      <img src={listeners} alt="" width={'100%'} height={'1400px'} />
       <Stack
         justifyContent={'start'}
         sx={{
@@ -58,7 +58,7 @@ export default function Listeners() {
           }}>
           <Stack className={Style.articleItemWrapper}>
             <Stack className={Style.img}>
-              <img src="" alt="" />
+              <img src="" alt="" height="392px" />
             </Stack>
             <Stack className={Style.articleItemTitle}>PODCAST</Stack>
             <Stack className={Style.articleItemsubhead}>Setup your own podcast</Stack>
@@ -78,7 +78,7 @@ export default function Listeners() {
           </Stack>
           <Stack className={Style.articleItemWrapper2}>
             <Stack className={Style.img}>
-              <img src="" alt="" />
+              <img src="" alt="" height="392px" />
             </Stack>
             <Stack className={Style.articleItemTitle2}>TIPS & TRICK</Stack>
             <Stack className={Style.articleItemsubhead2}>Doodle artwork </Stack>

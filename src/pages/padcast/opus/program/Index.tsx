@@ -12,7 +12,9 @@ import UpdataButton from './UpdataButton';
 
 export default function Program() {
   const [showType, setShowType] = React.useState('table');
-  const List = LoadingWrapper(UserCard, () => useGet_podcast_list());
+  const { principal } = useParams();
+
+  const List = LoadingWrapper(UserCard, () => useGet_podcast_list(principal as string));
   return (
     <React.Fragment>
       <List></List>
@@ -24,7 +26,7 @@ export default function Program() {
     const { principal } = useParams();
     const data: Array<[bigint, PodcastIterm]> = props.data;
     const [form, setFormField] = useState([]);
-    const updateAction = useUpdate_podcast();
+    const updateAction = useUpdate_podcast(principal as string);
 
     async function changeForm(item, e) {
       if (item[1].status.toString() === e.target.value) {
@@ -124,7 +126,7 @@ export default function Program() {
                       </Stack>
                     </Stack>
                     <audio controls>
-                      <source src="http://music.163.com/song/media/outer/url?id=1446521008.mp3" type="audio/ogg" />
+                      <source src={item[1].show_note} type="audio/ogg" />
                     </audio>
                   </Stack>
 

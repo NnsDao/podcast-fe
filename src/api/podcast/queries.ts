@@ -20,21 +20,27 @@ import { composeQueryKeys } from '../../common/helper';
 const module = 'podcast';
 export const podcast = {
   all: composeQueryKeys([{ module }]),
-  add_owner: (arg_0: Principal) => composeQueryKeys(podcast.all, { scope: 'add_owner', arg_0 }),
-  change_admin: (arg_0: Principal) => composeQueryKeys(podcast.all, { scope: 'change_admin', arg_0 }),
-  create_base_info: (arg_0: SetBaseInfoRes) => composeQueryKeys(podcast.all, { scope: 'create_base_info', arg_0 }),
-  create_podcast: (arg_0: PodcastIterm) => composeQueryKeys(podcast.all, { scope: 'create_podcast', arg_0 }),
-  delete_owner: (arg_0: Principal) => composeQueryKeys(podcast.all, { scope: 'deposit', arg_0 }),
-  deposit: (arg_0: Principal, arg_1: bigint) => composeQueryKeys(podcast.all, { scope: 'deposit', arg_0, arg_1 }),
-  get_admin: () => composeQueryKeys(podcast.all, { scope: 'get_admin' }),
-  get_canister_status: (arg_0: Principal) => composeQueryKeys(podcast.all, { scope: 'get_canister_status', arg_0 }),
-  get_owner: () => composeQueryKeys(podcast.all, { scope: 'get_owner' }),
-  get_podcast: (arg_0: bigint) => composeQueryKeys(podcast.all, { scope: 'get_podcast', arg_0 }),
-  get_podcast_base_info: () => composeQueryKeys(podcast.all, { scope: 'get_podcast_base_info' }),
-  get_podcast_list: () => composeQueryKeys(podcast.all, { scope: 'get_podcast_list' }),
-  get_social_link: () => composeQueryKeys(podcast.all, { scope: 'get_social_link' }),
-  set_social_link: (arg_0: SocialLink) => composeQueryKeys(podcast.all, { scope: 'set_social_link', arg_0 }),
-  update_base_info: (arg_0: SetBaseInfoRes) => composeQueryKeys(podcast.all, { scope: 'update_base_info', arg_0 }),
-  update_podcast: (arg_0: bigint, arg_1: PodcastIterm) =>
-    composeQueryKeys(podcast.all, { scope: 'update_podcast', arg_0, arg_1 }),
+  add_owner: (cid: string, arg_0: Principal) => composeQueryKeys(podcast.all, { scope: 'add_owner', cid, arg_0 }),
+  change_admin: (cid: string, arg_0: Principal) => composeQueryKeys(podcast.all, { scope: 'change_admin', cid, arg_0 }),
+  create_base_info: (cid: string, arg_0: SetBaseInfoRes) =>
+    composeQueryKeys(podcast.all, { scope: 'create_base_info', cid, arg_0 }),
+  create_podcast: (cid: string, arg_0: PodcastIterm) =>
+    composeQueryKeys(podcast.all, { scope: 'create_podcast', cid, arg_0 }),
+  delete_owner: (cid: string, arg_0: Principal) => composeQueryKeys(podcast.all, { scope: 'deposit', cid, arg_0 }),
+  deposit: (cid: string, arg_0: Principal, arg_1: bigint) =>
+    composeQueryKeys(podcast.all, { scope: 'deposit', cid, arg_0, arg_1 }),
+  get_admin: (cid: string) => composeQueryKeys(podcast.all, { scope: 'get_admin', cid }),
+  get_canister_status: (cid: string, arg_0: Principal) =>
+    composeQueryKeys(podcast.all, { scope: 'get_canister_status', cid, arg_0 }),
+  get_owner: (cid: string) => composeQueryKeys(podcast.all, { scope: 'get_owner', cid }),
+  get_podcast: (cid: string, arg_0: bigint) => composeQueryKeys(podcast.all, { scope: 'get_podcast', cid, arg_0 }),
+  get_podcast_base_info: (cid: string) => composeQueryKeys(podcast.all, { scope: 'get_podcast_base_info', cid }),
+  get_podcast_list: (cid: string) => composeQueryKeys(podcast.all, { scope: 'get_podcast_list', cid }),
+  get_social_link: (cid: string) => composeQueryKeys(podcast.all, { scope: 'get_social_link', cid }),
+  set_social_link: (cid: string, arg_0: SocialLink) =>
+    composeQueryKeys(podcast.all, { scope: 'set_social_link', cid, arg_0 }),
+  update_base_info: (cid: string, arg_0: SetBaseInfoRes) =>
+    composeQueryKeys(podcast.all, { scope: 'update_base_info', cid, arg_0 }),
+  update_podcast: (cid: string, arg_0: bigint, arg_1: PodcastIterm) =>
+    composeQueryKeys(podcast.all, { scope: 'update_podcast', cid, arg_0, arg_1 }),
 };

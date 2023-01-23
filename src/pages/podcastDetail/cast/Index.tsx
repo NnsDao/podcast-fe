@@ -16,7 +16,7 @@ import Style from './index.module.css';
 export default function Cast() {
   const { principal, index } = useParams();
   const podcastData: Array<[bigint, PodcastIterm]> =
-    useGet_podcast_list()?.data?.filter(item => Number(index) == Number(item[0])) || [];
+    useGet_podcast_list(principal as string)?.data?.filter(item => Number(index) == Number(item[0])) || [];
   console.log(podcastData, 'podcastData');
 
   return (
@@ -109,17 +109,20 @@ export default function Cast() {
                       color: '#FFFFFF',
                       lineHeight: ' 21px',
                       paddingBottom: '8px',
+                      width: '200px',
+                      overflow: 'hidden',
                     }}>
-                    Are you a Perplexed Mind Person?
+                    {podcastData[0]?.[1]?.sub_title}
                   </Stack>
                   <Stack
                     sx={{
-                      width: '172px',
+                      width: '200px',
                       height: '20px',
                       fontSize: '16px',
                       fontFamily: 'ArialMT',
                       color: '#B5B5C3',
                       lineHeight: '21px',
+                      overflow: 'hidden',
                     }}>
                     Hosted by: {podcastData[0]?.[1]?.hosts[0]?.toText()}
                   </Stack>

@@ -9,8 +9,10 @@ import Item from './Item';
 export default function List() {
   const { principal } = useParams();
   const [showType, setShowType] = React.useState('table');
-  //@ts-ignore
-  const SubList = LoadingWrapper(CardWrapper, () => useGet_canister_status(Principal.fromText(principal)));
+  const SubList = LoadingWrapper(CardWrapper, () =>
+    //@ts-ignore
+    useGet_canister_status(principal as string, Principal.fromText(principal))
+  );
 
   return (
     <React.Fragment>

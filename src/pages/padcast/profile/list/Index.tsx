@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export default function Fragment() {
-  const { cid } = useParams();
+  const { principal } = useParams();
   const [showType, setShowType] = React.useState('table');
   //@ts-ignore
 
@@ -19,12 +19,12 @@ export default function Fragment() {
   );
 
   function ActiveContent() {
-    const ChangeAction = useUpdate_base_info();
+    const { principal } = useParams();
+    const ChangeAction = useUpdate_base_info(principal as string);
     const navigator = useNavigate();
     const [userStore] = useUserStore();
-    const { principal } = useParams();
     const editorRef = useRef([]);
-    const getData = useGet_podcast_base_info();
+    const getData = useGet_podcast_base_info(principal as string);
     let [form, setFormField] = useReducer(
       (state, { key, value }) => {
         console.log(key, value, '99999999999999999999999');

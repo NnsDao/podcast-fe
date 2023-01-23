@@ -3,12 +3,13 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Button, Fade, Menu, MenuItem } from '@mui/material';
 import React from 'react';
 import toast from 'react-hot-toast';
+import { useParams } from 'react-router-dom';
 
 export default function SelectButton(props) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
+  const { principal } = useParams();
   const open = Boolean(anchorEl);
-  const updateAction = useUpdate_podcast();
+  const updateAction = useUpdate_podcast(principal as string);
   const handleClose = () => {
     setAnchorEl(null);
   };

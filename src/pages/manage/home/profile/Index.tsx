@@ -9,9 +9,11 @@ import CreactBaseInfo from './CreactBaseInfo';
 
 export default function Profile(props) {
   const navigate = useNavigate();
-  console.log(props, 'props');
-  const getData = useGet_podcast_base_info();
-  const List = LoadingWrapper(CardWrapper, () => useGet_podcast_base_info());
+  const cid = props.principal.toText();
+  console.log(cid, 'principal');
+
+  const getData = useGet_podcast_base_info(cid);
+  const List = LoadingWrapper(CardWrapper, () => useGet_podcast_base_info(cid));
   return <List principal={props.principal}></List>;
 }
 export function CardWrapper(props) {
@@ -61,7 +63,11 @@ export function CardWrapper(props) {
         {data.name ? (
           <Information data={data}></Information>
         ) : (
-          <SetBaseInfo open={open} handleClickOpen={handleClickOpen} handleClose={handleClose}></SetBaseInfo>
+          <SetBaseInfo
+            principal={props.principal}
+            open={open}
+            handleClickOpen={handleClickOpen}
+            handleClose={handleClose}></SetBaseInfo>
         )}
         <Stack className="pt-10 hover:text-sky-500">{props.principal.toText()}</Stack>
       </Stack>
@@ -85,7 +91,7 @@ export function SetBaseInfo(props) {
         <DialogTitle id="alert-dialog-title" fontWeight={800}>
           {' Creating a podcast base info'}
         </DialogTitle>
-        <CreactBaseInfo></CreactBaseInfo>
+        <CreactBaseInfo principal={props.principal}></CreactBaseInfo>
       </Dialog>
     </Stack>
   );
