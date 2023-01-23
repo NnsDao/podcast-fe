@@ -25,6 +25,7 @@ export default function OurListeners() {
       <Stack
         justifyContent={'start'}
         sx={{
+          paddingX: '100px',
           width: '100%',
           position: 'absolute',
           top: '200px',

@@ -93,6 +93,7 @@ function ActiveContent(props) {
   const navigator = useNavigate();
   const [userStore, dispatch] = useUserStore();
   const principalId = userStore.principalId;
+  console.log(principalId);
 
   const [form, setFormField] = React.useReducer(
     (state, { key, value }) => {
@@ -107,8 +108,7 @@ function ActiveContent(props) {
       status: false,
       describe: '',
       title: '',
-      //@ts-ignore
-      hosts: principalId ? [].push(Principal.fromText(principalId)) : [],
+      hosts: [Principal.fromText(principalId)],
       cover_image:
         'https://storageapi.fleek.co/6c0adc4a-04ee-4662-907b-7ecff2fcc16c-bucket/147fc0647218540000000000?hash=bafybeigfo56yj67weic5gorkfzwcve3ykh37bimeq2zg7pzowmp6ocmltq',
       link: '',
@@ -189,7 +189,7 @@ function ActiveContent(props) {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={Object.keys(form.language)[0]}
+            value={Object.keys(form?.language)[0]}
             label="Age"
             onChange={e => changeForm('language', e)}>
             <MenuItem value={'Korean'}>Korean</MenuItem>
@@ -282,6 +282,8 @@ function ActiveContent(props) {
     //     return;
     //   }
     // }
+    console.log(params, 'params');
+
     const toastID = toast.loading('Getting Create Podcast...');
     try {
       const data = await createAction.mutateAsync({

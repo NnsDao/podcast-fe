@@ -40,7 +40,7 @@ export default function Cast() {
         <Stack
           sx={{
             paddingY: '50px',
-            width: '1200px',
+            width: '915px',
             fontSize: '24px',
             fontFamily: 'Arial-Black',
             fontWeight: '900',

@@ -7,13 +7,13 @@ export default function Recent() {
   const data = [];
   return (
     <Stack direction={'row'} justifyContent="center" alignItems={'center'} bgcolor="#10062F" position="relative">
-      <img src={bgRecent} alt="" width={'1920px'} height={'1961px'} />
+      <img src={bgRecent} alt="" width={'100%'} height={'1900px'} />
       <Stack
         justifyContent={'start'}
         sx={{
           width: '100%',
           position: 'absolute',
-          top: '200px',
+          top: '230px',
         }}>
         <Stack
           sx={{
@@ -38,7 +38,7 @@ export default function Recent() {
           }}>
           Available on your favorite platform
         </Stack>
-        <Stack direction={'row'} flexWrap="wrap" justifyContent="center" alignItems={'center'}>
+        <Stack direction={'row'} width="100%" flexWrap="wrap" justifyContent="center">
           <EpisodeCard></EpisodeCard>
           <EpisodeCard></EpisodeCard>
           <EpisodeCard></EpisodeCard>

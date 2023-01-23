@@ -12,21 +12,22 @@ export default function Background() {
         fontSize: '18px',
         fontFamily: 'ArialMT',
         color: '#DDECFF',
+        padding: '100px',
       }}>
       <Stack
         sx={{
-          fontSize: '56px',
+          fontSize: '50px',
           fontFamily: 'Trebuchet-BoldItalic, Trebuchet',
           fontWeight: 'normal',
           lineHeight: '65px',
           paddingTop: '140px',
           textAlign: 'center',
-          paddingBottom: '90px',
+          padding: '100px',
         }}>
         Doodle for our podcast background room
       </Stack>
-      <Stack direction={'row'} justifyContent="center" spacing={10} fontSize={'26px'}>
-        <Stack width={'643px'}>
+      <Stack direction={'row'} justifyContent="space-around" spacing={12} fontSize={'20px'}>
+        <Stack width={'603px'}>
           <Stack>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam pellentesque at bibendum euismod tellus duis
             cursus dignissim odio. Sit vulputate et integer in.
@@ -37,7 +38,7 @@ export default function Background() {
             <br />
           </Stack>
         </Stack>
-        <Stack width={'643px'}>
+        <Stack width={'603px'}>
           <Stack>
             Quis dictum cursus faucibus mattis dignissim. Pellentes
             <br />
@@ -47,8 +48,8 @@ export default function Background() {
           </Stack>
         </Stack>
       </Stack>
-      <Stack paddingTop={'200px'} justifyContent="center" alignItems={'center'}>
-        <img src={bg110} width="1338px" height={'513px'} alt="" />
+      <Stack padding={'100px'} justifyContent="center" alignItems={'center'}>
+        <img src={bg110} width="100%" height={'513px'} alt="" />
       </Stack>
     </Stack>
   );

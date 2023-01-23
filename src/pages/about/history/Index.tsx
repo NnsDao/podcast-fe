@@ -11,6 +11,7 @@ export default function History() {
         fontSize: '18px',
         fontFamily: 'ArialMT',
         color: '#DDECFF',
+        paddingX: '100px',
       }}>
       <Stack
         sx={{

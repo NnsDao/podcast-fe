@@ -15,7 +15,7 @@
   line-height: 33px;
 }
 .MembershipWrapper {
-  padding: 105px 161px 110px 161px;
+  padding: 50px 110px;
   width: 100%;
   display: flex;
   direction: row;
@@ -23,7 +23,7 @@
   align-items: flex-start;
 }
 .MembershipItem {
-  max-width: 464px;
+  max-width: 354px;
   display: flex;
   justify-content: center;
   align-items: center;

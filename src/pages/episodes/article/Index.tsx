@@ -10,7 +10,7 @@ export default function Article() {
       alignItems={'center'}
       bgcolor="#DDECFF"
       position="relative"
-      paddingBottom={'670px'}>
+      paddingBottom={'470px'}>
       <Stack
         justifyContent={'start'}
         sx={{
@@ -44,8 +44,9 @@ export default function Article() {
       </Stack>
       <Stack
         direction={'row'}
-        justifyContent="center"
+        justifyContent="space-around"
         alignItems={'center'}
+        padding="100px"
         spacing={2}
         sx={{
           width: '100%',
@@ -54,7 +55,7 @@ export default function Article() {
         }}>
         <Stack className={Style.articleItemWrapper}>
           <Stack className={Style.img}>
-            <img src="" alt="" width="684px" height="392px" />
+            <img src="" alt="" height="392px" />
           </Stack>
           <Stack className={Style.articleItemTitle}>PODCAST</Stack>
           <Stack className={Style.articleItemsubhead}>Setup your own podcast</Stack>
@@ -74,7 +75,7 @@ export default function Article() {
         </Stack>
         <Stack className={Style.articleItemWrapper2}>
           <Stack className={Style.img}>
-            <img src="" alt="" width="684px" height="392px" />
+            <img src="" alt="" height="392px" />
           </Stack>
           <Stack className={Style.articleItemTitle2}>TIPS & TRICK</Stack>
           <Stack className={Style.articleItemsubhead2}>Doodle artwork </Stack>

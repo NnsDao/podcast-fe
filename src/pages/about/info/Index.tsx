@@ -6,13 +6,14 @@ export default function Info() {
       bgcolor="#10062F"
       direction={'row'}
       justifyContent="center"
+      padding={'100px'}
       spacing={3}
       sx={{
         fontSize: '18px',
         fontFamily: 'ArialMT',
         color: '#10062F',
       }}>
-      <Stack sx={{ padding: '149px', background: '#F6F4F0', borderRadius: '8px' }}>
+      <Stack sx={{ padding: '100px', background: '#F6F4F0', borderRadius: '8px' }}>
         <Stack
           direction={'row'}
           sx={{
@@ -27,7 +28,7 @@ export default function Info() {
           Community Members
         </Stack>
       </Stack>
-      <Stack direction={'column'} sx={{ padding: '149px', background: '#F4E9AF', borderRadius: '8px' }}>
+      <Stack direction={'column'} sx={{ padding: '100px', background: '#F4E9AF', borderRadius: '8px' }}>
         <Stack
           direction={'row'}
           sx={{
@@ -42,7 +43,7 @@ export default function Info() {
           Podcast Subscribers
         </Stack>
       </Stack>{' '}
-      <Stack direction={'column'} sx={{ padding: '149px', background: '#F6F4F0', borderRadius: '8px' }}>
+      <Stack direction={'column'} sx={{ padding: '100px', background: '#F6F4F0', borderRadius: '8px' }}>
         <Stack
           direction={'row'}
           sx={{

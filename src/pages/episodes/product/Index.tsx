@@ -17,7 +17,7 @@ export default function Product() {
         justifyContent="center"
         alignItems={'center'}
         sx={{
-          width: '1162px',
+          width: '1062px',
           height: '207px',
           fontSize: '80px',
           color: '#FFFFFF',
@@ -41,22 +41,22 @@ export default function Product() {
           lineHeight: '38px',
         }}>
         <Stack direction={'column'} justifyContent="center" alignItems={'center'}>
-          <img src={bg8} alt="" width={'130px'} height={'160px'} />
+          <img src={bg8} alt="" />
           <Stack paddingTop={'60px'}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             <br /> Curabitur ac ultrices odio.
           </Stack>
         </Stack>
         <Stack direction={'column'} justifyContent="center" alignItems={'center'}>
-          <img src={bg9} alt="" width={'130px'} height={'160px'} />
+          <img src={bg9} alt="" />
           <Stack paddingTop={'60px'}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             <br /> Curabitur ac ultrices odio.{' '}
           </Stack>
         </Stack>
       </Stack>
-      <Stack paddingTop={'200px'}>
-        <img src={bg110} width="1338px" height={'513px'} alt="" />
+      <Stack paddingTop={'200px'} width={'65vw'}>
+        <img src={bg110} alt="" />
       </Stack>
     </Stack>
   );

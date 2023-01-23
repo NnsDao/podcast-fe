@@ -8,7 +8,7 @@ export default function About() {
   return (
     <Grid>
       <Cast></Cast>
-      <img src="" alt="" width={'1919px'} height="1100px" />
+      <img src="" alt="" width={'100%'} height="1100px" />
       <Background></Background>
       <Example></Example>
       <Listeners></Listeners>

@@ -48,7 +48,7 @@ export default function Article() {
         <Stack
           sx={{
             paddingY: '50px',
-            width: '1209px',
+            width: '900px',
             fontSize: '24px',
             lineHeight: '50px',
             fontFamily: 'Arial-Black',

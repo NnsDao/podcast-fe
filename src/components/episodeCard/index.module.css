@@ -1,16 +1,13 @@
 .recentWrapper1,
-recentWrapper2,
-recentWrapper3 {
-  min-width: 730px;
-  height: 400px;
+.recentWrapper2,
+.recentWrapper3 {
   position: relative;
-  margin-right: 40px;
-  margin-bottom: 20px;
+  max-width: 580px;
+  margin: 12px;
 }
 .recentWrapper1Above,
 .recentWrapper2Above,
 .recentWrapper3Above {
-  position: absolute;
   z-index: 2;
   padding: 83px 26px 27px 30px;
   background: #10062f;
@@ -49,7 +46,7 @@ recentWrapper3 {
 .recentWrapper1Line,
 .recentWrapper2Line,
 .recentWrapper3Line {
-  width: 410px;
+  width: 100%;
   height: 1px;
   border: 1px solid #f6f4f0;
 }
@@ -87,10 +84,10 @@ recentWrapper3 {
 .recentWrapper2shadow,
 .recentWrapper3shadow {
   position: absolute;
-  top: 20px;
-  left: 14px;
-  width: 730px;
-  height: 381px;
+  top: 12px;
+  left: 12px;
+  width: 100%;
+  height: 415px;
   background: #7ebad3;
   border-radius: 8px;
   z-index: 1;

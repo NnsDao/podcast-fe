@@ -1,26 +1,32 @@
 import bg2 from '@/public/episodes/bg2.png';
 import bg3 from '@/public/episodes/bg3.png';
+import photo1 from '@/public/episodes/photo1.png';
+import photo2 from '@/public/episodes/photo2.png';
+import photo3 from '@/public/episodes/photo3.png';
+import photo4 from '@/public/episodes/photo4.png';
+import photo5 from '@/public/episodes/photo5.png';
 import supported from '@/public/episodes/supported.png';
-
 import { Stack } from '@mui/system';
 
 export default function Artist() {
   return (
     <Stack direction={'column'} justifyContent="center" alignItems={'center'} bgcolor="#10062F" position={'relative'}>
-      <Stack sx={{ position: 'relative', top: '300px' }}>
-        <img src={bg2} alt="" width="1920px" height="618px" />
+      <Stack sx={{ position: 'relative', top: '250px' }}>
+        <img src={bg2} alt="" width="100%" />
       </Stack>
       <Stack
+        width={'100%'}
         paddingX={'60px'}
-        position={'absolute'}
+        position="absolute"
         zIndex="2"
-        paddingTop={'470px'}
+        paddingTop={'400px'}
         direction={'row'}
         justifyContent="center"
-        spacing={2}
+        spacing={3}
         alignItems={'center'}>
         <Stack
           sx={{
+            width: '17vw',
             fontSize: '20px',
             fontWeight: '900',
             color: '#fff',
@@ -32,12 +38,9 @@ export default function Artist() {
           </Stack>
           <Stack
             sx={{
-              width: '344px',
-              height: '418px',
-              bgcolor: 'gray',
-            }}>
-            img
-          </Stack>
+              background: ' no-repeat center/cover url(/src/static/imgs/home/bg.png)',
+            }}></Stack>
+          <img src={photo1} alt="" />
         </Stack>
         <Stack
           sx={{
@@ -45,18 +48,17 @@ export default function Artist() {
             fontWeight: '900',
             color: '#fff',
             position: 'relative',
+            width: '17vw',
             top: '-260px',
           }}>
           <Stack paddingBottom={'38px'} textAlign="center">
-            Women’s Rights
+            Self Confidence
           </Stack>
           <Stack
             sx={{
-              width: '344px',
-              height: '418px',
               bgcolor: 'gray',
             }}>
-            img
+            <img src={photo2} alt="" />
           </Stack>
         </Stack>
         <Stack
@@ -64,25 +66,25 @@ export default function Artist() {
             fontSize: '20px',
             fontWeight: '900',
             color: '#fff',
+            width: '17vw',
             position: 'relative',
             top: '-100px',
           }}>
           <Stack paddingBottom={'38px'} textAlign="center">
-            Women’s Rights
+            Self Confidence
           </Stack>
           <Stack
             sx={{
-              width: '344px',
-              height: '418px',
               bgcolor: 'gray',
             }}>
-            img
+            <img src={photo3} alt="" />
           </Stack>
         </Stack>
         <Stack
           sx={{
             fontSize: '20px',
             fontWeight: '900',
+            width: '17vw',
             color: '#fff',
             position: 'relative',
             top: '-160px',
@@ -92,16 +94,15 @@ export default function Artist() {
           </Stack>
           <Stack
             sx={{
-              width: '344px',
-              height: '418px',
               bgcolor: 'gray',
             }}>
-            img
+            <img src={photo4} alt="" />
           </Stack>
         </Stack>
         <Stack
           sx={{
             fontSize: '20px',
+            width: '17vw',
             fontWeight: '900',
             color: '#fff',
             position: 'relative',
@@ -112,11 +113,9 @@ export default function Artist() {
           </Stack>
           <Stack
             sx={{
-              width: '344px',
-              height: '418px',
               bgcolor: 'gray',
             }}>
-            img
+            <img src={photo5} alt="" />
           </Stack>
         </Stack>
       </Stack>
@@ -126,7 +125,8 @@ export default function Artist() {
         justifyContent="center"
         alignItems={'center'}
         position="absolute"
-        bottom={'-170px'}>
+        bottom={'-140px'}
+        width={'1000px'}>
         <Stack
           sx={{
             fontSize: '20px',
@@ -142,7 +142,7 @@ export default function Artist() {
       <Stack
         sx={{
           position: 'absolute',
-          bottom: '-340px',
+          bottom: '-290px',
         }}>
         <img src={bg3} alt="" width="223px" height="151px" />
       </Stack>

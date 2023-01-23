@@ -18,8 +18,8 @@ export default function Sponsor() {
       <Stack className={Style.info} paddingY="60px">
         Get exclusive episodes, merch and more
       </Stack>
-      <Stack direction={'row'} spacing={3}>
-        <Stack padding={'71px 73px 70px 64px'} bgcolor="#F6F4F0" borderRadius="8px">
+      <Stack direction={'row'} paddingX="100px" spacing={5}>
+        <Stack padding={'50px 73px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
           <Stack className={Style.Member}>Member</Stack>
           <Stack className={Style.info}>
             Lorem ipsum dolor sit amet consectetcing <br />
@@ -60,7 +60,7 @@ export default function Sponsor() {
             </Stack>
           </Stack>
         </Stack>
-        <Stack padding={'71px 73px 70px 64px'} bgcolor="#F6F4F0" borderRadius="8px">
+        <Stack padding={'50px 73px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
           <Stack className={Style.Member}>Member</Stack>
           <Stack className={Style.info}>
             Lorem ipsum dolor sit amet consectetcing <br />
@@ -101,7 +101,7 @@ export default function Sponsor() {
             </Stack>
           </Stack>
         </Stack>
-        <Stack padding={'71px 73px 70px 64px'} bgcolor="#F6F4F0" borderRadius="8px">
+        <Stack padding={'50px 73px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
           <Stack className={Style.Member}>Member</Stack>
           <Stack className={Style.info}>
             Lorem ipsum dolor sit amet consectetcing <br />
@@ -144,22 +144,22 @@ export default function Sponsor() {
         </Stack>
       </Stack>
 
-      <Stack direction={'row'} spacing={3} paddingTop="20px">
-        <Stack padding={'88px 142px 70px 98px'} bgcolor="#F6F4F0" borderRadius="8px">
+      <Stack direction={'row'} width="100%" paddingX="100px" justifyContent="space-between" paddingTop="40px">
+        <Stack padding={'50px 95px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
           <Stack className={Style.included}>What’s included:</Stack>
           <Stack className={Style.Content}>• Exclusive Content</Stack>
           <Stack className={Style.Merch}>• 5% Discount on Merch </Stack>
           <Stack className={Style.Community}>• Join the Community</Stack>
           <Stack className={Style.Access}>• Livestreaming Access</Stack>
         </Stack>
-        <Stack padding={'88px 142px 70px 98px'} bgcolor="#F6F4F0" borderRadius="8px">
+        <Stack padding={'50px 95px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
           <Stack className={Style.included}>What’s included:</Stack>
           <Stack className={Style.Content}>• Exclusive Content</Stack>
           <Stack className={Style.Merch}>• 5% Discount on Merch </Stack>
           <Stack className={Style.Community}>• Join the Community</Stack>
           <Stack className={Style.Access}>• Livestreaming Access</Stack>
         </Stack>
-        <Stack padding={'88px 142px 70px 98px'} bgcolor="#F6F4F0" borderRadius="8px">
+        <Stack padding={'50px 95px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
           <Stack className={Style.included}>What’s included:</Stack>
           <Stack className={Style.Content}>• Exclusive Content</Stack>
           <Stack className={Style.Merch}>• 5% Discount on Merch </Stack>

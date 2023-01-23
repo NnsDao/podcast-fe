@@ -29,7 +29,7 @@ export default function LatestEpisode() {
       alignItems={'center'}
       bgcolor="#10062F"
       position="relative"
-      paddingBottom={'200px'}>
+      minHeight="900px">
       <Stack
         sx={{
           position: 'absolute',
@@ -38,7 +38,7 @@ export default function LatestEpisode() {
         }}>
         <img src={bg15} alt="" width={'195px'} height={'186px'} />
       </Stack>
-      <img src={listeners} alt="" width={'1920px'} height={'1886px'} />
+      <img src={listeners} alt="" width={'100%'} height="1100px" />
       <Stack
         justifyContent={'start'}
         sx={{

@@ -5,14 +5,15 @@ export default function Footer() {
   return (
     <Stack
       direction={'row'}
-      justifyContent="center"
+      justifyContent="space-between"
       alignItems={'center'}
       paddingY="165px"
+      padding="100px"
+      width={'100%'}
       sx={{
         fontSize: '16px',
         color: '#DDECFF',
-      }}
-      spacing={30}>
+      }}>
       <Stack>
         <img src={footer1} alt="" width={'204px'} height={'135px'} />
         <Stack paddingTop={'33px'}>

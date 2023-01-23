@@ -10,7 +10,7 @@ import Sponsor from './sponsor/Index';
 
 export default function Episodes() {
   return (
-    <Stack>
+    <Stack width={'100%'}>
       <Introduce></Introduce>
       <Artist></Artist>
       <Product></Product>

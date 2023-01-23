@@ -13,7 +13,7 @@ import { PodcastIterm } from '@nnsdao/nnsdao-kit/src/podcast/types';
 import { useParams } from 'react-router-dom';
 import Style from './index.module.css';
 
-export default async function Cast() {
+export default function Cast() {
   const { principal, index } = useParams();
   const podcastData: Array<[bigint, PodcastIterm]> =
     useGet_podcast_list()?.data?.filter(item => Number(index) == Number(item[0])) || [];
@@ -24,29 +24,35 @@ export default async function Cast() {
       direction={'row'}
       justifyContent="center"
       alignItems={'center'}
-      paddingY="120px"
+      padding="120px"
       bgcolor="#10062F"
       paddingBottom={'220px'}>
-      <Stack position="relative">
-        <img src={img1} className={Style.img1} alt="" />
-        <img src={img2} className={Style.img2} alt="" />
-        <img src={img3} className={Style.img3} alt="" />
-        <img src={img4} className={Style.img4} alt="" />
-      </Stack>
-      <Stack direction={'row'} justifyContent="center">
-        <Stack paddingRight={'100px'}>
-          <img src={podcastData[0][1]?.cover_image} alt="" width="545px" height="588px" />
+      <Stack direction={'row'} justifyContent="center" position="relative">
+        <Stack position="absolute" top={'243px'} left={'9px'}>
+          <img src={img1} className={Style.img1} alt="" />
+          <img src={img2} className={Style.img2} alt="" />
+          <img src={img3} className={Style.img3} alt="" />
+          <img src={img4} className={Style.img4} alt="" />
         </Stack>
-        <Stack direction={'column'} width={'727px'}>
+        <Stack position="absolute" right={'154px'} top={'210px'}>
+          <img src={img5} className={Style.img5} alt="" />
+          <img src={img6} className={Style.img6} alt="" />
+          <img src={img7} className={Style.img7} alt="" />
+          <img src={img8} className={Style.img8} alt="" />
+        </Stack>
+        <Stack paddingRight={'100px'}>
+          <img src={podcastData[0]?.[1]?.cover_image} alt="" width="445px" height="488px" />
+        </Stack>
+        <Stack direction={'column'} width={'549px'}>
           <Stack
             sx={{
-              fontSize: '56px',
+              fontSize: '43px',
               fontFamily: 'Trebuchet-BoldItalic, Trebuchet',
               fontWeight: 'normal',
               color: '#FFFFFF',
               lineHeight: '65px',
             }}>
-            {podcastData[0][1]?.title}
+            {podcastData[0]?.[1]?.title}
           </Stack>
           <Divider variant="middle" sx={{ marginY: '30px', color: '#fff', borderColor: '#fff' }} />
 
@@ -57,17 +63,18 @@ export default async function Cast() {
               fontWeight: 'normal',
               color: '#FFFFFF',
               lineHeight: '38px',
+              minHeight: '180px',
+              overflow: 'hidden',
             }}>
-            {podcastData[0][1]?.describe}
+            {podcastData[0]?.[1]?.describe}
           </Stack>
           <Stack sx={{ marginY: '30px' }}>
             <Stack
               sx={{
                 position: 'relative',
-                width: '700px',
-                height: '116px',
-                borderRadius: '32px',
-                border: '3px solid',
+                width: '588px',
+                height: '110px',
+                borderRadius: '30px',
                 background: 'linear-gradient(90deg, rgba(209, 48, 179, 1), rgba(58, 79, 231, 1))',
                 zIndex: '1',
               }}>
@@ -77,14 +84,14 @@ export default async function Cast() {
                 spacing={1}
                 sx={{
                   position: 'absolute',
-                  width: '690px',
+                  width: '583px',
                   height: '105px',
                   top: '2.5px',
                   left: '2.5px',
                   color: '#fff',
                   fontSize: '20px',
                   fontWeight: 900,
-                  borderRadius: '30px',
+                  borderRadius: '28px',
                   padding: '10px',
                   zIndex: '20',
                   bgcolor: '#10062F',
@@ -97,10 +104,11 @@ export default async function Cast() {
                 <Stack>
                   <Stack
                     sx={{
-                      fontSize: '18px',
+                      fontSize: '16px',
                       fontFamily: 'ArialMT',
                       color: '#FFFFFF',
                       lineHeight: ' 21px',
+                      paddingBottom: '8px',
                     }}>
                     Are you a Perplexed Mind Person?
                   </Stack>
@@ -108,27 +116,21 @@ export default async function Cast() {
                     sx={{
                       width: '172px',
                       height: '20px',
-                      fontSize: '18px',
+                      fontSize: '16px',
                       fontFamily: 'ArialMT',
                       color: '#B5B5C3',
                       lineHeight: '21px',
                     }}>
-                    Hosted by: {podcastData[0][1]?.hosts[0]?.toText()}
+                    Hosted by: {podcastData[0]?.[1]?.hosts[0]?.toText()}
                   </Stack>
                 </Stack>
                 <audio controls color="black">
-                  <source src={podcastData[0][1]?.show_note} type="audio/ogg" />
+                  <source src={podcastData[0]?.[1]?.show_note} type="audio/ogg" />
                 </audio>
               </Stack>
             </Stack>
           </Stack>
         </Stack>
-      </Stack>
-      <Stack position="relative">
-        <img src={img5} className={Style.img5} alt="" />
-        <img src={img6} className={Style.img6} alt="" />
-        <img src={img7} className={Style.img7} alt="" />
-        <img src={img8} className={Style.img8} alt="" />
       </Stack>
     </Stack>
   );
