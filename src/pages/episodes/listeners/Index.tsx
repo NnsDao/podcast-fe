@@ -5,7 +5,33 @@ import bg15 from '@/public/episodes/bg15.png';
 import { Avatar } from '@mui/material';
 
 export default function Listeners() {
-  const data = [];
+  const data = [
+    {
+      author: 'louis chan',
+      content:
+        'The app is fantastic. it controls where your podcasts run while improving decentralization and reliability.',
+    },
+    {
+      author: 'masewang',
+      content:
+        'A podcast platform that focuses on users and privacy, I see more real content and podcasters in the podcast.',
+    },
+    {
+      author: 'IAB',
+      content:
+        'Most host-read and announcer-read ads are dynamically inserted, and advertisers get the best of both worlds with podcast ads, the authenticity of the message with the scalability/flexibility of automated buying.',
+    },
+    {
+      author: 'Charles',
+      content:
+        'Use the podcast to listen to more realistic Web3 projects and proposals, and see more about the beginnings and ideas of entrepreneurs at Looncast.',
+    },
+    {
+      author: 'eMarketer',
+      content:
+        'Statistics show that 54 percent of podcast listeners are either somewhat or much more likely to consider buying from a brand after hearing its advertisement on a podcast (2019).',
+    },
+  ];
   return (
     <Stack direction={'row'} justifyContent="center" alignItems={'center'} bgcolor="#10062F" position="relative">
       <Stack
@@ -47,6 +73,7 @@ export default function Listeners() {
           }}>
           Their experience throughout every platform
         </Stack>
+
         <Stack
           direction={'row'}
           flexWrap="nowrap"
@@ -54,35 +81,37 @@ export default function Listeners() {
           sx={{
             paddingLeft: '212px',
           }}>
-          {Array.from([1, 2, 3, 5, 8, 10]).map(item => (
-            <Stack
-              key={item + 1}
-              sx={{
-                minWidth: '581px',
-                background: ' #FFFFFF',
-                border: '3px dashed #DD8BEB',
-                padding: '145px 48px 35px 47px',
-                marginRight: '22px',
-                whiteSpace: '',
-                fontSize: '24px',
-                fontFamily: 'Arial-Black',
-                fontWeight: '900',
-                color: ' #10062F',
-                lineHeight: '33px',
-              }}>
-              <Stack>
-                Lorem ipsum dolor sit amet
-                <br /> consectet piscing elit, sed do
-                <br /> eiusmod tempor incidi ut labore et
-                <br /> dolore magna aliqua.
-              </Stack>
-              <Stack direction={'row'} alignItems="center" paddingTop={'25px'}>
-                <Avatar></Avatar>
+          {data.map((itemSpeaker, index) => {
+            return (
+              <Stack
+                key={index + 1}
+                sx={{
+                  minWidth: '581px',
+                  background: ' #FFFFFF',
+                  border: '3px dashed #DD8BEB',
+                  padding: '140px 48px 35px 47px',
+                  marginRight: '22px',
+                  whiteSpace: '',
+                  fontSize: '24px',
+                  fontFamily: 'Arial-Black',
+                  fontWeight: '900',
+                  color: ' #10062F',
+                  lineHeight: '33px',
+                }}>
+                <Stack>
+                  {itemSpeaker.content}
+                  {/* <br /> consectet piscing elit, sed do
+                  <br /> eiusmod tempor incidi ut labore et
+                  <br /> dolore magna aliqua. */}
+                </Stack>
+                <Stack direction={'row'} alignItems="center" paddingTop={'25px'}>
+                  <Avatar></Avatar>
 
-                <Stack sx={{ marginLeft: '20px', fontSize: '18px', fontWeight: '500' }}>John Smith,</Stack>
+                  <Stack sx={{ marginLeft: '20px', fontSize: '18px', fontWeight: '500' }}>{itemSpeaker.author},</Stack>
+                </Stack>
               </Stack>
-            </Stack>
-          ))}
+            );
+          })}
         </Stack>
       </Stack>
     </Stack>

@@ -20,7 +20,7 @@ export default function Membership() {
       img: Membership2,
       text: 'Import from anywhere',
       others:
-        'Import your existing stories from Wordpress and Ghost with one click. You can even ask us to import data for you.',
+        'Import your existing stories from platform or own service with one click. You can even ask us to import data for you.',
     },
     {
       img: Membership3,
@@ -31,14 +31,14 @@ export default function Membership() {
   const data2 = [
     {
       img: Membership4,
-      text: 'Lightning-fast file hosting',
+      text: 'Decentralized Storage Hosting',
       others:
-        'Your listeners want your episode the minute it’s available. We’ve partnered with the fastest CDNs around, combined with our own infrastructure, to deliver your content fast.',
+        'Your listeners want your show as soon as it is available. Based on a decentralized storage service, users can receive Episodes quickly, while using edge computing to accelerate their experience with the service.',
     },
     {
       img: Membership5,
       text: 'Data Ownership',
-      others: 'Built entirely on IC, the user has data sovereignty.',
+      others: 'Built entirely on web3, the user has data sovereignty.',
     },
     {
       img: Membership6,
