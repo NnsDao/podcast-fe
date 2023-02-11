@@ -24,7 +24,7 @@ export default function List() {
     console.log(data, 'data');
 
     return (
-      <Grid container sm={12} lg={12} my={{ sm: 2, md: 4 }} spacing={{ sm: 2 }} alignItems="center">
+      <Grid container sm={12} lg={12} my={{ sm: 2, md: 4 }} alignItems="start">
         <Item text={'Status'} value={Object.keys(data[0]?.status)}></Item>
         <Item text={'Memory_size'} value={Number(props.data[0]?.memory_size)}></Item>
         <Item text={'Cycles'} value={Number(props.data[0]?.cycles)}></Item>
