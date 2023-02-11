@@ -9,7 +9,6 @@ export default function Status() {
         <Stack sx={{ fontWeight: '900', fontSize: '22px' }}>Status</Stack>
       </Stack>
       <Divider variant="middle" sx={{ marginY: '30px' }} />
-      <Stack direction={'row'} justifyContent="start" sx={{ padding: '10px' }}></Stack>
       <Grid container sm={12}>
         <List></List>
       </Grid>

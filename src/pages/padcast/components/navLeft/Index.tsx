@@ -26,12 +26,12 @@ export default function NavLeft() {
     navigate(`${item.labelText}`);
   };
   return (
-    <Paper sx={{ background: '#fff', position: 'sticky', top: '10px', padding: '8px' }}>
+    <Paper sx={{ position: 'fixed', background: '#f9f9f6', padding: '18px', height: '100vh', width: '240px' }}>
       <TreeView
         selected={selected}
         onNodeSelect={(e, id) => setSelected(id)}
         defaultCollapseIcon={false}
-        sx={{ flexGrow: 1, width: '100%', overflowY: 'auto' }}>
+        sx={{ flexGrow: 1, overflowY: 'auto', width: '200px', height: '100vh' }}>
         {config.map((item, index) => (
           <StyledTreeItem
             key={item.labelText}

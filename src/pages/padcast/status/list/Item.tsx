@@ -3,7 +3,7 @@ import Grid from '@mui/material/esm/Unstable_Grid2';
 
 export default function Podcast(props) {
   return (
-    <Grid container sm={12} my={{ xl: 2, sm: 2 }}>
+    <Grid container my={{ xl: 2, sm: 2 }} marginRight={'20px'}>
       <Card elevation={1}>
         <Stack
           sx={{ height: '80px', padding: '20px' }}

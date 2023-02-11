@@ -1,6 +1,6 @@
 import { usePodcast_canister } from '@/api/manage';
 import { useUserStore } from '@/hooks/userStore';
-import { Divider, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 import NewPodcast from './newPodcast/Index';
 import Program from './program/Index';
 export default function Opus() {
@@ -15,7 +15,7 @@ export default function Opus() {
         <Stack sx={{ fontWeight: '900', fontSize: '22px' }}>Episodes</Stack>
         <NewPodcast></NewPodcast>
       </Stack>
-      <Divider variant="middle" sx={{ marginY: '30px' }} />
+      {/* <Divider variant="middle" sx={{ marginY: '30px' }} /> */}
       <Stack direction={'row'} justifyContent="start" sx={{ padding: '10px' }}></Stack>
       <Program></Program>
     </Stack>

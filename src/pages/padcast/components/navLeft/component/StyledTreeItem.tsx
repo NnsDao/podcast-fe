@@ -76,8 +76,8 @@ export default function StyledTreeItem(props: StyledTreeItemProps) {
             direction: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
-            p: 1,
             marginLeft: '-15px',
+            padding: '2px 12px',
           }}
           style={{
             '--tree-view-color': color,
@@ -93,7 +93,7 @@ export default function StyledTreeItem(props: StyledTreeItemProps) {
           {labelInfo ? (
             <Box
               sx={{
-                padding: '5px',
+                padding: '3px',
                 background: '#D7F9EF',
                 borderRadius: '4px',
                 color: '',

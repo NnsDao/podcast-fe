@@ -54,25 +54,32 @@ export default function Fragment() {
     }, [getData.data]);
     return (
       <React.Fragment>
-        <Stack spacing={2} paddingX="200px" justifyContent={'center'} alignItems={'center'}>
-          <Stack alignItems={'center'}>
+        <Stack spacing={2} padding="20px 400px" justifyContent={'center'}>
+          <Stack width={'400px'} direction={'row'} justifyContent={'space-between'} alignItems={'center'}>
+            <Typography variant="h6">icon</Typography>
             <Upload
               // src={getData?.data?.icon ? getData?.data?.icon : form['icon']}
               src={form['icon']}
               setSrc={val => setFormField({ key: 'icon', value: val })}></Upload>
-            <Typography variant="h6">icon</Typography>
           </Stack>
-          <Stack alignItems={'center'}>
+          <Divider variant="middle" sx={{ marginY: '30px' }} />
+
+          <Stack
+            width={'400px'}
+            direction={'row'}
+            justifyContent={'space-between'}
+            alignItems={'center'}
+            paddingBottom={'50px'}>
+            <Typography variant="h6">cover_image</Typography>
             <Upload
               src={form['cover_image']}
               // src={getData?.data?.cover_image ? getData?.data?.cover_image : form['cover_image']}
               setSrc={val => setFormField({ key: 'cover_image', value: val })}></Upload>
-            <Typography variant="h6">cover_image</Typography>
           </Stack>
+
           <TextField
             variant="standard"
             required
-            fullWidth
             id="name"
             label="Name"
             key="name"
@@ -84,7 +91,6 @@ export default function Fragment() {
           <TextField
             variant="standard"
             required
-            fullWidth
             id="describe"
             label="describe"
             key="describe"
@@ -102,9 +108,16 @@ export default function Fragment() {
           </Stack>
 
           <Divider sx={{ my: 4, border: 'none' }}></Divider>
-          <Button sx={{ margin: '16px 0' }} size="large" fullWidth variant="contained" type="submit" onClick={Save}>
-            Save
-          </Button>
+          <Stack alignItems={'end'}>
+            <Button
+              sx={{ marginRight: '20px', width: '100px' }}
+              size="large"
+              variant="contained"
+              type="submit"
+              onClick={Save}>
+              Save
+            </Button>
+          </Stack>
         </Stack>
       </React.Fragment>
     );
