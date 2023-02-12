@@ -54,7 +54,7 @@ export default function Membership() {
       bgcolor="#10062F"
       position="relative"
       paddingBottom={'50px'}>
-      <Stack className={Style.Membership}>Membership benefits</Stack>
+      <Stack className={Style.Membership}>Features</Stack>
       <Stack className={Style.benefits}>Become our sponsor and get all benefits</Stack>
       <Stack className={Style.MembershipWrapper} direction="row">
         {data1.map(item => (

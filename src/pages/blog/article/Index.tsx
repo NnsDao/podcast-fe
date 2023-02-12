@@ -56,8 +56,7 @@ export default function Article() {
             color: '#FFFFFF',
             textAlign: 'center',
           }}>
-          Connect your ideas and export your stories, consectetur adipiscing elit, eiusmod tempor incididunt ut labore
-          et dolore magna aliqua. Ut enim ad minim veniam–quis.
+          Find your favorite podcasts and collects NFT.
         </Stack>
 
         <Stack direction="row" spacing={{ xl: 2, sm: 1 }} position="relative">

@@ -52,7 +52,7 @@ export default function Artist() {
             top: '-260px',
           }}>
           <Stack paddingBottom={'38px'} textAlign="center">
-            Self Confidence
+            Blockchain
           </Stack>
           <Stack
             sx={{
@@ -71,7 +71,7 @@ export default function Artist() {
             top: '-100px',
           }}>
           <Stack paddingBottom={'38px'} textAlign="center">
-            Self Confidence
+            Business
           </Stack>
           <Stack
             sx={{
@@ -90,7 +90,7 @@ export default function Artist() {
             top: '-160px',
           }}>
           <Stack paddingBottom={'38px'} textAlign="center">
-            Women’s Rights
+            Education
           </Stack>
           <Stack
             sx={{
@@ -109,7 +109,7 @@ export default function Artist() {
             top: '-60px',
           }}>
           <Stack paddingBottom={'38px'} textAlign="center">
-            Women’s Rights
+            Society
           </Stack>
           <Stack
             sx={{

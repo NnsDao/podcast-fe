@@ -35,7 +35,7 @@ export default function Cast() {
             textAlign: 'center',
           }}>
           About <br />
-          Pod of Cast
+          Looncast
         </Stack>
         <Stack
           sx={{
@@ -47,8 +47,8 @@ export default function Cast() {
             color: '#FFFFFF',
             textAlign: 'center',
           }}>
-          Connect your ideas and export your stories, consectetur adipiscing elit, eiusmod tempor incididunt
-          <br /> ut labore et dolore magna aliqua. Ut enim ad minim veniam–quis.
+          A better connection between creators, protocols, and communities, enables a more authentic or digital user
+          experience with the native nature of podcasting and global collaboration and coordination.
         </Stack>
 
         <Stack direction={'row'} spacing={10}>

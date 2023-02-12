@@ -40,7 +40,7 @@ export default function Article() {
             lineHeight: '33px',
             textAlign: 'center',
           }}>
-          News, tips, tricks and more
+          insights, arts, tips, tricks and more
         </Stack>
       </Stack>
       <Stack
