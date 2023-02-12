@@ -18,7 +18,7 @@ export default function App() {
   return (
     <Grid spacing={0} minHeight={'100vh'}>
       <Grid xs={10} lg={10} justifyContent="center" container bgcolor="#10062F">
-        {isShow() ? <TopBar></TopBar> : null}
+        <TopBar></TopBar>
       </Grid>
       <Grid xs={12} lg={12}>
         <AppRouter></AppRouter>

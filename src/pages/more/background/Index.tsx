@@ -29,22 +29,19 @@ export default function Background() {
       <Stack direction={'row'} justifyContent="space-around" spacing={12} fontSize={'20px'}>
         <Stack width={'603px'}>
           <Stack>
-            Connect your ideas and export your stories, consectetur adipiscing elit. Quam pellentesque at bibendum
-            euismod tellus duis cursus dignissim odio. Sit vulputate et integer in.
+            Connect your ideas and export your stories, consectetur adipiscing elit.
             <br />
             <br />
-            Sit vel, senectus iaculis morbi. Amet interdum imperdiet laoreet morbi tincidunt fermentum, libero. Ante
-            enim eget viverra at porttitor accumsan. Orci non here
+            Looncast is designed to be a complete podcast hosting solution, including a feature-rich, responsive website
+            so your listeners can use podcatcher to listen to your show closer to natively.
             <br />
           </Stack>
         </Stack>
         <Stack width={'603px'}>
           <Stack>
-            Quis dictum cursus faucibus mattis dignissim. Pellentes
-            <br />
-            que purus in sed sodales in mauris molestie. Eleifend est cons
-            <br />
-            ctetur interdum eu in auctor. Gravida leo et.
+            Sovereign data belongs to individuals, and users can own their data and choose to deploy it on different
+            Layer1 while also accelerating podcast access and saving money with features such as edge computing on the
+            blockchain.
           </Stack>
         </Stack>
       </Stack>

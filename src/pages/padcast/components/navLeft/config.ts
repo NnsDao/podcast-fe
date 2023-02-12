@@ -1,6 +1,7 @@
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import HomeIcon from '@mui/icons-material/Home';
 import LanguageIcon from '@mui/icons-material/Language';
+import PodcastsIcon from '@mui/icons-material/Podcasts';
 import ProfileIcon from '@mui/icons-material/RecordVoiceOver';
 
 export const config = [
@@ -26,7 +27,7 @@ export const config = [
   {
     labelType: 'text',
     labelText: 'Episodes',
-    labelIcon: HomeIcon,
+    labelIcon: PodcastsIcon,
     labelInfo: '',
     color: '#1a73e8',
     bgColor: '#F3F6F9',

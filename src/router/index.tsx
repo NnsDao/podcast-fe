@@ -34,7 +34,7 @@ const routes: RouteObject[] = [
     element: <About />,
   },
   {
-    path: 'Blog',
+    path: 'Discover',
     element: <Blog />,
   },
   {
@@ -42,7 +42,7 @@ const routes: RouteObject[] = [
     element: <PodcastDetail />,
   },
   {
-    path: 'More',
+    path: 'Features',
     element: <More />,
   },
 

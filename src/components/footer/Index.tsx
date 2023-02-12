@@ -1,5 +1,6 @@
 import footer1 from '@/public/footer/footer1.png';
 import footer2 from '@/public/footer/footer2.png';
+import Link from '@mui/material/Link';
 import { Stack } from '@mui/system';
 export default function Footer() {
   return (
@@ -15,7 +16,7 @@ export default function Footer() {
         color: '#DDECFF',
       }}>
       <Stack>
-        <img src={footer1} alt="" width={'204px'} height={'135px'} />
+        <img src={footer1} alt="" width={'125px'} />
         <Stack paddingTop={'33px'}>
           The Decentralization Podcasts Protocol
           <br /> & Ep NFT for Creators.
@@ -23,18 +24,38 @@ export default function Footer() {
       </Stack>
       <Stack direction={'row'} spacing={15}>
         <Stack>
-          <Stack>About</Stack>
-          <Stack paddingY="45px">Testimonials</Stack>
-          <Stack>Features</Stack>
+          <Stack paddingBottom={3}>
+            {' '}
+            <Link color="inherit" underline="none" variant="body2" href="/">
+              Home
+            </Link>
+          </Stack>
+          <Stack paddingBottom={3}>
+            {' '}
+            <Link color="inherit" underline="none" variant="body2" href="/more">
+              Features
+            </Link>
+          </Stack>
+          <Stack>
+            {' '}
+            <Link color="inherit" underline="none" variant="body2" href="/blog">
+              Discover
+            </Link>
+          </Stack>
         </Stack>
         <Stack>
-          <Stack>Episodes</Stack>
-          <Stack paddingY="45px">Pricing</Stack>
-          <Stack>Blog</Stack>
+          <Stack>
+            {' '}
+            <Link color="inherit" underline="none" variant="body2" href="https://twitter.com/Looncasts">
+              Twitter
+            </Link>
+          </Stack>
+          {/* <Stack paddingY="45px">Pricing</Stack> */}
+          {/* <Stack>Blog</Stack> */}
         </Stack>
       </Stack>
       <Stack>
-        <Stack paddingBottom={'90px'}>Listen to episodes on your favorite platform:</Stack>
+        <Stack paddingBottom={'30px'}>Listen to episodes on your favorite platform:</Stack>
         <img src={footer2} alt="" width={'558px'} height={'50px'} />
       </Stack>
     </Stack>

@@ -27,21 +27,25 @@ export default function History() {
       <Stack direction={'row'} justifyContent="center" spacing={10}>
         <Stack width={'643px'}>
           <Stack>
-            Eu non diam phasellus vestibulum lorem. Fringilla est ullamcorper eget nulla facilisi etiam dignissim. Id
-            diam vel quam elementum pulvinar.
+            Looncast is an async and scalable podcasting protocol built on top of Layer1 such as Dfinity, Aptos, Sui and
+            Sol.
             <br />
             <br />
-            Elementum eu facilisis sed odio morbi quis commodo.
+            and it uses IPFS and AR to store and distribute data.
             <br />
-            <br /> Sed odio morbi quis commodo odio aenean sed adipiscing odio diam. uno fablotoson louw uit.
+            <br />
+            The contract itself is scalable and the portability of WebAssembly technology is used to create an async and
+            modular podcasting protocol.
           </Stack>
         </Stack>
         <Stack width={'643px'}>
           <Stack>
-            Connect your ideas and export your stories, consectetur adipiscing elit. Quam pellentesque at bibendum
-            euismod tellus duis cursus dignissim odio. Sit vulputate et integer in. Sit vel, senectus iaculis morbi.
-            Amet interdum imperdiet laoreet morbi tincidunt fermentum, libero.
-            <br /> <br /> Ante enim eget. Viverra at porttitor accumsan. Orci non here
+            Looncast focuses on infrastructure services, providing a decentralized storage hosting platform for
+            creators, it provides a convenient BaaS application platform and NFTs marketplace, a multi-channel content
+            platform, and RSS distribution, saving hosting costs and increasing revenue, such as encrypted ecological
+            advertising access and TOKEN economy.
+            <br /> <br /> web3 era Looncast uses the native nature of podcasting, allowing users to enjoy a more
+            authentic experience.
           </Stack>
         </Stack>
       </Stack>

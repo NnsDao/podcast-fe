@@ -1,3 +1,5 @@
+import didImg from '@/public/example/did-service.svg';
+import web3Img from '@/public/example/web2-web3.png';
 import { Stack } from '@mui/system';
 
 export default function Example() {
@@ -19,24 +21,18 @@ export default function Example() {
             color: '#FFFFFF',
             lineHeight: '63px',
           }}>
-          Bullet list example:
+          Web3 on Looncast:
         </Stack>
         <Stack paddingTop={'91px'} paddingBottom={'80px'}>
-          Connect your ideas and export your stories, consectetur adipiscing elit. Quam pellentesque at bibendum euismod
-          tellus duis curs us dignissim odio. Sit vulputate et integer in.
+          Looncast is to help you better produce and distribute podcasts, all you need to do is to record your audio and
+          upload it to Looncast, it will help you submit your show to the web2&web3 platform, backend data analysis, Rss
+          service, and Podcast membership service.
           <br />
-          <br />
-          Sit vel, senectus iaculis morbi. Amet interdum imperdiet laoreet morbi tincidunt fermentum, libero. Ante enim
-          eget viverra at porttitor accumsan. Orci non here
-          <br />
-          <br />
-          Quis dictum cursus faucibus mattis dignissim. Pellentque purus in sed sodales in mauris molestie. Eleifend est
-          consctetur interdum eu in auctor. Gravida leo et.
         </Stack>
         <Stack paddingBottom={'34px'}>
-          <img src="" alt="" width={' 539px'} height="440px" />
+          <img src={web3Img} alt="looncast" width={' 539px'} height="440px" />
         </Stack>
-        <Stack textAlign={'center'}>this is an image with a caption example</Stack>
+        <Stack textAlign={'center'}>Web2 and web3-based podcast bridges.</Stack>
       </Stack>
       <Stack>
         <Stack
@@ -46,24 +42,20 @@ export default function Example() {
             color: '#FFFFFF',
             lineHeight: '63px',
           }}>
-          Bullet list example:
+          DID on Looncast:
         </Stack>
         <Stack paddingTop={'91px'} paddingBottom={'80px'}>
-          Connect your ideas and export your stories, consectetur adipiscing elit. Quam pellentesque at bibendum euismod
-          tellus duis curs us dignissim odio. Sit vulputate et integer in.
+          Claim your podcast brand unique identity
           <br />
           <br />
-          Sit vel, senectus iaculis morbi. Amet interdum imperdiet laoreet morbi tincidunt fermentum, libero. Ante enim
-          eget viverra at porttitor accumsan. Orci non here
+          Privacy-first, web, and mobile dApp with DID-based membership and login options, cryptocurrency-based sponsor,
+          and subscriptions. connect your users using web3 Wallet.
           <br />
-          <br />
-          Quis dictum cursus faucibus mattis dignissim. Pellentque purus in sed sodales in mauris molestie. Eleifend est
-          consctetur interdum eu in auctor. Gravida leo et.
         </Stack>
         <Stack paddingBottom={'34px'}>
-          <img src="" alt="" width={' 539px'} height="440px" />
+          <img src={didImg} alt="did" width={' 539px'} height="440px" />
         </Stack>
-        <Stack textAlign={'center'}>download here</Stack>
+        <Stack textAlign={'center'}>Every podcast creator's identity is a tradable asset.</Stack>
       </Stack>
     </Stack>
   );

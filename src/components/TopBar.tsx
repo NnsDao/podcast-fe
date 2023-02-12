@@ -1,13 +1,12 @@
 import { useUserStore } from '@/hooks/userStore';
-import logo from '@/public/topBar/logo.png';
-import logoText from '@/public/topBar/logoText.png';
+import logo from '@/public/topBar/looncast.png';
 import underline from '@/public/topBar/underline.png';
-import { Avatar, Box, Button, ButtonBase, Stack } from '@mui/material';
+import { Box, Button, ButtonBase, Stack } from '@mui/material';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import LoginWrapper from './Login/Login';
 export default function TopBar() {
-  const nav = ['Episodes', 'About', 'Blog', 'More'];
+  const nav = ['Episodes', 'Discover', 'Features', 'About'];
   let { pathname } = useLocation();
   const navigate = useNavigate();
   const [isShowDialog, setIsShowDialog] = useState(false);
@@ -29,8 +28,7 @@ export default function TopBar() {
     <Stack width={'80%'} direction={'row'} justifyContent="space-between" alignItems={'center'}>
       <Stack direction={'row'} alignItems={'center'}>
         <Stack direction={'column'} alignItems={'center'} paddingTop="24px" paddingBottom="10px" paddingRight="100px">
-          <Avatar src={logo} variant="square" sizes="55px" />
-          <img src={logoText} alt="" sizes="22px" />
+          <img src={logo} alt="looncast" width={75} />
         </Stack>
         <Stack direction={'row'}>
           {nav.map(item => (

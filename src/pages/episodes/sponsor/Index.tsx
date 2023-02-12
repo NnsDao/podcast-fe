@@ -20,11 +20,8 @@ export default function Sponsor() {
       </Stack>
       <Stack direction={'row'} paddingX="100px" spacing={5}>
         <Stack padding={'50px 73px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
-          <Stack className={Style.Member}>Member</Stack>
-          <Stack className={Style.info}>
-            Lorem ipsum dolor sit amet consectetcing <br />
-            elit, sed do eiusmod tempor.
-          </Stack>
+          <Stack className={Style.Member}>Creators Club</Stack>
+          <Stack className={Style.info}>NFTs Holder have access to individual creators' audio listening rights.</Stack>
           <Stack direction={'row'} alignItems="center" justifyContent="space-between">
             <Button>
               <Box
@@ -40,7 +37,7 @@ export default function Sponsor() {
                   lineHeight: '54px',
                   zIndex: '2',
                 }}>
-                SUBSCRIBE
+                Sponsor
               </Box>
               <Box
                 sx={{
@@ -55,16 +52,16 @@ export default function Sponsor() {
                 }}></Box>
             </Button>
             <Stack>
-              <Stack>$9.99</Stack>
-              <Stack>/month</Stack>
+              <Stack>10 ICP</Stack>
+              <Stack>/mint</Stack>
             </Stack>
           </Stack>
         </Stack>
         <Stack padding={'50px 73px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
-          <Stack className={Style.Member}>Member</Stack>
+          <Stack className={Style.Member}>MCN NFT</Stack>
           <Stack className={Style.info}>
-            Lorem ipsum dolor sit amet consectetcing <br />
-            elit, sed do eiusmod tempor.
+            A DAO formed by individuals and institutions and released under the NFT mark, <br />
+            the holder benefits from the rights in this DAOs.
           </Stack>
           <Stack direction={'row'} alignItems="center" justifyContent="space-between">
             <Button>
@@ -81,7 +78,7 @@ export default function Sponsor() {
                   lineHeight: '54px',
                   zIndex: '2',
                 }}>
-                SUBSCRIBE
+                Sponsor
               </Box>
               <Box
                 sx={{
@@ -96,16 +93,18 @@ export default function Sponsor() {
                 }}></Box>
             </Button>
             <Stack>
-              <Stack>$19.99</Stack>
-              <Stack>/month</Stack>
+              <Stack>55 ICP</Stack>
+              <Stack>/mint</Stack>
             </Stack>
           </Stack>
         </Stack>
         <Stack padding={'50px 73px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
-          <Stack className={Style.Member}>Member</Stack>
+          <Stack className={Style.Member}>Looncast Club</Stack>
           <Stack className={Style.info}>
-            Lorem ipsum dolor sit amet consectetcing <br />
-            elit, sed do eiusmod tempor.
+            IRL activity.
+            <br />A universal NFTs created by the platform, makes it possible for users,
+            <br />
+            to listen to all podcasts on the platform.
           </Stack>
           <Stack direction={'row'} alignItems="center" justifyContent="space-between">
             <Button>
@@ -122,7 +121,7 @@ export default function Sponsor() {
                   lineHeight: '54px',
                   zIndex: '2',
                 }}>
-                SUBSCRIBE
+                Sponsor
               </Box>
               <Box
                 sx={{
@@ -137,29 +136,29 @@ export default function Sponsor() {
                 }}></Box>
             </Button>
             <Stack>
-              <Stack>$29.99</Stack>
-              <Stack>/month</Stack>
+              <Stack>100 ICP</Stack>
+              <Stack>/mint</Stack>
             </Stack>
           </Stack>
         </Stack>
       </Stack>
 
       <Stack direction={'row'} paddingX="100px" spacing={5} paddingTop="40px">
-        <Stack padding={'50px 176px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
+        <Stack padding={'50px 110px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
           <Stack className={Style.included}>What’s included:</Stack>
           <Stack className={Style.Content}>• Exclusive Content</Stack>
           <Stack className={Style.Merch}>• 5% Discount on Merch </Stack>
           <Stack className={Style.Community}>• Join the Community</Stack>
           <Stack className={Style.Access}>• Livestreaming Access</Stack>
         </Stack>
-        <Stack padding={'50px 176px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
+        <Stack padding={'50px 110px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
           <Stack className={Style.included}>What’s included:</Stack>
           <Stack className={Style.Content}>• Exclusive Content</Stack>
           <Stack className={Style.Merch}>• 15% Discount on Merch </Stack>
           <Stack className={Style.Community}>• Join the Community</Stack>
           <Stack className={Style.Access}>• Livestreaming Access</Stack>
         </Stack>
-        <Stack padding={'50px 176px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
+        <Stack padding={'50px 110px 30px 50px'} bgcolor="#F6F4F0" borderRadius="8px">
           <Stack className={Style.included}>What’s included:</Stack>
           <Stack className={Style.Content}>• Exclusive Content</Stack>
           <Stack className={Style.Merch}>• 25% Discount on Merch </Stack>
