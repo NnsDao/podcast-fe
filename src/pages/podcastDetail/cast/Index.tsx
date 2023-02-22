@@ -7,18 +7,50 @@ import img5 from '@/public/episodes/img5.png';
 import img6 from '@/public/episodes/img6.png';
 import img7 from '@/public/episodes/img7.png';
 import img8 from '@/public/episodes/img8.png';
-import { Avatar, Divider } from '@mui/material';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import { Avatar, Divider, Tooltip } from '@mui/material';
 import { Stack } from '@mui/system';
 import { PodcastIterm } from '@nnsdao/nnsdao-kit/src/podcast/types';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Style from './index.module.css';
-
 export default function Cast() {
   const { principal, index } = useParams();
+  const [count, setCount] = useState(0);
   const podcastData: Array<[bigint, PodcastIterm]> =
     useGet_podcast_list(principal as string)?.data?.filter(item => Number(index) == Number(item[0])) || [];
   console.log(podcastData, 'podcastData');
 
+  const getRecordPlay = async () => {
+    const res = await fetch(`https://dapi.nnsdao.com/api/podcast/info?canister=${principal}&id=${index}`)
+      .then(res => res.json())
+      .catch();
+    if (res.success) {
+      const { count } = res.data;
+      setCount(count);
+    }
+  };
+
+  const postRecordPlay = async () => {
+    const res = await fetch('https://dapi.nnsdao.com/api/podcast/record_play', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        canister: principal,
+        id: index,
+      }),
+    });
+    console.log('postRecordPlay', res);
+  };
+  useEffect(() => {
+    if (principal && index) {
+      postRecordPlay();
+      getRecordPlay();
+    }
+  }, [principal]);
   return (
     <Stack
       direction={'row'}
@@ -132,6 +164,14 @@ export default function Cast() {
                 </audio>
               </Stack>
             </Stack>
+          </Stack>
+
+          <Stack direction={'row'} sx={{ color: '#fff' }}>
+            <Tooltip title="View">
+              <RemoveRedEyeIcon sx={{ marginRight: '10px' }}></RemoveRedEyeIcon>
+            </Tooltip>
+
+            {count}
           </Stack>
         </Stack>
       </Stack>

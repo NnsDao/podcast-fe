@@ -135,6 +135,7 @@ function SourceList(props) {
   const toPodcastDetail = index => {
     navigator(`/podcastDetail/${principal}${index} `);
   };
+
   return (
     <Box>
       {data?.map(item => {
