@@ -25,10 +25,9 @@ export const add_owner = async (cid: string, arg_0: Principal) => {
   const actor = await getPodcastActor(cid, true);
   const res = await actor.add_owner(arg_0);
   console.log('add_owner', res);
-  if (res) {
-    return res;
+  if (res === undefined) {
+    return true;
   }
-  return Promise.reject(null);
 };
 export const change_admin = async (cid: string, arg_0: Principal) => {
   const actor = await getPodcastActor(cid, true);
@@ -184,11 +183,11 @@ export const useAdd_owner = (cid: string) => {
     mutationFn: (arg_0: Principal) => {
       return add_owner(cid, arg_0);
     },
-    onSuccess(data, variables, context) {
-      //todo
-      const queryKey = podcast.get_owner(cid);
-      queryClient.setQueryData(queryKey, data);
-    },
+    // onSuccess(data, variables, context) {
+    //   //todo
+    //   const queryKey = podcast.get_owner(cid);
+    //   queryClient.setQueryData(queryKey, data);
+    // },
   });
 };
 //1

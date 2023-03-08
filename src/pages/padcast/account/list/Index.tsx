@@ -27,9 +27,7 @@ export default function List() {
   );
 
   function UserCard(props) {
-    console.log(props.text);
     const data: Array<Principal> = props.data;
-    console.log(data, '9009090909090');
 
     const changeAdminAction = item => {
       const toastId = toast.loading('updating...');
@@ -60,21 +58,23 @@ export default function List() {
         columns={showType == 'linear' ? { xs: 11, sm: 4, md: 4 } : undefined}
         spacing={{ sm: 2 }}
         alignItems="stretch">
-        {data.map(item => {
-          return (
-            <Grid xs={11} sm={5} md={5} key={item.toText()}>
-              <Card elevation={1} sx={{ height: '100%' }}>
-                <Stack p={{ sm: 1, lg: 2 }} spacing={{ sm: 1 }} justifyContent="center" alignItems={'center'}>
-                  <Avatar sizes="medium"></Avatar>
-                  <Typography variant="h5" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
-                    {props.text}:{item.toText()}
-                  </Typography>
-                  <Button onClick={() => deleteAdmin(item)}>Delete</Button>
-                </Stack>
-              </Card>
-            </Grid>
-          );
-        })}
+        {data
+          ? data?.map(item => {
+              return (
+                <Grid xs={11} sm={5} md={5} key={item.toText()}>
+                  <Card elevation={1} sx={{ height: '100%' }}>
+                    <Stack p={{ sm: 1, lg: 2 }} spacing={{ sm: 1 }} justifyContent="center" alignItems={'center'}>
+                      <Avatar sizes="medium"></Avatar>
+                      <Typography variant="h5" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                        {props.text}:{item.toText()}
+                      </Typography>
+                      <Button onClick={() => deleteAdmin(item)}>Delete</Button>
+                    </Stack>
+                  </Card>
+                </Grid>
+              );
+            })
+          : null}
       </Grid>
     );
   }
@@ -96,17 +96,23 @@ export default function List() {
       }
     );
 
-    async function AddOwner() {
+    async function AddOwnerAction() {
+      const toastID = toast.loading('Getting AddOwner...');
       try {
-        const toastID = toast.loading('Getting AddOwner Information...');
         // console.log('confirm', params);
         const { AddOwner } = form;
-        await addOwnerAction.mutateAsync(await AddOwner.toPrincipal());
+        console.log(
+          AddOwner,
+          'AddOwnerAddOwnerAddOwnerAddOwnerAddOwnerAddOwnerAddOwnerAddOwnerAddOwnerAddOwnerAddOwner'
+        );
+
+        await addOwnerAction.mutateAsync(await Principal.fromText(AddOwner));
+        toast.success('Successfully!');
       } catch (error) {
         console.error('err', error);
         toast.error('Failed create');
       } finally {
-        toast.dismiss('err');
+        toast.dismiss(toastID);
       }
     }
     return (
@@ -120,6 +126,7 @@ export default function List() {
           <Card elevation={1} sx={{ height: '100%' }}>
             <Stack p={{ sm: 1, lg: 2 }} spacing={{ sm: 1 }} justifyContent="center" alignItems={'center'}>
               <TextField
+                fullWidth
                 variant="standard"
                 required
                 id="AddOwner"
@@ -129,7 +136,7 @@ export default function List() {
                 value={form.AddOwner}
                 onChange={e => changeForm('AddOwner', e)}
               />
-              <Button onClick={() => AddOwner()}>AddOwner</Button>
+              <Button onClick={() => AddOwnerAction()}>AddOwner</Button>
             </Stack>
           </Card>
         </Grid>

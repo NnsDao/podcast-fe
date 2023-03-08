@@ -1,6 +1,7 @@
 import { useUpdate_podcast } from '@/api/podcast';
 import Upload from '@/components/Upload';
 import { useUserStore } from '@/hooks/userStore';
+import { Principal } from '@dfinity/principal';
 import { Button, Chip, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import { Stack } from '@mui/system';
 import React from 'react';
@@ -87,6 +88,32 @@ function ActiveContent(props) {
             );
           })}
         </Stack>
+
+        <TextField
+          required
+          variant="standard"
+          id="Guests"
+          fullWidth
+          label="Guests"
+          placeholder="Please Add a Guests Principal TextField."
+          onKeyDown={e => onEnterGuests(e)}
+        />
+        <Stack direction="row" spacing={1} justifyContent="flex-start" flexWrap="wrap">
+          {form?.guests?.map((guests, index) => {
+            return (
+              <Chip
+                color="secondary"
+                label={
+                  guests.toText().slice(0, 6) +
+                  '...' +
+                  guests.toText().slice(guests.toText().length - 6, guests.toText().length)
+                }
+                key={`${index}-${guests}`}
+                onDelete={() => deleteGuestsLabel(guests)}></Chip>
+            );
+          })}
+        </Stack>
+
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Language</InputLabel>
           <Select
@@ -142,6 +169,7 @@ function ActiveContent(props) {
   function deleteLabel(tag) {
     setFormField({ key: 'tag', value: form.tag.filter(item => item !== tag) });
   }
+
   function changeForm(key, e) {
     if (key == 'language') {
       const obj = new Object();
@@ -170,13 +198,39 @@ function ActiveContent(props) {
     e.target.value = '';
     setFormField({ key: 'tag', value: newList });
   }
+  function onEnterGuests(e) {
+    if (e.code === 'Enter') {
+      onGuestsChange(e);
+    }
+  }
+  function onGuestsChange(e) {
+    const value = e.target.value;
+    let newList = form.guests.concat(value?.split(/\s+/).filter(val => val));
+    if (newList.length > 3) {
+      toast.error('No more then 3 Guests!');
+      newList = newList.slice(0, 3);
+    }
+    e.target.value = '';
+    setFormField({ key: 'guests', value: newList });
+  }
+  function deleteGuestsLabel(guests) {
+    setFormField({ key: 'guests', value: form.guests.filter(item => item !== guests) });
+  }
+
   async function confirm() {
+    let temp = [];
+    if (form.guests.length > 0) {
+      const { guests } = form;
+      temp = guests.map(item => {
+        return Principal.fromText(item);
+      });
+      console.log(guests);
+    }
     const params = {
       ...form,
+      guests: [...temp],
     };
-    debugger;
     props.close();
-
     // for (const key of Object.keys(params)) {
     //   if (!checkField(key, params[key])) {
     //     return;
@@ -187,9 +241,9 @@ function ActiveContent(props) {
       const arg_0 = props.form[0];
       const arg_1 = { ...params };
       console.log(arg_0, arg_1);
-      console.log('==============================');
+
       //@ts-ignore
-      const data = await updateAction.mutateAsync({ arg_0: props.form[0], arg_1: { ...params } });
+      const data = await updateAction.mutateAsync({ arg_0, arg_1 });
       console.log(data);
       toast.success('update onSuccess');
     } catch (error) {

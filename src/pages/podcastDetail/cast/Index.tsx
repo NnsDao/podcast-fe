@@ -165,12 +165,27 @@ export default function Cast() {
               </Stack>
             </Stack>
           </Stack>
-
+          <Stack direction={'row'} sx={{ color: '#fff', paddingBottom: '30px' }}>
+            <Stack
+              sx={{
+                width: '200px',
+                height: '20px',
+                fontSize: '16px',
+                fontFamily: 'ArialMT',
+                color: '#B5B5C3',
+                lineHeight: '21px',
+                overflow: 'hidden',
+              }}>
+              Guests :
+              {podcastData[0]?.[1]?.guests?.map(item => {
+                return item.toText();
+              })}
+            </Stack>
+          </Stack>
           <Stack direction={'row'} sx={{ color: '#fff' }}>
             <Tooltip title="View">
               <RemoveRedEyeIcon sx={{ marginRight: '10px' }}></RemoveRedEyeIcon>
             </Tooltip>
-
             {count}
           </Stack>
         </Stack>
