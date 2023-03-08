@@ -195,7 +195,7 @@ function ActiveContent(props) {
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={Object.keys(form?.language)[0]}
-            label="Age"
+            label="Language"
             onChange={e => changeForm('language', e)}>
             <MenuItem value={'Korean'}>Korean</MenuItem>
             <MenuItem value={'Japanese'}>Japanese</MenuItem>
@@ -252,9 +252,13 @@ function ActiveContent(props) {
   }
   function changeForm(key, e) {
     if (key == 'language') {
-      const obj = new Object();
-      obj[e.target.value] = 'null';
+      let obj = {};
+      console.log(e.target.value, 'value');
+
+      obj[e.target.value] = null;
+      console.log(obj, 'obj');
       setFormField({ key, value: obj });
+      console.log(form, 'form');
     }
     if (key == 'status') {
       setFormField({ key, value: e.target === 0 ? false : true });

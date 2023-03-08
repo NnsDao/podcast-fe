@@ -166,11 +166,12 @@ export const update_podcast = async (cid: string, arg_0: number, arg_1: PodcastI
 
   const res = await actor.update_podcast(BigInt(arg_0), arg_1);
   console.log('update_podcast', res);
-  if ('Ok' in res) {
-    return res;
-  } else {
-    return Promise.reject(res.Err);
-  }
+  return true;
+  // if ('Ok' in res) {
+  //   return res;
+  // } else {
+  //   return Promise.reject(res.Err);
+  // }
 };
 /**
  *
@@ -438,13 +439,10 @@ export const useUpdate_podcast = (cid: string) => {
   return useMutation({
     mutationFn: params => {
       const { arg_0, arg_1 } = params as any;
-      console.log(params, 'params');
-      console.log('pppppppppppppppppppppppp');
-
-      console.log(arg_0, 'arg_0');
-      console.log(arg_1, 'arg_1');
-
       return update_podcast(cid, arg_0, arg_1);
     },
+    // onSuccess(data, variables, context) {
+    //   queryClient.setQueryData(podcast.get_podcast_list(cid), data);
+    // },
   });
 };

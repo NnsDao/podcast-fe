@@ -22,7 +22,7 @@ export default function List() {
     <React.Fragment>
       <AddOwner></AddOwner>
       <AdminList text="Admin"></AdminList>
-      <OwnerList text="Owner"></OwnerList>
+      <OwnerList text="Guests"></OwnerList>
     </React.Fragment>
   );
 
@@ -92,12 +92,12 @@ export default function List() {
         };
       },
       {
-        AddOwner: '',
+        Guests: '',
       }
     );
 
     async function AddOwnerAction() {
-      const toastID = toast.loading('Getting AddOwner...');
+      const toastID = toast.loading('Getting Add Guests...');
       try {
         // console.log('confirm', params);
         const { AddOwner } = form;
@@ -130,13 +130,13 @@ export default function List() {
                 variant="standard"
                 required
                 id="AddOwner"
-                label="AddOwner"
+                label="Add Guests"
                 key="AddOwner"
-                placeholder="AddOwner"
+                placeholder="Add Guests"
                 value={form.AddOwner}
                 onChange={e => changeForm('AddOwner', e)}
               />
-              <Button onClick={() => AddOwnerAction()}>AddOwner</Button>
+              <Button onClick={() => AddOwnerAction()}>Add Guests</Button>
             </Stack>
           </Card>
         </Grid>

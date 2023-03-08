@@ -52,7 +52,7 @@ export default function Program() {
         // const data = await updateAction.mutateAsync({
         //   ...params,
         // });
-        console.log(data);
+        console.log(data, '00000000');
         toast.success('update onSuccess');
       } catch (error) {
         console.error('err', error);
@@ -138,52 +138,53 @@ function SourceList(props) {
 
   return (
     <Box>
-      {data?.map(item => {
-        return (
-          <Grid xs={12} sm={12} md={12} key={Number(item[0])}>
-            <Card elevation={1} sx={{ height: '100%', padding: '20px 15px' }}>
-              <Stack direction="row" paddingX="20px" justifyContent="space-between">
-                <Stack spacing={2} direction="row" justifyContent="flex-start" alignItems={'center'}>
-                  <Stack>
-                    <Avatar sx={{ width: 100, height: 100 }} variant="rounded" src={item[1].cover_image}></Avatar>
-                  </Stack>
-                  <Stack>
-                    <Stack width={'200px'} paddingBottom="10px">
+      {data.length > 0
+        ? data?.map(item => {
+            return (
+              <Grid xs={12} sm={12} md={12} key={Number(item[0])}>
+                <Card elevation={1} sx={{ height: '100%', padding: '20px 15px' }}>
+                  <Stack direction="row" paddingX="20px" justifyContent="space-between">
+                    <Stack spacing={2} direction="row" justifyContent="flex-start" alignItems={'center'}>
                       <Stack>
-                        <Typography
-                          overflow="hidden"
-                          variant="caption"
-                          sx={{
-                            fontFamily: 'Roboto',
-                            fontWeight: 700,
-                            fontSize: '22px',
-                            lineHeight: '30px',
-                            color: '#181C32',
-                          }}>
-                          {item[1].title}
-                        </Typography>
+                        <Avatar sx={{ width: 100, height: 100 }} variant="rounded" src={item[1].cover_image}></Avatar>
                       </Stack>
                       <Stack>
-                        <Typography
-                          variant="caption"
-                          overflow="hidden"
-                          sx={{
-                            fontFamily: 'Roboto',
-                            fontWeight: 700,
-                            fontSize: '18px',
-                            lineHeight: '30px',
-                            color: '#181C32',
-                          }}>
-                          {item[1].sub_title}
-                        </Typography>
+                        <Stack width={'200px'} paddingBottom="10px">
+                          <Stack>
+                            <Typography
+                              overflow="hidden"
+                              variant="caption"
+                              sx={{
+                                fontFamily: 'Roboto',
+                                fontWeight: 700,
+                                fontSize: '22px',
+                                lineHeight: '30px',
+                                color: '#181C32',
+                              }}>
+                              {item[1].title}
+                            </Typography>
+                          </Stack>
+                          <Stack>
+                            <Typography
+                              variant="caption"
+                              overflow="hidden"
+                              sx={{
+                                fontFamily: 'Roboto',
+                                fontWeight: 700,
+                                fontSize: '18px',
+                                lineHeight: '30px',
+                                color: '#181C32',
+                              }}>
+                              {item[1].sub_title}
+                            </Typography>
+                          </Stack>
+                        </Stack>
+                        <audio controls>
+                          <source src={item[1].show_note} type="audio/ogg" />
+                        </audio>
                       </Stack>
-                    </Stack>
-                    <audio controls>
-                      <source src={item[1].show_note} type="audio/ogg" />
-                    </audio>
-                  </Stack>
 
-                  {/* <Stack direction={'row'} justifyContent="space-between" alignItems="center" paddingY={'5px'}>
+                      {/* <Stack direction={'row'} justifyContent="space-between" alignItems="center" paddingY={'5px'}>
                         <Box
                           sx={{
                             fontFamily: 'Roboto',
@@ -205,18 +206,18 @@ function SourceList(props) {
                           Created At
                         </Box>
                       </Stack> */}
-                  {/* <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                      {/* <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
                       Hosts: &nbsp; {item[1].hosts[0]?.toText() || ''}
                     </Typography> */}
-                  {/* <Stack direction="column">
+                      {/* <Stack direction="column">
                       <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
                         link:{item[1].link}
                       </Typography>
                     </Stack> */}
-                  {/* <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
+                      {/* <Typography variant="body2" textOverflow="ellipsis" maxWidth={'100%'} overflow="hidden">
                       guests:{item[1].guests || 'guests'}
                     </Typography> */}
-                  {/* <Typography
+                      {/* <Typography
                       variant="caption"
                       sx={{
                         fontFamily: 'Roboto',
@@ -227,53 +228,54 @@ function SourceList(props) {
                       }}>
                       describe:{item[1].describe}
                     </Typography> */}
-                </Stack>
-                <Stack direction="column" marginLeft={'-100px'} justifyContent="center" spacing={2}>
-                  <Stack direction="row" spacing={1}>
-                    <Stack direction={'row'} spacing={0.5}>
-                      {item[1].tag.map(tag => {
-                        return <Chip key={tag} color="info" variant="outlined" label={tag} clickable></Chip>;
-                      })}
                     </Stack>
-                    <Stack direction={'row'} spacing={0.5}>
-                      <Chip label={Object.keys(item[1].language)[0] || 'language'} clickable></Chip>
+                    <Stack direction="column" marginLeft={'-100px'} justifyContent="center" spacing={2}>
+                      <Stack direction="row" spacing={1}>
+                        <Stack direction={'row'} spacing={0.5}>
+                          {item[1].tag.map(tag => {
+                            return <Chip key={tag} color="info" variant="outlined" label={tag} clickable></Chip>;
+                          })}
+                        </Stack>
+                        <Stack direction={'row'} spacing={0.5}>
+                          <Chip label={Object.keys(item[1].language)[0] || 'language'} clickable></Chip>
+                        </Stack>
+                      </Stack>
+                      <Stack direction={'row'} justifyContent="space-between" alignItems="center" paddingY={'15px'}>
+                        <Box
+                          sx={{
+                            fontFamily: 'Roboto',
+                            fontWeight: 700,
+                            fontSize: '14px',
+                            color: '#5E6278',
+                            paddingRight: '10px',
+                          }}>
+                          {new Date(Number(item[1].update_at || 0) / 1e6).toLocaleString()}
+                        </Box>
+                        <Box
+                          sx={{
+                            fontFamily: 'Roboto',
+                            fontWeight: 500,
+                            fontSize: '13px',
+                            lineHeight: '15px',
+                            color: '#B5B5C3',
+                          }}>
+                          Update_at
+                        </Box>
+                      </Stack>
+                    </Stack>
+                    <Stack direction="column" spacing={2} width="100px">
+                      <ShowNodeButton form={item}></ShowNodeButton>
+                      <UpdataButton form={item}></UpdataButton>
+                      <Button variant="outlined" onClick={() => toPodcastDetail(Number(item[0]))}>
+                        View
+                      </Button>
                     </Stack>
                   </Stack>
-                  <Stack direction={'row'} justifyContent="space-between" alignItems="center" paddingY={'15px'}>
-                    <Box
-                      sx={{
-                        fontFamily: 'Roboto',
-                        fontWeight: 700,
-                        fontSize: '14px',
-                        color: '#5E6278',
-                        paddingRight: '10px',
-                      }}>
-                      {new Date(Number(item[1].update_at || 0)).toLocaleString()}
-                    </Box>
-                    <Box
-                      sx={{
-                        fontFamily: 'Roboto',
-                        fontWeight: 500,
-                        fontSize: '13px',
-                        lineHeight: '15px',
-                        color: '#B5B5C3',
-                      }}>
-                      Update_at
-                    </Box>
-                  </Stack>
-                </Stack>
-                <Stack direction="column" spacing={2} width="100px">
-                  <ShowNodeButton form={item}></ShowNodeButton>
-                  <UpdataButton form={item}></UpdataButton>
-                  <Button variant="outlined" onClick={() => toPodcastDetail(Number(item[0]))}>
-                    View
-                  </Button>
-                </Stack>
-              </Stack>
-            </Card>
-          </Grid>
-        );
-      })}
+                </Card>
+              </Grid>
+            );
+          })
+        : null}
     </Box>
   );
 }

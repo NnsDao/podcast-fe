@@ -1,16 +1,28 @@
-import { useUpdate_podcast } from '@/api/podcast';
+import { useGet_owner, useUpdate_podcast } from '@/api/podcast';
 import Upload from '@/components/Upload';
 import { useUserStore } from '@/hooks/userStore';
 import { Principal } from '@dfinity/principal';
-import { Button, Chip, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
-import { Stack } from '@mui/system';
+import {
+  Button,
+  Checkbox,
+  Chip,
+  FormControl,
+  InputLabel,
+  ListItemText,
+  MenuItem,
+  OutlinedInput,
+  Select,
+  TextField,
+  Typography,
+} from '@mui/material';
+import { Box, Stack } from '@mui/system';
 import React from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export default function Fragment(props) {
   return (
-    <Stack width={'500px'} paddingX="30px">
+    <Stack width={'600px'} paddingX="30px">
       <Stack sx={{ paddingY: '20px', fontSize: '20px', fontWeight: 900 }}>
         {'Fill out the form to create a podcast'}
       </Stack>
@@ -18,6 +30,16 @@ export default function Fragment(props) {
     </Stack>
   );
 }
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
 function ActiveContent(props) {
   const { principal } = useParams();
 
@@ -25,7 +47,7 @@ function ActiveContent(props) {
   const navigator = useNavigate();
   const [userStore, dispatch] = useUserStore();
   const principalId = userStore.principalId;
-  console.log(props, 'props');
+  const OwnerList = useGet_owner(principal as string);
 
   const [form, setFormField] = React.useReducer(
     (state, { key, value }) => {
@@ -39,6 +61,17 @@ function ActiveContent(props) {
     }
   );
 
+  const handleChange = e => {
+    const value = e.target.value;
+
+    // setPersonName(
+    //   // On autofill we get a stringified value.
+    //   typeof value === 'string' ? value.split(',') : value,
+    // );
+    // let newList = form.guests;
+    // e.target.value = '';
+    setFormField({ key: 'guests', value: value });
+  };
   return (
     <React.Fragment>
       <Stack spacing={2} justifyContent={'center'} alignItems={'center'}>
@@ -89,6 +122,33 @@ function ActiveContent(props) {
           })}
         </Stack>
 
+        <Stack>
+          <InputLabel id="demo-multiple-checkbox-label">Guests</InputLabel>
+          <Select
+            labelId="demo-multiple-checkbox-label"
+            id="demo-multiple-checkbox"
+            multiple
+            fullWidth
+            value={form?.guests}
+            onChange={handleChange}
+            MenuProps={MenuProps}
+            input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+            renderValue={selected => (
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                {selected.map(item => (
+                  <Chip key={item.toString()} label={item.toString()} />
+                ))}
+              </Box>
+            )}>
+            {OwnerList?.data?.map(item => (
+              <MenuItem key={item.toString()} value={item.toString()}>
+                <Checkbox checked={form?.guests?.toString().indexOf(item.toString()) > -1} />
+                <ListItemText primary={item.toString()} />
+              </MenuItem>
+            ))}
+          </Select>
+        </Stack>
+        {/* 
         <TextField
           required
           variant="standard"
@@ -112,7 +172,7 @@ function ActiveContent(props) {
                 onDelete={() => deleteGuestsLabel(guests)}></Chip>
             );
           })}
-        </Stack>
+        </Stack> */}
 
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Language</InputLabel>
@@ -158,6 +218,13 @@ function ActiveContent(props) {
       </Stack>
     </React.Fragment>
   );
+  function labelTemp(e) {
+    if (typeof e == 'string') {
+      return e;
+    } else {
+      return;
+    }
+  }
 
   function checkField(key, value) {
     if (!value || !value?.length) {
@@ -206,11 +273,7 @@ function ActiveContent(props) {
   function onGuestsChange(e) {
     const value = e.target.value;
     let newList = form.guests.concat(value?.split(/\s+/).filter(val => val));
-    if (newList.length > 3) {
-      toast.error('No more then 3 Guests!');
-      newList = newList.slice(0, 3);
-    }
-    e.target.value = '';
+
     setFormField({ key: 'guests', value: newList });
   }
   function deleteGuestsLabel(guests) {
@@ -222,7 +285,11 @@ function ActiveContent(props) {
     if (form.guests.length > 0) {
       const { guests } = form;
       temp = guests.map(item => {
-        return Principal.fromText(item);
+        if (!item._isPrincipal) {
+          return Principal.fromText(item);
+        } else {
+          return item;
+        }
       });
       console.log(guests);
     }
@@ -241,7 +308,6 @@ function ActiveContent(props) {
       const arg_0 = props.form[0];
       const arg_1 = { ...params };
       console.log(arg_0, arg_1);
-
       //@ts-ignore
       const data = await updateAction.mutateAsync({ arg_0, arg_1 });
       console.log(data);
