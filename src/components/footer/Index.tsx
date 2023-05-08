@@ -13,7 +13,8 @@ export default function Footer() {
       width={'100%'}
       sx={{
         fontSize: '16px',
-        color: '#DDECFF',
+        color: '#fff',
+        background: '#11062f',
       }}>
       <Stack>
         <img src={footer1} alt="" width={'125px'} />

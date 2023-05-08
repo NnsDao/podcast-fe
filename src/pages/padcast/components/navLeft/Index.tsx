@@ -17,6 +17,7 @@ export default function NavLeft() {
   const [selected, setSelected] = React.useState(() => {
     return config.find(item => new RegExp(item.labelText, 'i').test(pathname))?.nodeId || '1';
   });
+
   const toChildren = item => {
     if (/issue/i.test(item.labelText)) {
       return toast('Under Development!', {
@@ -26,7 +27,7 @@ export default function NavLeft() {
     navigate(`${item.labelText}`);
   };
   return (
-    <Paper sx={{ position: 'fixed', background: '#f9f9f6', padding: '18px', height: '100vh', width: '240px' }}>
+    <Paper sx={{ position: 'fixed', background: '#f9f9f6', padding: '18px', height: '170vh', width: '240px' }}>
       <TreeView
         selected={selected}
         onNodeSelect={(e, id) => setSelected(id)}

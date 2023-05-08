@@ -77,7 +77,7 @@ export default function Home() {
       <Stack direction={'row'} justifyContent="space-between" alignItems={'center'} className="py-8  items-center">
         <Stack sx={{ fontWeight: '900', fontSize: '22px' }}>Home</Stack>
         <Button variant="outlined" color="secondary" onClick={() => handleClickOpen()}>
-          + New site
+          + New Podcasts
         </Button>
       </Stack>
       <Divider variant="middle" sx={{ marginY: '30px' }} />

@@ -1,10 +1,13 @@
-import { Stack } from '@mui/system';
-
+import { useGet_podcast_list } from '@/api/podcast';
+import cidList from '@/common/cidConfig';
 import EpisodeCard from '@/components/episodeCard/Index';
 import bgRecent from '@/public/episodes/bgRecent.png';
+import { Stack } from '@mui/system';
 
 export default function Recent() {
-  const data = [];
+  const podcastData = cidList.map(data => useGet_podcast_list(data.cid as string));
+  console.log('debug', podcastData);
+
   return (
     <Stack direction={'row'} justifyContent="center" alignItems={'center'} bgcolor="#10062F" position="relative">
       <img src={bgRecent} alt="" width={'100%'} height={'1900px'} />
@@ -39,11 +42,6 @@ export default function Recent() {
           Available on your favorite platform
         </Stack>
         <Stack direction={'row'} width="100%" flexWrap="wrap" justifyContent="center">
-          <EpisodeCard></EpisodeCard>
-          <EpisodeCard></EpisodeCard>
-          <EpisodeCard></EpisodeCard>
-          <EpisodeCard></EpisodeCard>
-          <EpisodeCard></EpisodeCard>
           <EpisodeCard></EpisodeCard>
         </Stack>
       </Stack>

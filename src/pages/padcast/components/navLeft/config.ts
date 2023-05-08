@@ -7,8 +7,8 @@ import ProfileIcon from '@mui/icons-material/RecordVoiceOver';
 export const config = [
   // {
   //   labelType: 'text',
-  //   labelText: 'Information',
-  //   labelIcon: PasswordIcon,
+  //   labelText: 'manage',
+  //   labelIcon: ArrowBackIcon,
   //   labelInfo: '',
   //   color: '#3c8039',
   //   bgColor: '#e6f4ea',

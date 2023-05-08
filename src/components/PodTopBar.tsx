@@ -5,8 +5,8 @@ import { Box, Button, ButtonBase, Stack } from '@mui/material';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import LoginWrapper from './Login/Login';
-export default function TopBar() {
-  const nav = ['Episodes', 'Discover', 'Features', 'About'];
+export default function PodTopBar() {
+  const nav = ['Episodes', 'Discover'];
   let { pathname } = useLocation();
   const navigate = useNavigate();
   const [isShowDialog, setIsShowDialog] = useState(false);
@@ -29,7 +29,6 @@ export default function TopBar() {
       <Stack direction={'row'} alignItems={'center'}>
         <Stack direction={'column'} alignItems={'center'} paddingTop="24px" paddingBottom="10px" paddingRight="100px">
           <a href="/">
-            {' '}
             <img src={logo} alt="looncast" width={75} />
           </a>
         </Stack>
