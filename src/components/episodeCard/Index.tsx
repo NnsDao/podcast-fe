@@ -1,29 +1,30 @@
-import software from '@/public/episodes/software.jpg';
 import { Avatar } from '@mui/material';
 import { Stack } from '@mui/system';
 import Style from './index.module.css';
 
-export default function EpisodeCard() {
+export default function EpisodeCard(props) {
+  console.log(props.data);
+
   return (
     <Stack className={Style.recentWrapper1} direction="column">
       <Stack className={Style.recentWrapper1shadow}></Stack>
       <Stack className={Style.recentWrapper1Above}>
         <Stack direction={'row'}>
-          <img src={software} alt="" />
+          <img src={props?.data[1]?.cover_image} alt="cover_image" />
           <Stack direction="column">
-            <Stack className={Style.recentWrapper1Title}>Eps. 1</Stack>
-            <Stack className={Style.recentWrapper1Info}>Pandemic Becoming Endemic</Stack>
+            <Stack className={Style.recentWrapper1Title}>{props?.data[1]?.title}</Stack>
+            <Stack className={Style.recentWrapper1Info}>{props?.data[1]?.sub_title}</Stack>
             <Stack className={Style.recentWrapper1Line}></Stack>
-            <Stack className={Style.recentWrapper1Other}>
-              Colleen and Michele talk about their hopes and plans for 2023,
-              <br /> and make an announcement about this show.{' '}
-            </Stack>
+            <Stack className={Style.recentWrapper1Other}>{props?.data[1]?.describe}</Stack>
           </Stack>
         </Stack>
         <Stack direction={'row'} justifyContent="space-between" alignContent={'center'} paddingTop="20px">
           <Stack direction={'row'}>
-            <Stack className={Style.recentWrapper1Tag}>covid-19</Stack>
-            <Stack className={Style.recentWrapper1Tag}>health</Stack>
+            {props?.data[1]?.tag.map((item, index) => (
+              <Stack key={index} className={Style.recentWrapper1Tag}>
+                {item}
+              </Stack>
+            ))}
           </Stack>
           <Stack direction={'row'} alignItems="center">
             <Stack className={Style.recentWrapper1Hosted}>Hosted by:</Stack>

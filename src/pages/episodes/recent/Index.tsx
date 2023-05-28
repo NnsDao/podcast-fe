@@ -60,7 +60,9 @@ export default function Recent() {
           Available on your favorite platform
         </Stack>
         <Stack direction={'row'} width="100%" flexWrap="wrap" justifyContent="center">
-          <EpisodeCard></EpisodeCard>
+          {podcastData.map(item => (
+            <EpisodeCard data={item} />
+          ))}
         </Stack>
       </Stack>
     </Stack>
