@@ -1,13 +1,31 @@
-import { useGet_podcast_list } from '@/api/podcast';
+import { get_podcast_list } from '@/api/podcast';
 import cidList from '@/common/cidConfig';
 import EpisodeCard from '@/components/episodeCard/Index';
 import bgRecent from '@/public/episodes/bgRecent.png';
 import { Stack } from '@mui/system';
+import { PodcastIterm } from '@nnsdao/nnsdao-kit/src/podcast/types';
+import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function Recent() {
-  const podcastData = cidList.map(data => useGet_podcast_list(data.cid as string));
-  console.log('debug', podcastData);
-
+  const [podcastData, setData] = useState<Array<[bigint, PodcastIterm]>>([]);
+  const loadData = async () => {
+    const toastID = toast.loading('Loading Data...');
+    const tokens = await (await Promise.all(cidList.map(config => get_podcast_list(config.cid)))).flat(1);
+    try {
+      if (tokens) {
+        toast.success('Successfully!');
+        setData(tokens);
+      }
+    } catch {
+      console.log('err');
+    } finally {
+      toast.dismiss(toastID);
+    }
+  };
+  useEffect(() => {
+    loadData();
+  }, []);
   return (
     <Stack direction={'row'} justifyContent="center" alignItems={'center'} bgcolor="#10062F" position="relative">
       <img src={bgRecent} alt="" width={'100%'} height={'1900px'} />

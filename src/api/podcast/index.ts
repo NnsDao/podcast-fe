@@ -125,7 +125,7 @@ export const get_podcast_base_info = async (cid: string) => {
 export const get_podcast_list = async (cid: string) => {
   const actor = await getPodcastActor(cid, true);
   const res = await actor.get_podcast_list();
-  console.log('get_podcast_list', res);
+  // console.log('get_podcast_list', res);
   if (res) {
     return res;
   }

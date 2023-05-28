@@ -1,6 +1,6 @@
 const cidList = [
   {
-    cid: '54kez-yaaaa-aaaah-ab4ma-cai3',
+    cid: '54kez-yaaaa-aaaah-ab4ma-cai',
     name: 'ictest',
   },
   {
