@@ -68,10 +68,10 @@ export default function Article() {
           <Stack className={Style.articleItemline}></Stack>
           <Stack direction={'row'} justifyContent="space-between" alignContent={'center'} paddingTop="20px">
             <Stack direction={'row'}>
-              <Stack className={Style.recentWrapper1Tag}>covid-19</Stack>
-              <Stack className={Style.recentWrapper1Tag}>health</Stack>
+              <Stack className={Style.recentWrapper1Tag}>Guide</Stack>
+              <Stack className={Style.recentWrapper1Tag}>Claim</Stack>
             </Stack>
-            <Stack className={Style.data}>Sep 14, 2021</Stack>
+            <Stack className={Style.data}>May 14, 2023</Stack>
           </Stack>
         </Stack>
         <Stack className={Style.articleItemWrapper2}>
@@ -88,10 +88,10 @@ export default function Article() {
           <Stack className={Style.articleItemline}></Stack>
           <Stack direction={'row'} justifyContent="space-between" alignContent={'center'} paddingTop="20px">
             <Stack direction={'row'}>
-              <Stack className={Style.recentWrapper1Tag}>covid-19</Stack>
-              <Stack className={Style.recentWrapper1Tag}>health</Stack>
+              <Stack className={Style.recentWrapper1Tag}>Mora</Stack>
+              <Stack className={Style.recentWrapper1Tag}>Podcast</Stack>
             </Stack>
-            <Stack className={Style.data}>Sep 14, 2021</Stack>
+            <Stack className={Style.data}>June 14, 2023</Stack>
           </Stack>
         </Stack>
       </Stack>

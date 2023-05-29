@@ -6,6 +6,7 @@ import Home from '@/pages/manage/home/Index';
 import { default as Manage } from '@/pages/manage/Index';
 import Invoices from '@/pages/manage/invoices/Index';
 import Site from '@/pages/manage/site/Index';
+import Token from '@/pages/manage/tokens/Index';
 import More from '@/pages/more/Index';
 import Account from '@/pages/padcast/account/Index';
 import Podcast from '@/pages/padcast/Index';
@@ -15,7 +16,7 @@ import Opus from '@/pages/padcast/opus/Index';
 import Profile from '@/pages/padcast/profile/Index';
 import Status from '@/pages/padcast/status/Index';
 import PodcastDetail from '@/pages/podcastDetail/Index';
-import { Password, Token } from '@mui/icons-material';
+
 import React from 'react';
 import { RouteObject, useRoutes } from 'react-router-dom';
 const routes: RouteObject[] = [
@@ -56,7 +57,7 @@ const routes: RouteObject[] = [
       { path: 'My Sites', element: <Site /> },
       { path: 'Billing', element: <Billing /> },
       { path: 'Invoices', element: <Invoices /> },
-      { path: 'Password', element: <Password /> },
+      // { path: 'Password', element: <Password /> },
       { path: 'Tokens', element: <Token /> },
     ],
   },

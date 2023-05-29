@@ -50,7 +50,7 @@ export default function Recent() {
         <Stack
           sx={{
             paddingTop: '40px',
-            paddingBottom: '100px',
+            paddingBottom: '50px',
             fontSize: '24px',
             fontFamily: 'Arial-Black',
             fontWeight: '900',
@@ -60,7 +60,7 @@ export default function Recent() {
           }}>
           Available on your favorite platform
         </Stack>
-        <Stack direction={'row'} width="100%" flexWrap="wrap" justifyContent="center">
+        <Stack direction={'row'} width="100%" height={'600px'} flexWrap="wrap" justifyContent="center">
           {podcastData.map(item => (
             <EpisodeCard data={item} />
           ))}

@@ -1,4 +1,8 @@
-import style from './index.module.css';
+import { Stack } from '@mui/material';
 export default function Password() {
-  return <div className={style.accountWrapper}>Password</div>;
+  return (
+    <Stack className="full" sx={{ width: '100%' }}>
+      password
+    </Stack>
+  );
 }

@@ -20,7 +20,6 @@ import { useParams } from 'react-router-dom';
 import Style from './index.module.css';
 export default function Cast() {
   const { principal, index } = useParams();
-  console.log(principal, 29292929);
 
   const [count, setCount] = useState(0);
   const podcastData: Array<[bigint, PodcastIterm]> =
