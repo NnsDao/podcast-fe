@@ -125,10 +125,14 @@ export const get_podcast_base_info = async (cid: string) => {
 export const get_podcast_list = async (cid: string) => {
   const actor = await getPodcastActor(cid, true);
   const res = await actor.get_podcast_list();
-  // console.log('get_podcast_list', res);
+  console.log('get_podcast_list', res);
   if (res) {
+    for (let j = 0; j < res.length; j++) {
+      res[j]['cid'] = cid;
+    }
     return res;
   }
+
   return Promise.reject(null);
 };
 export const get_social_link = async (cid: string) => {

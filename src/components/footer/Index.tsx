@@ -1,5 +1,8 @@
+import applePodcast from '@/public/footer/apple-podcast.svg';
 import footer1 from '@/public/footer/footer1.png';
-import footer2 from '@/public/footer/footer2.png';
+import googlePodcast from '@/public/footer/google-podcast.svg';
+import overcast from '@/public/footer/overcast.svg';
+import spotify from '@/public/footer/spotify.svg';
 import Link from '@mui/material/Link';
 import { Stack } from '@mui/system';
 export default function Footer() {
@@ -21,6 +24,8 @@ export default function Footer() {
         <Stack paddingTop={'33px'}>
           The Decentralization Podcasts Protocol
           <br /> & Ep NFT for Creators.
+          <br />
+          ©️ Looncast 2023
         </Stack>
       </Stack>
       <Stack direction={'row'} spacing={15}>
@@ -51,13 +56,18 @@ export default function Footer() {
               Twitter
             </Link>
           </Stack>
-          {/* <Stack paddingY="45px">Pricing</Stack> */}
+          {/* <Stack paddingY="35px">Pricing</Stack> */}
           {/* <Stack>Blog</Stack> */}
         </Stack>
       </Stack>
       <Stack>
         <Stack paddingBottom={'30px'}>Listen to episodes on your favorite platform:</Stack>
-        <img src={footer2} alt="" width={'558px'} height={'50px'} />
+        <Stack direction={'row'} alignItems={'center'} spacing={2}>
+          <img src={googlePodcast} alt="" width={'35px'} height={'35px'} />
+          <img src={applePodcast} alt="" width={'35px'} height={'35px'} />
+          <img src={overcast} alt="" width={'35px'} height={'35px'} />
+          <img src={spotify} alt="" width={'35px'} height={'35px'} />
+        </Stack>
       </Stack>
     </Stack>
   );

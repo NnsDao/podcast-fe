@@ -1,59 +1,36 @@
+import { get_podcast_list } from '@/api/podcast';
+import cidList from '@/common/cidConfig';
+import EpisodeCard from '@/components/episodeCard/Index';
 import { Stack } from '@mui/system';
-import Style from './index.module.css';
+import { PodcastIterm } from '@nnsdao/nnsdao-kit/src/podcast/types';
+import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function All() {
+  const [podcastData, setData] = useState<Array<[bigint, PodcastIterm]>>([]);
+  const loadData = async () => {
+    const toastID = toast.loading('Loading Data...');
+    const tokens = await (await Promise.all(cidList.map(config => get_podcast_list(config.cid)))).flat(1);
+    try {
+      if (tokens) {
+        // toast.success('Successfully!');
+        setData(tokens.slice(0, 9));
+      }
+    } catch {
+      console.log('err');
+    } finally {
+      toast.dismiss(toastID);
+    }
+  };
+  useEffect(() => {
+    loadData();
+  }, []);
+
   return (
-    <Stack>
-      <Stack
-        direction={'row'}
-        justifyContent="space-around"
-        alignItems={'center'}
-        spacing={2}
-        sx={{
-          width: '100%',
-          position: 'relative',
-        }}>
-        <Stack className={Style.articleItemWrapper}>
-          <Stack className={Style.img}>
-            <img src="" alt="" />
-          </Stack>
-          <Stack className={Style.articleItemTitle}>PODCAST</Stack>
-          <Stack className={Style.articleItemsubhead}>Setup your own podcast</Stack>
-          <Stack className={Style.articleIteminfo}>
-            Connect your ideas and export your stories, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            <br /> ut labore et dolore magna aliqua. Ut enim ad minimvel iam, quis nostrud exercitation ullamco
-            laboris...
-          </Stack>
-          <Stack className={Style.articleItemline}></Stack>
-          <Stack direction={'row'} justifyContent="space-between" alignContent={'center'} paddingTop="20px">
-            <Stack direction={'row'}>
-              <Stack className={Style.recentWrapper1Tag}>covid-19</Stack>
-              <Stack className={Style.recentWrapper1Tag}>health</Stack>
-            </Stack>
-            <Stack className={Style.data}>Sep 14, 2021</Stack>
-          </Stack>
-        </Stack>
-        <Stack className={Style.articleItemWrapper2}>
-          <Stack className={Style.img}>
-            <img src="" alt="" />
-          </Stack>
-          <Stack className={Style.articleItemTitle2}>TIPS & TRICK</Stack>
-          <Stack className={Style.articleItemsubhead2}>Looncast artwork </Stack>
-          <Stack className={Style.articleIteminfo}>
-            Connect your ideas and export your stories, consectetur adipiscing elit, sed do eiusmod tempor incididunt{' '}
-            <br />
-            ut labore et dolore magna aliqua. Ut enim ad minimvel iam, quis nostrud exercitation ullamco laboris...
-          </Stack>
-          <Stack className={Style.articleItemline}></Stack>
-          <Stack direction={'row'} justifyContent="space-between" alignContent={'center'} paddingTop="20px">
-            <Stack direction={'row'}>
-              <Stack className={Style.recentWrapper1Tag}>covid-19</Stack>
-              <Stack className={Style.recentWrapper1Tag}>health</Stack>
-            </Stack>
-            <Stack className={Style.data}>Sep 14, 2021</Stack>
-          </Stack>
-        </Stack>
-      </Stack>
+    <Stack direction={'row'} width="100%" flexWrap="wrap" margin="10px" justifyContent={'center'}>
+      {podcastData.map((item, index) => (
+        <EpisodeCard key={index} data={item} />
+      ))}
     </Stack>
   );
 }

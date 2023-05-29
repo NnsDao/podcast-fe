@@ -22,7 +22,7 @@ export default function History() {
           textAlign: 'center',
           paddingBottom: '117px',
         }}>
-        About and History
+        Our Visions
       </Stack>
       <Stack direction={'row'} justifyContent="center" spacing={10}>
         <Stack width={'643px'}>
@@ -43,7 +43,7 @@ export default function History() {
             Looncast focuses on infrastructure services, providing a decentralized storage hosting platform for
             creators, it provides a convenient BaaS application platform and NFTs marketplace, a multi-channel content
             platform, and RSS distribution, saving hosting costs and increasing revenue, such as encrypted ecological
-            advertising access and TOKEN economy.
+            advertising access and Token economy.
             <br /> <br /> web3 era Looncast uses the native nature of podcasting, allowing users to enjoy a more
             authentic experience.
           </Stack>

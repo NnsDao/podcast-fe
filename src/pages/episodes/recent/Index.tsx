@@ -12,10 +12,11 @@ export default function Recent() {
   const loadData = async () => {
     const toastID = toast.loading('Loading Data...');
     const tokens = await (await Promise.all(cidList.map(config => get_podcast_list(config.cid)))).flat(1);
+
     try {
       if (tokens) {
-        toast.success('Successfully!');
-        setData(tokens);
+        // toast.success('Successfully!');
+        setData(tokens.slice(0, 9));
       }
     } catch {
       console.log('err');

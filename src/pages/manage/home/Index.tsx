@@ -87,10 +87,10 @@ export default function Home() {
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description">
-        <DialogTitle id="alert-dialog-title">{'Instructions for creating a personal blog'}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{'Instructions for creating a podcast'}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Creating a personal blog requires a fee of 0.5 ICP for creating a new canister.
+            Creating a owner Podcasts requires a fee of 0.5 ICP for creating a new canister.
           </DialogContentText>
         </DialogContent>
         <DialogActions>

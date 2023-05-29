@@ -40,9 +40,9 @@ export default function Article() {
             color: '#FFFFFF',
             textAlign: 'center',
           }}>
-          Article <br />
+          Discover <br />
           <Stack direction={'row'} justifyContent="center" alignItems={'center'}>
-            and <span style={{ color: '#D74EE9' }}> &nbsp; News</span>
+            <span style={{ color: '#D74EE9' }}> &nbsp; Podcasts</span>
           </Stack>
         </Stack>
         <Stack

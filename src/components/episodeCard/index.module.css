@@ -15,6 +15,9 @@
   border: 2px solid #ffffff;
   z-index: 2;
 }
+.recentWrapper1Above img {
+  cursor: pointer;
+}
 .recentWrapper1 img,
 .recentWrapper3 img,
 .recentWrapper3 img {
@@ -22,6 +25,7 @@
   height: 215px;
   border-radius: 8px;
   margin-right: 23px;
+  cursor: pointer;
 }
 .recentWrapper1Title,
 .recentWrapper2Title,
@@ -30,6 +34,7 @@
   font-family: Arial-BoldMT, Arial;
   font-weight: normal;
   color: #ffffff;
+  cursor: pointer;
 }
 
 .recentWrapper1Info,
@@ -57,6 +62,10 @@
   font-family: ArialMT;
   color: #bbbbbb;
   margin-top: 30px;
+  overflow: hidden;
+  height: 140px;
+  text-overflow: ellipsis;
+  word-break: break-all;
 }
 .recentWrapper1Tag,
 .recentWrapper2Tag,

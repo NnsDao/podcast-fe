@@ -33,7 +33,7 @@ export default function Listeners() {
             lineHeight: '93px',
             textAlign: 'center',
           }}>
-          Article and News
+          Podcasts and Creator
         </Stack>
         <Stack
           sx={{

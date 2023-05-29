@@ -10,24 +10,29 @@ export default function Listeners() {
       author: 'louis chan',
       content:
         'The app is fantastic. it controls where your podcasts run while improving decentralization and reliability.',
+      icon: 'LC',
     },
     {
       author: 'masewang',
+      icon: 'MW',
       content:
         'A podcast platform that focuses on users and privacy, I see more real content and podcasters in the podcast.',
     },
     {
       author: 'IAB',
+      icon: 'IAB',
       content:
         'Most host-read and announcer-read ads are dynamically inserted, and advertisers get the best of both worlds with podcast ads, the authenticity of the message with the scalability/flexibility of automated buying.',
     },
     {
       author: 'Charles',
+      icon: 'C',
       content:
         'Use the podcast to listen to more realistic Web3 projects and proposals, and see more about the beginnings and ideas of entrepreneurs at Looncast.',
     },
     {
       author: 'eMarketer',
+      icon: 'EM',
       content:
         'Statistics show that 54 percent of podcast listeners are either somewhat or much more likely to consider buying from a brand after hearing its advertisement on a podcast (2019).',
     },
@@ -98,14 +103,9 @@ export default function Listeners() {
                   color: ' #10062F',
                   lineHeight: '33px',
                 }}>
-                <Stack>
-                  {itemSpeaker.content}
-                  {/* <br /> consectet piscing elit, sed do
-                  <br /> eiusmod tempor incidi ut labore et
-                  <br /> dolore magna aliqua. */}
-                </Stack>
+                <Stack>{itemSpeaker.content}</Stack>
                 <Stack direction={'row'} alignItems="center" paddingTop={'25px'}>
-                  <Avatar></Avatar>
+                  <Avatar>{itemSpeaker.icon}</Avatar>
 
                   <Stack sx={{ marginLeft: '20px', fontSize: '18px', fontWeight: '500' }}>{itemSpeaker.author},</Stack>
                 </Stack>

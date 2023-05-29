@@ -1,15 +1,20 @@
 import { Avatar } from '@mui/material';
 import { Stack } from '@mui/system';
+import { useNavigate } from 'react-router-dom';
+
 import Style from './index.module.css';
 
 export default function EpisodeCard(props) {
-  console.log(props.data);
+  const navigator = useNavigate();
+  const toPodcastDetail = index => {
+    navigator(`/podcastDetail/${props?.data['cid']}${index} `);
+  };
 
   return (
     <Stack className={Style.recentWrapper1} direction="column">
       <Stack className={Style.recentWrapper1shadow}></Stack>
       <Stack className={Style.recentWrapper1Above}>
-        <Stack direction={'row'}>
+        <Stack direction={'row'} onClick={() => toPodcastDetail(Number(props?.data[0]))}>
           <img src={props?.data[1]?.cover_image} alt="cover_image" />
           <Stack direction="column">
             <Stack className={Style.recentWrapper1Title}>{props?.data[1]?.title}</Stack>
@@ -29,8 +34,7 @@ export default function EpisodeCard(props) {
           <Stack direction={'row'} alignItems="center">
             <Stack className={Style.recentWrapper1Hosted}>Hosted by:</Stack>
             <Stack direction={'row'}>
-              <Avatar></Avatar>
-              <Avatar></Avatar>
+              <Avatar src={props?.data[1]?.cover_image} alt={props?.data[1]?.title} />
             </Stack>
           </Stack>
         </Stack>

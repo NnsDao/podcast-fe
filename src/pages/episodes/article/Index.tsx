@@ -27,7 +27,7 @@ export default function Article() {
             lineHeight: '93px',
             textAlign: 'center',
           }}>
-          Article and News
+          Podcasts and Ep
         </Stack>
         <Stack
           sx={{

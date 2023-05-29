@@ -7,10 +7,14 @@ import img5 from '@/public/episodes/img5.png';
 import img6 from '@/public/episodes/img6.png';
 import img7 from '@/public/episodes/img7.png';
 import img8 from '@/public/episodes/img8.png';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Avatar, Divider, Tooltip } from '@mui/material';
+import Button from '@mui/material/Button';
 import { Stack } from '@mui/system';
 import { PodcastIterm } from '@nnsdao/nnsdao-kit/src/podcast/types';
+import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Style from './index.module.css';
@@ -68,7 +72,7 @@ export default function Cast() {
           <img src={img3} className={Style.img3} alt="" />
           <img src={img4} className={Style.img4} alt="" />
         </Stack>
-        <Stack position="absolute" right={'154px'} top={'210px'}>
+        <Stack position="absolute" zIndex={1} right={'100px'} top={'210px'}>
           <img src={img5} className={Style.img5} alt="" />
           <img src={img6} className={Style.img6} alt="" />
           <img src={img7} className={Style.img7} alt="" />
@@ -88,20 +92,10 @@ export default function Cast() {
             }}>
             {podcastData[0]?.[1]?.title}
           </Stack>
-          <Divider variant="middle" sx={{ marginY: '30px', color: '#fff', borderColor: '#fff' }} />
-
-          <Stack
-            sx={{
-              fontSize: '28px',
-              fontFamily: ' Arial-BoldMT, Arial',
-              fontWeight: 'normal',
-              color: '#FFFFFF',
-              lineHeight: '38px',
-              minHeight: '180px',
-              overflow: 'hidden',
-            }}>
-            {podcastData[0]?.[1]?.describe}
+          <Stack direction={'row'} sx={{ color: '#fff' }}>
+            <CalendarMonthIcon /> {dayjs.unix(Number(podcastData[0]?.[1]?.create_at) / 1000).format('MMM-DD-YYYY')}
           </Stack>
+
           <Stack sx={{ marginY: '30px' }}>
             <Stack
               sx={{
@@ -134,7 +128,7 @@ export default function Cast() {
                     bgcolor: '#10062F',
                   },
                 }}>
-                <Avatar></Avatar>
+                <Avatar src={podcastData[0]?.[1]?.cover_image} />
                 <Stack>
                   <Stack
                     sx={{
@@ -167,6 +161,23 @@ export default function Cast() {
               </Stack>
             </Stack>
           </Stack>
+
+          <Divider variant="middle" sx={{ marginY: '30px', color: '#fff', borderColor: '#fff', opacity: 0.3 }} />
+
+          <Stack
+            sx={{
+              fontSize: '28px',
+              fontFamily: ' Arial-BoldMT, Arial',
+              fontWeight: 'normal',
+              color: '#FFFFFF',
+              lineHeight: '38px',
+              minHeight: '180px',
+              overflow: 'hidden',
+              zIndex: 9999,
+            }}>
+            {podcastData[0]?.[1]?.describe}
+          </Stack>
+
           <Stack direction={'row'} sx={{ color: '#fff', paddingBottom: '30px' }}>
             <Stack
               sx={{
@@ -179,9 +190,11 @@ export default function Cast() {
                 overflow: 'hidden',
               }}>
               Guests :
-              {podcastData[0]?.[1]?.guests?.map(item => {
-                return item.toText();
-              })}
+              {podcastData[0]?.[1]?.guests
+                ? podcastData[0]?.[1]?.guests?.map(item => {
+                    return item.toText();
+                  })
+                : 'not yet'}
             </Stack>
           </Stack>
           <Stack direction={'row'} sx={{ color: '#fff' }}>
@@ -189,6 +202,11 @@ export default function Cast() {
               <RemoveRedEyeIcon sx={{ marginRight: '10px' }}></RemoveRedEyeIcon>
             </Tooltip>
             {count}
+          </Stack>
+          <Stack direction={'row'} sx={{ color: '#fff', marginTop: '15px' }}>
+            <Button variant="contained" href={podcastData[0]?.[1]?.show_note}>
+              <FileDownloadIcon /> <span>Download Mp3 </span>
+            </Button>
           </Stack>
         </Stack>
       </Stack>

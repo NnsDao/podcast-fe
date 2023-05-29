@@ -1,6 +1,5 @@
 import Grid from '@mui/material/esm/Unstable_Grid2';
 import Cast from './cast/Index';
-import Founder from './founder/Index';
 import History from './history/Index';
 import Info from './info/Index';
 import OurListeners from './ourListeners/Index';
@@ -14,7 +13,7 @@ export default function About() {
       <Info></Info>
       <OurListeners></OurListeners>
       <History></History>
-      <Founder></Founder>
+      {/* <Founder></Founder> */}
       <OurSponsor></OurSponsor>
       <Touch></Touch>
     </Grid>

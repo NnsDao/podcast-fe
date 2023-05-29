@@ -1,4 +1,3 @@
-import EpisodeCard from '@/components/episodeCard/Index';
 import { Stack } from '@mui/system';
 
 export default function Founder() {
@@ -26,8 +25,8 @@ export default function Founder() {
         Founder and Main Host
       </Stack>
       <Stack direction={'row'} justifyContent="center" spacing={0}>
-        <EpisodeCard></EpisodeCard>
-        <EpisodeCard></EpisodeCard>
+        {/* <EpisodeCard></EpisodeCard>
+        <EpisodeCard></EpisodeCard> */}
       </Stack>
     </Stack>
   );

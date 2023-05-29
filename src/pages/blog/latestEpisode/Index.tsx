@@ -1,18 +1,9 @@
 import bg15 from '@/public/episodes/bg15.png';
-import listeners from '@/public/episodes/listeners.png';
-import { Divider } from '@mui/material';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
+import Divider from '@mui/material/Divider';
 import { Stack } from '@mui/system';
 import React from 'react';
+
 import All from './all/Index';
-import Business from './business/Index';
-import News from './news/Index';
-import Podcast from './podcast/Index';
-import Productivity from './productivity/Index';
-import Tips from './tips/Index';
 
 export default function LatestEpisode() {
   const [inputVal, setInputVal] = React.useState('');
@@ -23,66 +14,55 @@ export default function LatestEpisode() {
     setInputVal(e.currentTarget.value);
   };
   return (
-    <Stack
-      direction={'row'}
-      justifyContent="center"
-      alignItems={'center'}
-      bgcolor="#10062F"
-      position="relative"
-      minHeight="900px">
+    <Stack direction={'row'} width="100%" justifyContent="center" alignItems={'center'} bgcolor="#10062F">
       <Stack
         sx={{
           position: 'absolute',
           right: '351px',
-          top: '-20px',
+          top: '800px',
         }}>
-        <img src={bg15} alt="" width={'195px'} height={'186px'} />
+        <img src={bg15} alt="looncast" width={'195px'} height={'186px'} />
       </Stack>
-      <img src={listeners} alt="" width={'100%'} height="1100px" />
-      <Stack
-        justifyContent={'start'}
-        sx={{
-          width: '100%',
-          position: 'absolute',
-          top: '200px',
-        }}>
+      {/* <img src={listeners} alt="looncast" width={'100%'} /> */}
+      <Stack direction={'column'}>
         <Stack
           sx={{
             fontSize: '80px',
             fontFamily: 'Trebuchet-BoldItalic',
-            color: '#10062F',
+            color: '#fff',
             lineHeight: '93px',
             textAlign: 'center',
+            marginBottom: '30px',
           }}>
           Latest Episode
         </Stack>
-        <Box sx={{ padding: '100px' }} ref={ref}>
-          <Paper sx={{}} elevation={3}>
-            <BottomNavigation
-              showLabels
-              value={value}
-              sx={{ background: '#DDECFF', display: 'flex', justifyContent: 'space-between' }}
-              onChange={(event, newValue) => {
-                setValue(newValue);
-              }}>
-              <BottomNavigationAction label="All" />
-              <BottomNavigationAction label="Business" />
-              <BottomNavigationAction label="News" />
-              <BottomNavigationAction label="Tips & Trick" />
-              <BottomNavigationAction label="Podcast" />
-              <BottomNavigationAction label="Productivity" />
-            </BottomNavigation>
-          </Paper>
-          <Divider sx={{ paddingY: '25px' }} />
-          <Stack sx={{ paddingY: '50px' }}>
-            <Stack>{value == 0 ? <All /> : null}</Stack>
-            <Stack>{value == 1 ? <Business /> : null}</Stack>
-            <Stack>{value == 2 ? <News /> : null}</Stack>
-            <Stack>{value == 3 ? <Tips /> : null}</Stack>
-            <Stack>{value == 4 ? <Podcast /> : null}</Stack>
-            <Stack>{value == 5 ? <Productivity /> : null}</Stack>
+        {/* <Paper sx={{ marginX: '100px', marginBottom: '30px' }} elevation={3}>
+          <BottomNavigation
+            showLabels
+            value={value}
+            sx={{ background: '#DDECFF', display: 'flex', justifyContent: 'space-between' }}
+            onChange={(event, newValue) => {
+              setValue(newValue);
+            }}>
+            <BottomNavigationAction label="All" />
+            <BottomNavigationAction label="Business" />
+            <BottomNavigationAction label="News" />
+            <BottomNavigationAction label="Tips & Trick" />
+            <BottomNavigationAction label="Podcast" />
+            <BottomNavigationAction label="Productivity" />
+          </BottomNavigation>
+        </Paper> */}
+        <Divider sx={{ marginX: '100px', marginY: '30px' }} />
+        <Stack>
+          <Stack direction={'row'}>
+            <All />
           </Stack>
-        </Box>
+          {/* <Stack>{value == 1 ? <Business /> : null}</Stack>
+          <Stack>{value == 2 ? <News /> : null}</Stack>
+          <Stack>{value == 3 ? <Tips /> : null}</Stack>
+          <Stack>{value == 4 ? <Podcast /> : null}</Stack>
+          <Stack>{value == 5 ? <Productivity /> : null}</Stack> */}
+        </Stack>
       </Stack>
     </Stack>
   );
