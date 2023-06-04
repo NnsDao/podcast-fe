@@ -387,6 +387,26 @@ export const useGet_podcast_list = (cid: string) => {
     }
   );
 };
+export const useGet_podcast_list_creator = (cid: string) => {
+  const queryClient = useQueryClient();
+  return useQuery(
+    podcast.get_podcast_list(cid),
+    async ({ queryKey }) => {
+      const actor = await getPodcastActor(cid, true);
+      const res = await actor.get_podcast_list();
+      console.log(res, 'get_podcast_list');
+      if (res) {
+        return res;
+      }
+      return Promise.reject(null);
+    },
+    {
+      onSuccess(data) {
+        queryClient.setQueryData(podcast.get_podcast_list(cid), data);
+      },
+    }
+  );
+};
 //1
 export const useGet_social_link = (cid: string) => {
   const queryClient = useQueryClient();

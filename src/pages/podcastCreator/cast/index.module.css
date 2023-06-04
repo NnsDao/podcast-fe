@@ -54,6 +54,30 @@
   left: -75px;
   top: 140px;
 }
-.MuiAvatar-img {
+.recentWrapper1Tag,
+.recentWrapper2Tag,
+.recentWrapper3Tag {
+  font-size: 16px;
+  font-family: ArialMT;
+  color: #ffffff;
+  line-height: 18px;
+  background: #10062f;
+  margin-right: 14px;
+}
+.recentWrapper1Hosted,
+.recentWrapper2Hosted,
+.recentWrapper3Hosted {
+  font-size: 16px;
+  font-family: Arial-Black, Arial;
+  font-weight: 900;
+  color: #ffffff;
+  margin-right: 14px;
+}
+
+.recentWrapper1Above img {
+  cursor: pointer;
+}
+
+.recentWrapper1Above .recentWrapperContent {
   cursor: pointer;
 }

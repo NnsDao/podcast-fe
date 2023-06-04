@@ -1,4 +1,4 @@
-# nnsdao-fe
+# podcast-fe
 
 ## Installation
 
@@ -22,6 +22,12 @@ nvm use && npm ci
 zsh script/deploy-prod.sh # prod canister
 
 zsh script/deploy-test.sh  # test canister
+```
+
+## build app
+
+```bash
+npm run tauri-build
 ```
 
 ## Command
