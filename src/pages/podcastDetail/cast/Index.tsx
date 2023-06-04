@@ -13,6 +13,8 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Avatar, Divider, Tooltip } from '@mui/material';
 import Button from '@mui/material/Button';
 import { Stack } from '@mui/system';
+import { useNavigate } from 'react-router-dom';
+
 import { PodcastIterm } from '@nnsdao/nnsdao-kit/src/podcast/types';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
@@ -34,6 +36,12 @@ export default function Cast() {
       const { count } = res.data;
       setCount(count);
     }
+  };
+
+  // to creator toPodcastCreator
+  const navigator = useNavigate();
+  const toPodcastCreator = principal => {
+    navigator(`/podcastCreator/${principal}`);
   };
 
   const postRecordPlay = async () => {
@@ -78,7 +86,12 @@ export default function Cast() {
           <img src={img8} className={Style.img8} alt="" />
         </Stack>
         <Stack paddingRight={'100px'}>
-          <img src={podcastData[0]?.[1]?.cover_image} alt="" width="445px" height="488px" />
+          <Avatar
+            alt="host page"
+            sx={{ cursor: 'pointer', width: '445px', height: '488px' }}
+            onClick={() => toPodcastCreator(principal)}
+            src={podcastData[0]?.[1]?.cover_image}
+          />
         </Stack>
         <Stack direction={'column'} width={'549px'}>
           <Stack
@@ -127,7 +140,12 @@ export default function Cast() {
                     bgcolor: '#10062F',
                   },
                 }}>
-                <Avatar src={podcastData[0]?.[1]?.cover_image} />
+                <Avatar
+                  sx={{ cursor: 'pointer' }}
+                  onClick={() => toPodcastCreator(principal)}
+                  src={podcastData[0]?.[1]?.cover_image}
+                />
+
                 <Stack>
                   <Stack
                     sx={{

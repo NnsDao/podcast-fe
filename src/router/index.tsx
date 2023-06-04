@@ -15,6 +15,7 @@ import Link from '@/pages/padcast/link/Index';
 import Opus from '@/pages/padcast/opus/Index';
 import Profile from '@/pages/padcast/profile/Index';
 import Status from '@/pages/padcast/status/Index';
+import PodcastCreator from '@/pages/podcastCreator/Index';
 import PodcastDetail from '@/pages/podcastDetail/Index';
 
 import React from 'react';
@@ -41,6 +42,10 @@ const routes: RouteObject[] = [
   {
     path: 'PodcastDetail/:principal:index',
     element: <PodcastDetail />,
+  },
+  {
+    path: 'PodcastCreator/:principal',
+    element: <PodcastCreator />,
   },
   {
     path: 'Features',

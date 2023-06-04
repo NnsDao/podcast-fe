@@ -34,7 +34,7 @@ export default function Article() {
       <Stack direction={'column'} justifyContent="center" alignItems={'center'}>
         <Stack
           sx={{
-            width: '812px',
+            width: '100%',
             fontSize: '106px',
             fontFamily: 'Trebuchet-BoldItalic',
             color: '#FFFFFF',
