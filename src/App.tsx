@@ -13,7 +13,7 @@ export default function App() {
   const { pathname } = useLocation();
 
   const isShow = () => {
-    if (pathname.includes('Podcast')) {
+    if (pathname.includes('Podcast') || pathname.includes('podcastCreator')) {
       return false;
     }
   };
