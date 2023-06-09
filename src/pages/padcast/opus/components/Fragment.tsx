@@ -81,7 +81,7 @@ function ActiveContent(props) {
         </Stack>
         <Stack alignItems={'center'}>
           <Upload src={form['show_note']} setSrc={val => setFormField({ key: 'show_note', value: val })}></Upload>
-          <Typography variant="h6">Podcast</Typography>
+          <Typography variant="h5">Episodes</Typography>
         </Stack>
         <TextField
           variant="standard"
@@ -207,6 +207,8 @@ function ActiveContent(props) {
           fullWidth
           id="describe"
           label="Describe"
+          rows={4}
+          multiline
           key="describe"
           placeholder="describe"
           value={form.describe}

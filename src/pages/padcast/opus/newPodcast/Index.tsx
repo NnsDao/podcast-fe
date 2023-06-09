@@ -50,14 +50,12 @@ export default function NewPodcast() {
       title: '',
       //@ts-ignore
       hosts: principalId ? [].push(Principal.fromText(principalId)) : [],
-      cover_image:
-        'https://storageapi.fleek.co/6c0adc4a-04ee-4662-907b-7ecff2fcc16c-bucket/147fc0647218540000000000?hash=bafybeigfo56yj67weic5gorkfzwcve3ykh37bimeq2zg7pzowmp6ocmltq',
+      cover_image: '',
       link: '',
       create_at: BigInt(new Date().getTime()),
       language: { English: null },
       update_at: BigInt(new Date().getTime()),
-      show_note:
-        'https://storageapi.fleek.co/6c0adc4a-04ee-4662-907b-7ecff2fcc16c-bucket/147fc0647218540000000000?hash=bafybeigfo56yj67weic5gorkfzwcve3ykh37bimeq2zg7pzowmp6ocmltq',
+      show_note: '',
       guests: [],
       sub_title: '',
     } as const
@@ -114,14 +112,12 @@ function ActiveContent(props) {
       describe: '',
       title: '',
       hosts: [Principal.fromText(principalId)],
-      cover_image:
-        'https://storageapi.fleek.co/6c0adc4a-04ee-4662-907b-7ecff2fcc16c-bucket/147fc0647218540000000000?hash=bafybeigfo56yj67weic5gorkfzwcve3ykh37bimeq2zg7pzowmp6ocmltq',
+      cover_image: '',
       link: '',
       create_at: BigInt(new Date().getTime()),
       language: { English: null },
       update_at: BigInt(new Date().getTime()),
-      show_note:
-        'https://storageapi.fleek.co/6c0adc4a-04ee-4662-907b-7ecff2fcc16c-bucket/147fc0647218540000000000?hash=bafybeigfo56yj67weic5gorkfzwcve3ykh37bimeq2zg7pzowmp6ocmltq',
+      show_note: '',
       guests: [],
       sub_title: '',
     } as const
@@ -130,14 +126,14 @@ function ActiveContent(props) {
   return (
     <React.Fragment>
       <Stack spacing={2} justifyContent={'center'} alignItems={'center'}>
-        <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'}>
-          <Stack paddingRight={'30px'}>
+        <Stack direction={'column'} alignItems={'center'}>
+          <Stack paddingBottom={'30px'}>
             <Upload src={form['cover_image']} setSrc={val => setFormField({ key: 'cover_image', value: val })}></Upload>
             <Typography variant="h6">Cover_image</Typography>
           </Stack>
           <Stack>
             <Upload src={form['show_note']} setSrc={val => setFormField({ key: 'show_note', value: val })}></Upload>
-            <Typography variant="h6">Podcast</Typography>
+            <Typography variant="h6">Episodes</Typography>
           </Stack>
         </Stack>
       </Stack>
@@ -227,6 +223,8 @@ function ActiveContent(props) {
           id="describe"
           label="Describe"
           key="describe"
+          rows={4}
+          multiline
           placeholder="describe"
           value={form.describe}
           onChange={e => changeForm('describe', e)}
