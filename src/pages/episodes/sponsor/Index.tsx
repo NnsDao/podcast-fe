@@ -170,8 +170,8 @@ export default function Sponsor() {
       <Stack
         sx={{
           position: 'absolute',
-          left: '113px',
-          bottom: '100px',
+          right: '113px',
+          bottom: '80px',
         }}>
         <img src={bgSponsor} alt="" width={'715px'} height={'519px'} />
       </Stack>
