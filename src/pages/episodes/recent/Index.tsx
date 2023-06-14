@@ -16,7 +16,7 @@ export default function Recent() {
     try {
       if (tokens) {
         // toast.success('Successfully!');
-        setData(tokens.slice(0, 9));
+        setData(tokens.slice(0, 6));
       }
     } catch {
       console.log('err');
