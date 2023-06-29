@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "vite --host",
-    "tauri": "tauri",
+    "tauri": "tauri dev",
     "tauri-build": "tauri build",
     "build": "tsc && vite build --mode prod",
     "build-test": "tsc && vite build --mode test",
@@ -13,6 +13,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@connect2ic/core": "^0.2.0-beta.5",
+    "@connect2ic/react": "^0.2.0-beta.5",
     "@dfinity/agent": "^0.14.1",
     "@dfinity/nns": "^0.8.1",
     "@dfinity/principal": "^0.14.1",
