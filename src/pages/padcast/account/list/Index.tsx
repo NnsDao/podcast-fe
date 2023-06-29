@@ -101,16 +101,32 @@ export default function List() {
       try {
         // console.log('confirm', params);
         const { AddOwner } = form;
-        console.log(
-          AddOwner,
-          'AddOwnerAddOwnerAddOwnerAddOwnerAddOwnerAddOwnerAddOwnerAddOwnerAddOwnerAddOwnerAddOwner'
-        );
-
         await addOwnerAction.mutateAsync(await Principal.fromText(AddOwner));
         toast.success('Successfully!');
       } catch (error) {
         console.error('err', error);
         toast.error('Failed create');
+      } finally {
+        toast.dismiss(toastID);
+      }
+    }
+
+    async function ChangeAdminAction() {
+      const toastID = toast.loading('Getting Change Owner...');
+      try {
+        // console.log('confirm', params);
+        const { ChangeOwner } = form;
+        console.log(ChangeOwner, 'ChangeOwner debug');
+
+        await changeAdminAction.mutateAsync(await Principal.fromText(ChangeOwner));
+        toast.success('Successfully!');
+      } catch (error) {
+        console.error('err', error);
+        if (error != null) {
+          toast.error('Failed create');
+        } else {
+          toast.success('Successfully!');
+        }
       } finally {
         toast.dismiss(toastID);
       }
@@ -137,6 +153,21 @@ export default function List() {
                 onChange={e => changeForm('AddOwner', e)}
               />
               <Button onClick={() => AddOwnerAction()}>Add Guests</Button>
+            </Stack>
+
+            <Stack p={{ sm: 1, lg: 2 }} spacing={{ sm: 1 }} justifyContent="center" alignItems={'center'}>
+              <TextField
+                fullWidth
+                variant="standard"
+                required
+                id="ChangeOwner"
+                label="Change Owner"
+                key="ChangeOwner"
+                placeholder="Change Owner"
+                value={form.AddOwner}
+                onChange={e => changeForm('ChangeOwner', e)}
+              />
+              <Button onClick={() => ChangeAdminAction()}>Change Owner</Button>
             </Stack>
           </Card>
         </Grid>

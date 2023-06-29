@@ -209,6 +209,7 @@ export const useChange_admin = (cid: string) => {
     },
   });
 };
+
 //1
 export const useCreate_base_info = (cid: string) => {
   const queryClient = useQueryClient();
@@ -468,5 +469,22 @@ export const useUpdate_podcast = (cid: string) => {
     // onSuccess(data, variables, context) {
     //   queryClient.setQueryData(podcast.get_podcast_list(cid), data);
     // },
+  });
+};
+
+export const useDeposit = (cid: string) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: params => {
+      const { arg_0, arg_1 } = params as any;
+      console.log(arg_0, arg_1, 1919191919);
+
+      return deposit(cid, arg_0, arg_1);
+    },
+    onSuccess(data, variables, context) {
+      //todo
+      const queryKey = podcast.get_admin(cid);
+      queryClient.setQueryData(queryKey, data);
+    },
   });
 };
