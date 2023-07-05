@@ -41,7 +41,7 @@ export default function LoginWrapper(props: Prop) {
             <div className={style.connectWallet}>Connect Wallet</div>
             <div className={style.loginStoic} onClick={() => loginWith('stoic')}>
               <img src={stoic} alt="stoic" />
-              <span>Stoic Identity2</span>
+              <span>Stoic Identity</span>
             </div>
             <div className={style.loginOutside}>
               <div className={style.loginPlug} onClick={() => loginWith('plug')}>

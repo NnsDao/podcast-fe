@@ -82,6 +82,26 @@ export const get_upgrade_podcast = async arg0 => {
   }
   return Promise.reject(null);
 };
+
+export const get_stop_podcast = async arg0 => {
+  const actor = await getPodcastManagerActor(true);
+  const res = await actor.canister_stop(arg0);
+  console.log('get_stop_podcast', res);
+  if ('Ok' in res) {
+    return res.Ok;
+  }
+  return Promise.reject(null);
+};
+
+export const get_start_podcast = async arg0 => {
+  const actor = await getPodcastManagerActor(true);
+  const res = await actor.canister_start(arg0);
+  console.log('get_start_podcast', res);
+  if ('Ok' in res) {
+    return res.Ok;
+  }
+  return Promise.reject(null);
+};
 /**
  *
  *  Hooks
@@ -193,6 +213,36 @@ export const useUpgrade_podcast = arg0 => {
   return useMutation({
     mutationFn: () => {
       return get_upgrade_podcast(arg0);
+    },
+    // onSuccess(data, variables, context) {
+    //   const queryKey = podcastManage.create_podcast_canister();
+    //   const res = queryClient.getQueryData(queryKey);
+    //   // @ts-ignore
+    //   queryClient.setQueryData(queryKey, res);
+    // },
+  });
+};
+
+export const useStart_podcast = arg0 => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: () => {
+      return get_start_podcast(arg0);
+    },
+    // onSuccess(data, variables, context) {
+    //   const queryKey = podcastManage.create_podcast_canister();
+    //   const res = queryClient.getQueryData(queryKey);
+    //   // @ts-ignore
+    //   queryClient.setQueryData(queryKey, res);
+    // },
+  });
+};
+
+export const useStop_podcast = arg0 => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: () => {
+      return get_stop_podcast(arg0);
     },
     // onSuccess(data, variables, context) {
     //   const queryKey = podcastManage.create_podcast_canister();

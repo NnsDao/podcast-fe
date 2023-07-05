@@ -1,4 +1,4 @@
-import { useUpgrade_podcast } from '@/api/manage';
+import { useStart_podcast, useStop_podcast, useUpgrade_podcast } from '@/api/manage';
 import { useDeposit } from '@/api/podcast';
 import { useUserStore } from '@/hooks/userStore';
 import { Principal } from '@dfinity/principal';
@@ -28,11 +28,15 @@ export default function Status() {
   const { cid } = useParams();
   const { principal } = useParams();
   const [open, setOpen] = useState(false);
+  const [openStart, setOpenStart] = useState(false);
+  const [openStop, setOpenStop] = useState(false);
   const [userStore, dispatch] = useUserStore();
   const isLogin = userStore.isLogin;
   const [isShowDialog, setIsShowDialog] = useState(false);
 
   const upgradePodcastAction = useUpgrade_podcast(Principal.fromText(principal as string));
+  const startPodcastAction = useStart_podcast(Principal.fromText(principal as string));
+  const stopPodcastAction = useStop_podcast(Principal.fromText(principal as string));
   const AddDepositAction = useDeposit(principal as string);
 
   const handleClickOpen = () => {
@@ -56,6 +60,68 @@ export default function Status() {
     try {
       //@ts-ignore
       const data = await upgradePodcastAction.mutateAsync();
+      console.log(data);
+      toast.success('Successfully!');
+    } catch (error) {
+      console.error('err', error);
+      toast.error('Failed create');
+    } finally {
+      toast.dismiss(toastID);
+    }
+  }
+
+  const handleClickOpenStart = () => {
+    setOpenStart(true);
+  };
+
+  const handleCloseStart = () => {
+    setOpenStart(false);
+  };
+
+  async function newUpgradeStart() {
+    handleCloseStart();
+    if (!isLogin) {
+      toast.error('Login first please!');
+      setIsShowDialog(true);
+      return;
+    }
+
+    const toastID = toast.loading('Start canister code...');
+
+    try {
+      //@ts-ignore
+      const data = await startPodcastAction.mutateAsync();
+      console.log(data);
+      toast.success('Successfully!');
+    } catch (error) {
+      console.error('err', error);
+      toast.error('Failed create');
+    } finally {
+      toast.dismiss(toastID);
+    }
+  }
+
+  const handleClickOpenStop = () => {
+    setOpenStop(true);
+  };
+
+  const handleCloseStop = () => {
+    setOpenStop(false);
+  };
+
+  async function newUpgradeStop() {
+    handleCloseStop();
+    if (!isLogin) {
+      toast.error('Login first please!');
+      setIsShowDialog(true);
+      return;
+    }
+
+    const toastID = toast.loading('Stop canister code...');
+
+    try {
+      //@ts-ignore
+      const data = await stopPodcastAction.mutateAsync();
       console.log(data);
       toast.success('Successfully!');
     } catch (error) {
@@ -95,7 +161,7 @@ export default function Status() {
           sx={{ fontWeight: '500', marginRight: '20px' }}
           variant="outlined"
           color="secondary"
-          onClick={() => handleClickOpen()}>
+          onClick={() => handleClickOpenStop()}>
           <StopIcon /> Stop Podcast
         </Button>
 
@@ -103,8 +169,8 @@ export default function Status() {
           sx={{ fontWeight: '500', marginRight: '20px' }}
           variant="outlined"
           color="secondary"
-          onClick={() => handleClickOpen()}>
-          <DeleteIcon /> Delete Podcast
+          onClick={() => handleClickOpenStart()}>
+          <DeleteIcon /> Start Podcast
         </Button>
 
         <Dialog
@@ -120,6 +186,40 @@ export default function Status() {
             <Button onClick={handleClose}>Disagree</Button>
             <Button onClick={newUpgrade} autoFocus>
               Agree Upgrade
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        <Dialog
+          open={openStop}
+          onClose={handleCloseStop}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description">
+          <DialogTitle id="alert-dialog-title">{'stop for new podcast'}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">stop maybe lost old data.</DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseStop}>Disagree</Button>
+            <Button onClick={newUpgradeStop} autoFocus>
+              Agree Stop
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        <Dialog
+          open={openStart}
+          onClose={handleCloseStart}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description">
+          <DialogTitle id="alert-dialog-title">{'start for new podcast'}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">start canister old data.</DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseStart}>Disagree</Button>
+            <Button onClick={newUpgradeStart} autoFocus>
+              Agree Start
             </Button>
           </DialogActions>
         </Dialog>
