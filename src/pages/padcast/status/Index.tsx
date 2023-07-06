@@ -1,4 +1,4 @@
-import { useStart_podcast, useStop_podcast, useUpgrade_podcast } from '@/api/manage';
+import { useCanisterSet, useStart_podcast, useStop_podcast, useUpgrade_podcast } from '@/api/manage';
 import { useDeposit } from '@/api/podcast';
 import { useUserStore } from '@/hooks/userStore';
 import { Principal } from '@dfinity/principal';
@@ -37,6 +37,7 @@ export default function Status() {
   const upgradePodcastAction = useUpgrade_podcast(Principal.fromText(principal as string));
   const startPodcastAction = useStart_podcast(Principal.fromText(principal as string));
   const stopPodcastAction = useStop_podcast(Principal.fromText(principal as string));
+  const useCanisterAction = useCanisterSet(Principal.fromText(principal as string));
   const AddDepositAction = useDeposit(principal as string);
 
   const handleClickOpen = () => {
@@ -142,6 +143,7 @@ export default function Status() {
       <Divider variant="middle" sx={{ marginY: '30px' }} />
 
       <AddCycle></AddCycle>
+      <AddThreshold></AddThreshold>
 
       <Grid container sm={12}>
         <List></List>
@@ -280,6 +282,91 @@ export default function Status() {
               onChange={e => changeForm('AddCycle', e)}
             />
             <Button onClick={() => AddCycleAction()}>deposit cycle</Button>
+          </Stack>
+        </Card>
+      </Grid>
+    );
+  }
+
+  function AddThreshold(props) {
+    function changeForm(key, e) {
+      console.log(key, e);
+      setFormField({ key, value: e.target.value });
+    }
+
+    const [form, setFormField] = useReducer(
+      (state, { key, value }) => {
+        return {
+          ...state,
+          [key]: value,
+        };
+      },
+      {
+        Guests: '',
+      }
+    );
+
+    async function AddThresholdAction() {
+      const toastID = toast.loading('setting canister Threshold Compute memory...');
+      try {
+        const { AddThreshold, AddCompute, AddMemory } = form;
+        //@ts-ignore
+        const data = await useCanisterAction.mutateAsync({
+          arg_0: BigInt(AddCompute),
+          arg_1: BigInt(AddMemory),
+          arg_2: BigInt(AddThreshold),
+        });
+        console.log(data);
+        toast.success('Successfully!');
+      } catch (error) {
+        console.error('err', error);
+        toast.error('Failed create');
+      } finally {
+        toast.dismiss(toastID);
+      }
+    }
+
+    return (
+      <Grid xs={11} sm={5} md={5}>
+        <Card elevation={1} sx={{ height: '100%' }}>
+          <Stack p={{ sm: 1, lg: 2 }} spacing={{ sm: 1 }} justifyContent="center" alignItems={'center'}>
+            <TextField
+              fullWidth
+              variant="standard"
+              required
+              id="AddCompute"
+              label="Add Compute"
+              key="AddCompute"
+              placeholder="0-100"
+              value={form.AddCompute}
+              onChange={e => changeForm('AddCompute', e)}
+            />
+
+            <TextField
+              fullWidth
+              variant="standard"
+              required
+              id="AddMemory"
+              label="Add Memory"
+              key="AddMemory"
+              placeholder="Default value: 0"
+              value={form.AddMemory}
+              onChange={e => changeForm('AddMemory', e)}
+            />
+
+            <TextField
+              fullWidth
+              variant="standard"
+              required
+              id="AddThreshold"
+              label="Add Threshold"
+              key="AddThreshold"
+              placeholder="Default value: 2592000 (approximately 30 days)."
+              value={form.AddThreshold}
+              onChange={e => changeForm('AddThreshold', e)}
+            />
+
+            <Button onClick={() => AddThresholdAction()}>set Threshold</Button>
           </Stack>
         </Card>
       </Grid>

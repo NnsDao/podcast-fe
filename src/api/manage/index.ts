@@ -1,3 +1,4 @@
+import { Principal } from '@dfinity/principal';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { getPodcastManagerActor } from '../../service';
 import { podcastManage } from './queries';
@@ -28,6 +29,17 @@ export const get_deposit = async (arg_0, arg_1) => {
   }
   return Promise.reject(null);
 };
+
+export const update_canister_set = async (cid, arg_0, arg_1, arg_2) => {
+  const actor = await getPodcastManagerActor(true);
+  const res = await actor.update_canister_set(cid, [arg_0], [arg_1], [arg_2]);
+  console.log('update_canister_set', res);
+  if (res) {
+    return res;
+  }
+  return Promise.reject(null);
+};
+
 export const get_address = async () => {
   const actor = await getPodcastManagerActor(true);
   const res = await actor.get_address();
@@ -130,6 +142,19 @@ export const useDeposit = (arg_0, arg_1) => {
     },
   });
 };
+
+export const useCanisterSet = (cid: Principal) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: params => {
+      const { arg_0, arg_1, arg_2 } = params as any;
+      console.log(arg_0, arg_1, 'debug');
+
+      return update_canister_set(cid, arg_0, arg_1, arg_2);
+    },
+  });
+};
+
 export const useAddress = () => {
   const queryClient = useQueryClient();
   return useMutation({

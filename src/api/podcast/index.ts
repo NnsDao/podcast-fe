@@ -77,6 +77,7 @@ export const deposit = async (cid: string, arg_0: Principal, arg_1: bigint) => {
   }
   return Promise.reject(null);
 };
+
 export const get_admin = async (cid: string) => {
   const actor = await getPodcastActor(cid, true);
   const res = await actor.get_admin();
@@ -477,7 +478,7 @@ export const useDeposit = (cid: string) => {
   return useMutation({
     mutationFn: params => {
       const { arg_0, arg_1 } = params as any;
-      console.log(arg_0, arg_1, 1919191919);
+      console.log(arg_0, arg_1, 'debug');
 
       return deposit(cid, arg_0, arg_1);
     },
