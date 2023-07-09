@@ -1,5 +1,12 @@
-import { useCanisterSet, useStart_podcast, useStop_podcast, useUpgrade_podcast } from '@/api/manage';
-import { useDeposit } from '@/api/podcast';
+import {
+  useCanisterSet,
+  useDeposit,
+  useInit_podcast,
+  useReinstall_podcast,
+  useStart_podcast,
+  useStop_podcast,
+  useUpgrade_podcast,
+} from '@/api/manage';
 import { useUserStore } from '@/hooks/userStore';
 import { Principal } from '@dfinity/principal';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -29,6 +36,8 @@ export default function Status() {
   const { principal } = useParams();
   const [open, setOpen] = useState(false);
   const [openStart, setOpenStart] = useState(false);
+  const [initPodcastStatus, setInitPodcast] = useState(false);
+  const [reinstallPodcastStatus, setReinstallPodcast] = useState(false);
   const [openStop, setOpenStop] = useState(false);
   const [userStore, dispatch] = useUserStore();
   const isLogin = userStore.isLogin;
@@ -36,9 +45,11 @@ export default function Status() {
 
   const upgradePodcastAction = useUpgrade_podcast(Principal.fromText(principal as string));
   const startPodcastAction = useStart_podcast(Principal.fromText(principal as string));
+  const initPodcastAction = useInit_podcast(Principal.fromText(principal as string));
+  const reinstallPodcastAction = useReinstall_podcast(Principal.fromText(principal as string));
   const stopPodcastAction = useStop_podcast(Principal.fromText(principal as string));
   const useCanisterAction = useCanisterSet(Principal.fromText(principal as string));
-  const AddDepositAction = useDeposit(principal as string);
+  const AddDepositAction = useDeposit(Principal.fromText(principal as string));
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -79,6 +90,22 @@ export default function Status() {
     setOpenStart(false);
   };
 
+  const handleClickInitPodcast = () => {
+    setInitPodcast(true);
+  };
+
+  const handleCloseInitPodcast = () => {
+    setInitPodcast(false);
+  };
+
+  const handleClickReinstallPodcast = () => {
+    setReinstallPodcast(true);
+  };
+
+  const handleCloseReinstallPodcast = () => {
+    setReinstallPodcast(false);
+  };
+
   async function newUpgradeStart() {
     handleCloseStart();
     if (!isLogin) {
@@ -92,6 +119,52 @@ export default function Status() {
     try {
       //@ts-ignore
       const data = await startPodcastAction.mutateAsync();
+      console.log(data);
+      toast.success('Successfully!');
+    } catch (error) {
+      console.error('err', error);
+      toast.error('Failed create');
+    } finally {
+      toast.dismiss(toastID);
+    }
+  }
+
+  async function initPodcastCanister() {
+    handleCloseInitPodcast();
+    if (!isLogin) {
+      toast.error('Login first please!');
+      setIsShowDialog(true);
+      return;
+    }
+
+    const toastID = toast.loading('init canister code...');
+
+    try {
+      //@ts-ignore
+      const data = await initPodcastAction.mutateAsync();
+      console.log(data);
+      toast.success('Successfully!');
+    } catch (error) {
+      console.error('err', error);
+      toast.error('Failed create');
+    } finally {
+      toast.dismiss(toastID);
+    }
+  }
+
+  async function reinstallPodcastCanister() {
+    handleCloseReinstallPodcast();
+    if (!isLogin) {
+      toast.error('Login first please!');
+      setIsShowDialog(true);
+      return;
+    }
+
+    const toastID = toast.loading('reinstall canister code...');
+
+    try {
+      //@ts-ignore
+      const data = await reinstallPodcastAction.mutateAsync();
       console.log(data);
       toast.success('Successfully!');
     } catch (error) {
@@ -175,6 +248,22 @@ export default function Status() {
           <DeleteIcon /> Start Podcast
         </Button>
 
+        <Button
+          sx={{ fontWeight: '500', marginRight: '20px' }}
+          variant="outlined"
+          color="secondary"
+          onClick={() => handleClickInitPodcast()}>
+          <DeleteIcon /> Init Podcast
+        </Button>
+
+        <Button
+          sx={{ fontWeight: '500', marginRight: '20px' }}
+          variant="outlined"
+          color="secondary"
+          onClick={() => handleClickReinstallPodcast()}>
+          <DeleteIcon /> reinstall Podcast
+        </Button>
+
         <Dialog
           open={open}
           onClose={handleClose}
@@ -225,6 +314,40 @@ export default function Status() {
             </Button>
           </DialogActions>
         </Dialog>
+
+        <Dialog
+          open={initPodcastStatus}
+          onClose={handleCloseInitPodcast}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description">
+          <DialogTitle id="alert-dialog-title">{'init a new podcast'}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">init new canister.</DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseInitPodcast}>Disagree</Button>
+            <Button onClick={initPodcastCanister} autoFocus>
+              Agree Init
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        <Dialog
+          open={reinstallPodcastStatus}
+          onClose={handleCloseReinstallPodcast}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description">
+          <DialogTitle id="alert-dialog-title">{'reinstall podcast'}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">init new canister.</DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseReinstallPodcast}>Disagree</Button>
+            <Button onClick={reinstallPodcastCanister} autoFocus>
+              Agree reinstall
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Stack>
     </Grid>
   );
@@ -253,7 +376,6 @@ export default function Status() {
         const { AddCycle } = form;
         //@ts-ignore
         const data = await AddDepositAction.mutateAsync({
-          arg_0: await Principal.fromText(principal as string),
           arg_1: BigInt(AddCycle),
         });
         console.log(data);
@@ -365,7 +487,6 @@ export default function Status() {
               value={form.AddThreshold}
               onChange={e => changeForm('AddThreshold', e)}
             />
-
             <Button onClick={() => AddThresholdAction()}>set Threshold</Button>
           </Stack>
         </Card>
