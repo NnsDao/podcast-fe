@@ -14,7 +14,7 @@ export default function All() {
     try {
       if (tokens) {
         // toast.success('Successfully!');
-        setData(tokens.slice(0, 9));
+        setData(tokens.slice(0, 20));
       }
     } catch {
       console.log('err');

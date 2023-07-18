@@ -1,3 +1,4 @@
+import { Principal } from '@dfinity/principal';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { getPodcastManagerActor } from '../../service';
 import { podcastManage } from './queries';
@@ -28,6 +29,17 @@ export const get_deposit = async (arg_0, arg_1) => {
   }
   return Promise.reject(null);
 };
+
+export const update_canister_set = async (cid, arg_0, arg_1, arg_2) => {
+  const actor = await getPodcastManagerActor(true);
+  const res = await actor.update_canister_set(cid, [arg_0], [arg_1], [arg_2]);
+  console.log('update_canister_set', res);
+  if (res) {
+    return res;
+  }
+  return Promise.reject(null);
+};
+
 export const get_address = async () => {
   const actor = await getPodcastManagerActor(true);
   const res = await actor.get_address();
@@ -82,6 +94,51 @@ export const get_upgrade_podcast = async arg0 => {
   }
   return Promise.reject(null);
 };
+
+export const get_stop_podcast = async arg0 => {
+  const actor = await getPodcastManagerActor(true);
+  const res = await actor.canister_stop(arg0);
+  console.log('get_stop_podcast', res);
+  if ('Ok' in res) {
+    return res.Ok;
+  }
+  return Promise.reject(null);
+};
+
+export const get_start_podcast = async arg0 => {
+  const actor = await getPodcastManagerActor(true);
+  const res = await actor.canister_start(arg0);
+  console.log('get_start_podcast', res);
+  if ('Ok' in res) {
+    return res.Ok;
+  }
+  return Promise.reject(null);
+};
+
+// get_init_podcast
+
+export const get_init_podcast = async arg0 => {
+  const actor = await getPodcastManagerActor(true);
+  const res = await actor.init_podcast(arg0);
+  console.log('get_init_podcast', res);
+  if ('Ok' in res) {
+    return res.Ok;
+  }
+  return Promise.reject(null);
+};
+
+// get_reinstall_podcast
+
+export const get_reinstall_podcast = async arg0 => {
+  const actor = await getPodcastManagerActor(true);
+  const res = await actor.reinstall_podcast(arg0);
+  console.log('get_reinstall_podcast', res);
+  if ('Ok' in res) {
+    return res.Ok;
+  }
+  return Promise.reject(null);
+};
+
 /**
  *
  *  Hooks
@@ -102,14 +159,32 @@ export const useCreate_podcast_canister = () => {
     // },
   });
 };
-export const useDeposit = (arg_0, arg_1) => {
+export const useDeposit = (cid: Principal) => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: params => {
+      const { arg_1 } = params as any;
+      return get_deposit(cid, arg_1);
+    },
+    // onSuccess(data, variables, context) {
+    //   queryClient.setQueryData(podcast.get_podcast_list(cid), data);
+    // },
+  });
+};
+
+export const useCanisterSet = (cid: Principal) => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: () => {
-      return get_deposit(arg_0, arg_1);
+    mutationFn: params => {
+      const { arg_0, arg_1, arg_2 } = params as any;
+      console.log(arg_0, arg_1, 'debug');
+
+      return update_canister_set(cid, arg_0, arg_1, arg_2);
     },
   });
 };
+
 export const useAddress = () => {
   const queryClient = useQueryClient();
   return useMutation({
@@ -193,6 +268,68 @@ export const useUpgrade_podcast = arg0 => {
   return useMutation({
     mutationFn: () => {
       return get_upgrade_podcast(arg0);
+    },
+    // onSuccess(data, variables, context) {
+    //   const queryKey = podcastManage.create_podcast_canister();
+    //   const res = queryClient.getQueryData(queryKey);
+    //   // @ts-ignore
+    //   queryClient.setQueryData(queryKey, res);
+    // },
+  });
+};
+
+export const useStart_podcast = arg0 => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: () => {
+      return get_start_podcast(arg0);
+    },
+    // onSuccess(data, variables, context) {
+    //   const queryKey = podcastManage.create_podcast_canister();
+    //   const res = queryClient.getQueryData(queryKey);
+    //   // @ts-ignore
+    //   queryClient.setQueryData(queryKey, res);
+    // },
+  });
+};
+
+export const useInit_podcast = arg0 => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: () => {
+      return get_init_podcast(arg0);
+    },
+    // onSuccess(data, variables, context) {
+    //   const queryKey = podcastManage.create_podcast_canister();
+    //   const res = queryClient.getQueryData(queryKey);
+    //   // @ts-ignore
+    //   queryClient.setQueryData(queryKey, res);
+    // },
+  });
+};
+
+//
+
+export const useReinstall_podcast = arg0 => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: () => {
+      return get_reinstall_podcast(arg0);
+    },
+    // onSuccess(data, variables, context) {
+    //   const queryKey = podcastManage.create_podcast_canister();
+    //   const res = queryClient.getQueryData(queryKey);
+    //   // @ts-ignore
+    //   queryClient.setQueryData(queryKey, res);
+    // },
+  });
+};
+
+export const useStop_podcast = arg0 => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: () => {
+      return get_stop_podcast(arg0);
     },
     // onSuccess(data, variables, context) {
     //   const queryKey = podcastManage.create_podcast_canister();

@@ -9,11 +9,45 @@
   },
   "package": {
     "productName": "ICpodcast",
-    "version": "0.1.0"
+    "version": "0.1.1"
   },
   "tauri": {
     "allowlist": {
-      "all": false
+      "all": false,
+      "globalShortcut": {
+        "all": true
+      },
+      "shell": {
+        "all": true
+      },
+      "fs": {
+        "all": false,
+        "readFile": true,
+        "writeFile": true,
+        "readDir": true,
+        "createDir": true,
+        "exists": true,
+        "removeFile": true,
+        "removeDir": true,
+        "scope": ["$HOME/.looncast/**", "$DOWNLOAD/**"]
+      },
+      "path": {
+        "all": true
+      },
+      "os": {
+        "all": true
+      },
+      "process": {
+        "all": true,
+        "exit": true,
+        "relaunch": true,
+        "relaunchDangerousAllowSymlinkMacos": true
+      }
+    },
+    "systemTray": {
+      "iconPath": "icons/app-icon.png",
+      "iconAsTemplate": true,
+      "menuOnLeftClick": false
     },
     "bundle": {
       "active": true,
@@ -25,7 +59,7 @@
       "externalBin": [],
       "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"],
       "identifier": "com.icpodcast.nns",
-      "longDescription": "",
+      "longDescription": "Create a Podcast, reach to web3.",
       "macOS": {
         "entitlements": null,
         "exceptionDomain": "",
@@ -39,11 +73,42 @@
       "windows": {
         "certificateThumbprint": null,
         "digestAlgorithm": "sha256",
-        "timestampUrl": ""
+        "timestampUrl": "",
+        "webviewInstallMode": {
+          "silent": true,
+          "type": "embedBootstrapper"
+        }
       }
     },
     "security": {
-      "csp": null
+      "csp": null,
+      "dangerousRemoteDomainIpcAccess": [
+        {
+          "windows": ["core", "main", "tray"],
+          "domain": "www.stoicwallet.com",
+          "enableTauriAPI": true
+        },
+        {
+          "windows": ["core", "main"],
+          "domain": "nns.ic0.app",
+          "enableTauriAPI": true
+        },
+        {
+          "windows": ["core", "main", "tray"],
+          "domain": "ic0.app",
+          "enableTauriAPI": true
+        },
+        {
+          "windows": ["core", "main", "tray"],
+          "domain": "stoicwallet.com",
+          "enableTauriAPI": true
+        },
+        {
+          "windows": ["chatgpt_sponsors", "app_website"],
+          "domain": "identity.ic0.app",
+          "enableTauriAPI": true
+        }
+      ]
     },
     "updater": {
       "active": false
@@ -54,7 +119,9 @@
         "height": 600,
         "resizable": true,
         "title": "create podcast, reach to web3.",
-        "width": 800
+        "width": 800,
+        "transparent": true,
+        "label": "main"
       }
     ]
   }

@@ -77,6 +77,7 @@ export const deposit = async (cid: string, arg_0: Principal, arg_1: bigint) => {
   }
   return Promise.reject(null);
 };
+
 export const get_admin = async (cid: string) => {
   const actor = await getPodcastActor(cid, true);
   const res = await actor.get_admin();
@@ -209,6 +210,7 @@ export const useChange_admin = (cid: string) => {
     },
   });
 };
+
 //1
 export const useCreate_base_info = (cid: string) => {
   const queryClient = useQueryClient();
@@ -468,5 +470,22 @@ export const useUpdate_podcast = (cid: string) => {
     // onSuccess(data, variables, context) {
     //   queryClient.setQueryData(podcast.get_podcast_list(cid), data);
     // },
+  });
+};
+
+export const useDeposit = (cid: string) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: params => {
+      const { arg_0, arg_1 } = params as any;
+      console.log(arg_0, arg_1, 'debug');
+
+      return deposit(cid, arg_0, arg_1);
+    },
+    onSuccess(data, variables, context) {
+      //todo
+      const queryKey = podcast.get_admin(cid);
+      queryClient.setQueryData(queryKey, data);
+    },
   });
 };

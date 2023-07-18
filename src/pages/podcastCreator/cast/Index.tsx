@@ -1,17 +1,21 @@
-import { get_podcast_list } from '@/api/podcast';
+import { get_podcast_list, get_social_link } from '@/api/podcast';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import RssFeedIcon from '@mui/icons-material/RssFeed';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import TwitterIcon from '@mui/icons-material/Twitter';
 import { Avatar, Divider, Typography } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import { Stack } from '@mui/system';
-import { PodcastIterm } from '@nnsdao/nnsdao-kit/src/podcast/types';
+import { PodcastIterm, SocialLink } from '@nnsdao/nnsdao-kit/src/podcast/types';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
-
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Style from './index.module.css';
 
 export default function Cast() {
@@ -22,14 +26,22 @@ export default function Cast() {
 
   const { principal } = useParams();
   const [podcastData, setData] = useState<Array<[bigint, PodcastIterm]>>([]);
+  const [podcastSocialData, setScoailData] = useState<Array<[SocialLink, any]>>([]);
+
+  console.log(podcastSocialData, 292929);
 
   const loadData = async () => {
     const toastID = toast.loading('Loading Data...');
     const creatorData = (await get_podcast_list(principal as string)) || [];
+    const subList = (await get_social_link(principal as string)) || [];
 
     try {
       if (creatorData) {
         setData(creatorData);
+      }
+      if (subList) {
+        //@ts-ignore
+        setScoailData(subList);
       }
     } catch {
       console.log('err');
@@ -54,8 +66,8 @@ export default function Cast() {
       bgcolor="#10062F"
       paddingBottom={'220px'}>
       <Stack direction={'row'} justifyContent="space-between" position="relative">
-        <Stack paddingRight={'100px'}>
-          <img src={podcastData[0]?.[1]?.cover_image} alt="" width="75px" height="75px" />
+        <Stack paddingRight={'50px'}>
+          <img src={podcastData[0]?.[1]?.cover_image} alt="" width="150px" height="150px" />
           <Typography
             variant="caption"
             overflow="hidden"
@@ -69,6 +81,47 @@ export default function Cast() {
             }}>
             {podcastData[0]?.[1]?.title}
           </Typography>
+          <Stack>
+            <Grid item xs={12} md={6} sx={{ color: '#fff' }}>
+              <Typography sx={{ mt: 4, mb: 2, color: '#fff' }} variant="h6" component="div">
+                SUBSCRIBE
+              </Typography>
+              <List>
+                <ListItem>
+                  <Link href={podcastSocialData['blog']}>
+                    <RssFeedIcon sx={{ color: '#4bb2fe', mr: 1 }} />
+                  </Link>
+                  <ListItemText primary="RSS" />
+                </ListItem>
+
+                <ListItem>
+                  <Link href={podcastSocialData['twitter']}>
+                    {' '}
+                    <TwitterIcon sx={{ color: '#4bb2fe', mr: 1 }} />{' '}
+                  </Link>
+                  <ListItemText primary="Twitter" />
+                </ListItem>
+                <ListItem>
+                  <Link href={podcastSocialData['github']}>
+                    <GitHubIcon sx={{ color: '#4bb2fe', mr: 1 }} />
+                  </Link>
+                  <ListItemText primary="Github" />
+                </ListItem>
+                <ListItem>
+                  <Link href={podcastSocialData['telegram']}>
+                    <TelegramIcon sx={{ color: '#4bb2fe', mr: 1 }} />
+                  </Link>
+                  <ListItemText primary="Telegram" />
+                </ListItem>
+                <ListItem>
+                  <Link href={podcastSocialData['telegram']}>
+                    <TelegramIcon sx={{ color: '#4bb2fe', mr: 1 }} />
+                  </Link>
+                  <ListItemText primary="Telegram" />
+                </ListItem>
+              </List>
+            </Grid>
+          </Stack>
         </Stack>
         <Divider
           sx={{ background: '#fff', width: '5px', height: '75px', marginRight: '50px' }}

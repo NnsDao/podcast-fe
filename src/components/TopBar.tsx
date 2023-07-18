@@ -1,8 +1,10 @@
 import { useUserStore } from '@/hooks/userStore';
 import logo from '@/public/topBar/looncast.png';
 import underline from '@/public/topBar/underline.png';
+import { ConnectButton, ConnectDialog, useConnect } from '@connect2ic/react';
 import { Box, Button, ButtonBase, Stack } from '@mui/material';
 import { useState } from 'react';
+
 import { useLocation, useNavigate } from 'react-router-dom';
 import LoginWrapper from './Login/Login';
 export default function TopBar() {
@@ -24,6 +26,16 @@ export default function TopBar() {
   const changeDialogShow = (bool: boolean | ((prevState: boolean) => boolean)) => {
     setIsShowDialog(bool);
   };
+
+  const { isConnected, principal, activeProvider } = useConnect({
+    onConnect: () => {
+      console.log('sign in', isConnected, activeProvider, principal);
+    },
+    onDisconnect: () => {
+      console.log('sign out', isConnected, activeProvider, principal);
+    },
+  });
+
   return (
     <Stack width={'80%'} direction={'row'} justifyContent="space-between" alignItems={'center'}>
       <Stack direction={'row'} alignItems={'center'}>
@@ -126,6 +138,9 @@ export default function TopBar() {
           </Button>
         </Stack>
       )}
+
+      <ConnectButton />
+      <ConnectDialog />
 
       <LoginWrapper isShow={isShowDialog} closeDialog={() => setIsShowDialog(false)} />
     </Stack>
