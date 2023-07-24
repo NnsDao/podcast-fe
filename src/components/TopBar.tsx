@@ -1,7 +1,7 @@
 import { useUserStore } from '@/hooks/userStore';
 import logo from '@/public/topBar/looncast.png';
 import underline from '@/public/topBar/underline.png';
-import { ConnectButton, ConnectDialog, useConnect } from '@connect2ic/react';
+import { useConnect } from '@connect2ic/react';
 import { Box, Button, ButtonBase, Stack } from '@mui/material';
 import { useState } from 'react';
 
@@ -139,8 +139,8 @@ export default function TopBar() {
         </Stack>
       )}
 
-      <ConnectButton />
-      <ConnectDialog />
+      {/* <ConnectButton />
+      <ConnectDialog /> */}
 
       <LoginWrapper isShow={isShowDialog} closeDialog={() => setIsShowDialog(false)} />
     </Stack>

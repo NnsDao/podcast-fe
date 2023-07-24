@@ -164,7 +164,7 @@ export default function List() {
                 label="Change Owner"
                 key="ChangeOwner"
                 placeholder="Change Owner"
-                value={form.AddOwner}
+                value={form.ChangeOwner}
                 onChange={e => changeForm('ChangeOwner', e)}
               />
               <Button onClick={() => ChangeAdminAction()}>Change Owner</Button>

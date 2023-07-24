@@ -34,7 +34,7 @@ export default function Introduce() {
             color: '#FFFFFF',
             textAlign: 'center',
           }}>
-          Your Daily Podcast
+          Your Ownership Podcast
         </Stack>
         <Stack
           sx={{
@@ -46,7 +46,7 @@ export default function Introduce() {
             color: '#FFFFFF',
             textAlign: 'center',
           }}>
-          We cover all kinds of categories and a weekly special guest.
+          Protect your data and access the Web3 creator economy with IC Canister.
         </Stack>
         <Stack
           sx={{
