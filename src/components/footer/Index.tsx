@@ -3,8 +3,10 @@ import footer1 from '@/public/footer/footer1.png';
 import googlePodcast from '@/public/footer/google-podcast.svg';
 import overcast from '@/public/footer/overcast.svg';
 import spotify from '@/public/footer/spotify.svg';
+import openchat from '@/public/social/openchat.jpg';
 import telegram from '@/public/social/telegram.svg';
 import twitter from '@/public/social/twitter.svg';
+
 import Link from '@mui/material/Link';
 import { Stack } from '@mui/system';
 export default function Footer() {
@@ -25,9 +27,8 @@ export default function Footer() {
         <Stack sx={{ marginTop: '10px' }} direction={'row'} justifyContent="space-between" alignItems={'center'}>
           <img src={footer1} alt="" width={'125px'} />
           <Stack sx={{ marginLeft: '35px', marginTop: '45px' }}>
-            The Decentralization Podcasts Protocol
-            <br /> & Ep NFT for Creators.
-            <br />
+            The Decentralized Podcast Protocol for Creators
+            <br /> on the IC.
           </Stack>
         </Stack>
         <Stack paddingTop={'33px'}>Looncast ©️ 2023</Stack>
@@ -64,6 +65,14 @@ export default function Footer() {
               marginRight={'10px'}
               href="https://twitter.com/Looncasts">
               <img src={twitter} alt="" width={'35px'} height={'35px'} />
+            </Link>
+            <Link
+              color="inherit"
+              underline="none"
+              variant="body2"
+              marginRight={'10px'}
+              href="https://oc.app/community/nayn5-paaaa-aaaar-ascva-cai/channel/187643252543854841578617641484716670700">
+              <img src={openchat} alt="" width={'35px'} height={'35px'} />
             </Link>
             <Link color="inherit" underline="none" variant="body2" href="#">
               <img src={telegram} alt="" width={'35px'} height={'35px'} />
