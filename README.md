@@ -64,12 +64,12 @@ dfx canister --network ic install assets -m reinstall
 
 ### Phase 3: New feature Q4-23, 2024
 
-- [] Use ic assets storage
-- [] Use new login with II & NFID
-- [] Support RSS Feed & submit your podcast to Apple, Google, Spotify Podcasts
-- [] Automated Synchronized Podcasting
-- [] Generate NFT service
-- [] Support multi-theme
-- [] Import data from other podcast platforms
-- [] Support custom domain
-- [] Develop client with Flutter, API access to podcast data
+- [ ] Use ic assets storage
+- [ ] Use new login with II & NFID
+- [ ] Support RSS Feed & submit your podcast to Apple, Google, Spotify Podcasts
+- [ ] Automated Synchronized Podcasting
+- [ ] Generate NFT service
+- [ ] Support multi-theme
+- [ ] Import data from other podcast platforms
+- [ ] Support custom domain
+- [ ] Develop client with Flutter, API access to podcast data
