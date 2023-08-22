@@ -6,6 +6,8 @@ interface ImportMetaEnv {
   readonly __APP__name: string;
   readonly __APP__canister_type: string;
   readonly __APP__canister_id: string;
+  readonly __APP__ACCESSKEY: string;
+  readonly __APP__SECRETKEY: string;
   // readonly xxxx:string
 }
 
