@@ -29,8 +29,8 @@ const s3Client = new S3({
   region: REGION_US_EAST_1,
   endpoint: 'https://endpoint.4everland.co',
   credentials: {
-    accessKeyId: import.meta.env.__APP__ACCESSKEY,
-    secretAccessKey: import.meta.env.__APP__SECRETKEY,
+    accessKeyId: import.meta.env.APP_ACCESSKEY,
+    secretAccessKey: import.meta.env.APP_SECRETKEY,
   },
 });
 

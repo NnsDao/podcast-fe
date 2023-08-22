@@ -3,11 +3,11 @@
 //  define import.meta.env  intelligence
 interface ImportMetaEnv {
   readonly VITE_APP_TITLE: string;
-  readonly __APP__name: string;
-  readonly __APP__canister_type: string;
-  readonly __APP__canister_id: string;
-  readonly __APP__ACCESSKEY: string;
-  readonly __APP__SECRETKEY: string;
+  readonly APP__name: string;
+  readonly APP__canister_type: string;
+  readonly APP__canister_id: string;
+  readonly APP__ACCESSKEY: string;
+  readonly APP__SECRETKEY: string;
   // readonly xxxx:string
 }
 

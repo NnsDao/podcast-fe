@@ -3,7 +3,7 @@ import { idlFactory as nid_IDL } from '@nnsdao/nnsdao-kit/nid/index';
 import { idlFactory as podcast_manage_IDL } from '@nnsdao/nnsdao-kit/podcast-manager/index';
 import { idlFactory as podcast_IDL } from '@nnsdao/nnsdao-kit/podcast/index';
 
-export const isTestCanister = import.meta.env.__APP__canister_type === 'test';
+export const isTestCanister = import.meta.env.APP_canister_type === 'test';
 export { podcast_manage_IDL };
 export { podcast_IDL };
 export const canister = {

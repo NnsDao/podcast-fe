@@ -10,13 +10,13 @@ export default defineConfig(({ command, mode }) => {
   // rewrite prod canister_ids
   const canisterJsonPath = path.resolve('canister_ids.json');
   const canisterJson = JSON.parse(readFileSync(canisterJsonPath).toString());
-  canisterJson.assets.ic = env.__APP__canister_id;
+  canisterJson.assets.ic = env.APP_canister_id;
   writeFileSync(canisterJsonPath, JSON.stringify(canisterJson));
 
   return {
     publicDir: 'src/public',
     envDir: 'env',
-    envPrefix: ['VITE_', '__APP__'],
+    envPrefix: ['VITE_', 'APP_'],
     plugins: [
       react(),
       // visualizer({
