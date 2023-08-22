@@ -34,3 +34,4 @@ declare module 'ic-stoic-identity' {
   const StoicIdentity: any;
   const load: (any) => any;
 }
+declare module '@mui/material/esm';
