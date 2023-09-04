@@ -57,3 +57,6 @@
 .MuiAvatar-img {
   cursor: pointer;
 }
+.shikawa-podcast {
+  z-index: 9999;
+}

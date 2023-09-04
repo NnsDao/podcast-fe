@@ -9,6 +9,8 @@ import img7 from '@/public/episodes/img7.png';
 import img8 from '@/public/episodes/img8.png';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import PauseIcon from '@mui/icons-material/Pause';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Avatar, Divider, Tooltip } from '@mui/material';
 import Button from '@mui/material/Button';
@@ -19,11 +21,15 @@ import { PodcastIterm } from '@nnsdao/nnsdao-kit/src/podcast/types';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Player } from 'shikwasa';
+import 'shikwasa/dist/style.css';
 import Style from './index.module.css';
 export default function Cast() {
   const { principal, index } = useParams();
 
   const [count, setCount] = useState(0);
+  const [playStatus, setPlayer] = useState(false);
+
   const podcastData: Array<[bigint, PodcastIterm]> =
     useGet_podcast_list(principal as string)?.data?.filter(item => Number(index) == Number(item[0])) || [];
   console.log(podcastData, 'podcastData');
@@ -58,6 +64,30 @@ export default function Cast() {
     });
     console.log('postRecordPlay', res);
   };
+
+  const showPlayer = data => {
+    if (!playStatus) {
+      setPlayer(true);
+    }
+    const player = new Player({
+      container: () => document.querySelector('.shikawa-podcast'),
+      themeColor: 'gray',
+      theme: 'light',
+      fixed: {
+        type: 'static',
+      },
+      audio: {
+        title: data[0]?.[1]?.title,
+        artist: data[0]?.[1]?.hosts[0]?.toText(),
+        cover: data[0]?.[1]?.cover_image,
+        src: data[0]?.[1]?.show_note,
+      },
+      download: true,
+    });
+
+    player.play();
+  };
+
   useEffect(() => {
     if (principal && index) {
       postRecordPlay();
@@ -172,9 +202,13 @@ export default function Cast() {
                     Hosted by: {podcastData[0]?.[1]?.hosts[0]?.toText()}
                   </Stack>
                 </Stack>
-                <audio controls color="black">
+                {/* <audio controls color="black">
                   <source src={podcastData[0]?.[1]?.show_note} type="audio/ogg" />
-                </audio>
+                </audio> */}
+
+                <Stack onClick={() => showPlayer(podcastData)} sx={{ marginTop: '15px' }}>
+                  {playStatus ? <PauseIcon fontSize="large" /> : <PlayArrowIcon fontSize="large" />}
+                </Stack>
               </Stack>
             </Stack>
           </Stack>
@@ -190,7 +224,6 @@ export default function Cast() {
               lineHeight: '38px',
               minHeight: '180px',
               overflow: 'hidden',
-              zIndex: 9999,
             }}>
             {podcastData[0]?.[1]?.describe}
           </Stack>
@@ -227,6 +260,11 @@ export default function Cast() {
           </Stack>
         </Stack>
       </Stack>
+
+      <Stack
+        position={'fixed'}
+        className="shikawa-podcast"
+        sx={{ bottom: '0px', marginTop: '20px', width: '100%' }}></Stack>
     </Stack>
   );
 }
